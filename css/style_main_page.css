@@ -5,7 +5,7 @@
 }
 :root {
     --first-family: "Roboto", sans-serif;
-    --size-default: 20px;
+    --size-default: 16px;
 }
 html, body {
     height: 100vh;
@@ -84,12 +84,16 @@ header button {
 /*============Меню и Лента сообщений============*/
 main {
     display: flex;
+    height: 100%;
 }
 .menu {
-    width: 20%;
+    width: 15%;
+    height: 100%;
+    border-right: 2px solid rgba(0, 0, 0, 0.6);
 }
 .feed {
-    width: 80%;
+    width: 85%;
+    height: 100%;
 }
 h2 {
     font-size: var(--size-default);
@@ -104,16 +108,15 @@ h2 {
     height: 50px;
 }
 .menu_tools {
-    position: relative;
+    position: sticky;
     display: flex;
     flex-direction: column;
-    border-right: 2px solid rgba(0, 0, 0, 0.6);
 }
 .menu_tools button {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 60px;
+    height: 50px;
     gap: 10px;
     font-family: var(--first-family);
     font-size: var(--size-default);
@@ -130,8 +133,8 @@ h2 {
     background-color: rgb(0, 0, 0, 0.25);
 }
 .menu_tools button img {
-    width: 35px;
-    margin-left: 35px;
+    width: 25px;
+    margin-left: 25px;
 }
 .theme_filters_container {
     font-family: var(--first-family);
@@ -142,12 +145,12 @@ h2 {
 }
 .theme_filters_container h3 {
     font-size: 20px;
-    margin-left: 35px;
+    margin-left: 25px;
 }
 .filters {
     display: flex;
     flex-direction: column;
-    margin-left: 35px;
+    margin-left: 25px;
     gap: 7px;
 }
 .filter_block {
@@ -156,7 +159,7 @@ h2 {
     gap: 10px;
 }
 .filter_block img {
-    width: 35px;
+    width: 30px;
 }
 .filter_block input {
     transform: scale(1.25);
