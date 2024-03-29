@@ -34,9 +34,9 @@ document.addEventListener("DOMContentLoaded", function() {
               this.classList.add('selected');
               selected = this.getAttribute("data-faculty") || this.getAttribute("data-category");
               if (facultyInput) {
-                  facultyInput.value = selected; // Assign the selected faculty to the hidden input
+                  facultyInput.value = selected;
               } else {
-                  categoryInput.value = selected; // Assign the selected category to the hidden input
+                  categoryInput.value = selected;
               }
           });
       });
