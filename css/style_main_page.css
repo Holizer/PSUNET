@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --first-family: "Roboto", sans-serif;
+    --size-default: 20px;
+}
+html, body {
+    height: 100vh;
+    font-family: var(--first-family);
+    line-height: 1.6;
+    color: black;
+}
+/*============Загловок============*/
+header {
+    display: flex;
+    width: 100%;
+    height: 56px;
+    box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    background: #000;
+    gap: 20px;
+}
+.input-container {
+    margin-left: auto;
+    position: relative;
+}
+.input-container input {
+    font-family: var(--font-family);
+    width: 320px;
+    height: 40px;
+    border: 2px solid rgba(0, 0, 0, 0.16);
+    border-radius: 15px;
+    background-color: #2d2d2d;
+    color: white;
+    font-size: 15px;
+    padding: 15px;
+}
+.input-container input::placeholder {
+    color: rgba(255, 255, 255, 0.36);
+}
+.input-container img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    width: 40px;
+    height: 40px;
+}
+header button {
+    padding: 10px 15px;
+    margin-right: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+/*============Фильтр по факультетам============*/
+.filters_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 69px;
+    gap: 15px;
+}
+.filters_container button {
+    font-family: var(--font-family);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    font-size: var(--size-default);
+    gap: 15px;
+    cursor: pointer;
+    border: none;
+}
+.filters_container img {
+    width: 45px;
+}
+/*============Меню и Лента сообщений============*/
+main {
+    display: flex;
+}
+.menu {
+    width: 20%;
+}
+.feed {
+    width: 80%;
+}
+h2 {
+    font-size: var(--size-default);
+}
+/*============Меню============*/
+.meun_header, .feed_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background: #f9f9f9;
+    height: 50px;
+}
+.menu_tools {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid rgba(0, 0, 0, 0.6);
+}
+.menu_tools button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    gap: 10px;
+    font-family: var(--first-family);
+    font-size: var(--size-default);
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+.menu_tools button:hover {
+    background-color: rgb(0, 0, 0, 0.1);
+}
+.menu_tools button:active {
+    background-color: rgb(0, 0, 0, 0.25);
+}
+.menu_tools button img {
+    width: 35px;
+    margin-left: 35px;
+}
+.theme_filters_container {
+    font-family: var(--first-family);
+    font-size: var(--size-default);
+    border-bottom: 1px solid #000;
+    font-size: 20px;
+    padding: 10px 0;
+}
+.theme_filters_container h3 {
+    font-size: 20px;
+    margin-left: 35px;
+}
+.filters {
+    display: flex;
+    flex-direction: column;
+    margin-left: 35px;
+    gap: 7px;
+}
+.filter_block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.filter_block img {
+    width: 35px;
+}
+.filter_block input {
+    transform: scale(1.25);
+}
+/*==============Модальное окно создания темы==================*/
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99998;
+    background-color: rgba(0, 0, 0, .3);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .4s, visibility .4s;
+}
+.modal__box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-size: var(--size-default);
+    font-family: var(--first-family);
+    border-radius: 50px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 800px;
+    padding: 45px;
+    z-index: 1;
+    background-color: white;
+    transform: scale(0);
+    transition: transform .8s;
+}
+.modal__box input[type="text"] {
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    width: 350px;
+    height: 33px;
+}
+.modal__close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+    cursor: pointer;
+}
+.modal.open {
+    visibility: visible;
+    opacity: 1;
+}
+.modal.open .modal__box {
+    transform: scale(1);
+}
+/*=========Cодержимое модального окна создания темы=========*/
+.modal__box h2 {
+    margin-left: 20px;
+    margin-top: -20px;
+    text-align: center;
+    font-size: 25px;
+}
+.form-group label {
+    margin-left: 10px;
+}
+.modal__box input {
+    font-family: var(--first-family);
+    font-size: 15px;
+    padding: 5px;
+}
+.btn_group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.btn_group button {
+    padding: 3px 8px;
+    font-size: var(--size-default);
+    font-family: var(--first-family);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    gap: 5px;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+.btn_group button:hover {
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+.btn_group button.selected {
+    border: 2px solid rgb(250, 230, 0);
+}
+.btn_group img {
+    width: 30px;
+    height: 30px;
+}
+.modal__box textarea {
+    font-family: var(--first-family);
+    font-size: var(--size-default);
+    border-radius: 20px;
+    padding: 10px 15px;
+    width: 100%;
+    height: 200px;
+    resize: none;
+}
+.modal__box input[type="submit"] {
+    margin-left: 10px;
+    font-size: 15px;
+    font-size: var(--size-default);
+    background-color: #f9f9f9;
+    border-radius: 10px;    
+    cursor: pointer;
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style_main_page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/PsuLogo.svg">
+    <title>PsuLive</title>
+</head>
+<body>
+    <header>
+        <img src="img/logo-horizontal.svg" alt="Логотип">
+        <div class="input-container">
+            <input type="text" placeholder="Поиск">
+            <img src="img/search_img.svg" alt="Поиск">
+        </div>
+        <button>
+            Войти
+        </button>
+    </header>
+    <div class="filters_container">
+        <button>
+            <span style="color:#80be6b;">ГФ</span>
+            <img src="img/Faculties_img/gf.svg" alt="ГФ">
+        </button>
+        <button>
+            <span style="color: #e96d54;">ИСФ</span>
+            <img src="img/Faculties_img/isf.svg" alt="ИСФ">
+        </button>
+        <button>
+            <span style="color: #596880;">МТФ</span>
+            <img src="img/Faculties_img/mtf.svg" alt="МТФ">
+        </button>
+        <button>
+            <span style="color: #000;">ФИТ</span>
+            <img src="img/Faculties_img/fit.svg" alt="ФИТ">
+        </button>
+        <button>
+            <span style="color: #553084;">ФКНиЭ</span>
+            <img src="img/Faculties_img/fit.svg" alt="ФКНиЭ">
+        </button>
+        <button>
+            <span style="color: #fcc600;">ФЭФ</span>
+            <img src="img/Faculties_img/fef.svg" alt="ФЭФ">
+        </button>
+        <button>
+            <span style="color: #3bb7b5;">ЮФ</span>
+            <img src="img/Faculties_img/uf.svg" alt="ЮФ">
+        </button>
+    </div>
+    <main>
+        <div class="menu">
+            <div class="meun_header">
+                <h2>Меню</h2>
+            </div>
+            <div class="menu_tools">
+                <button>
+                    <img src="img/Menu_Icons/ToHome.svg" alt="На главную">
+                    На главную
+                </button>
+                <button onclick="toggleModal('ThemesCreater', 'open')">
+                    <img src="img/Menu_Icons/Create_Theme.svg" alt="Создать тему">
+                    Создать тему
+                </button>
+                <button onclick="toggleModal('EventsCreater', 'open')">
+                    <img src="img/Menu_Icons/NewEvent.svg" alt="Новое мероприятие">
+                    Новое мероприятие
+                </button>
+                <button>
+                    <img src="img/Menu_Icons/Favorites.svg" alt="Избранное">
+                    Избранное
+                </button>
+                <div class="theme_filters_container">
+                    <h3>
+                        Фильтры
+                    </h3>
+                    <div class="filters">
+                        <div class="filter_block">
+                            <input type="checkbox" name="sport">
+                            <label for="sport">Спорт</label>
+                            <img src="img/Menu_Icons/sprot_img.svg" alt="Спорт">
+                        </div>
+                        <div class="filter_block">
+                            <input type="checkbox" name="concert">
+                            <label for="concert">Концерты</label>
+                            <img src="img/Menu_Icons/microfhone_img.svg" alt="Концерты">
+                        </div>
+                        <div class="filter_block">
+                            <input type="checkbox" name="vacancy">
+                            <label for="vacancy">Вакансии</label>
+                            <img src="img/Menu_Icons/vacancy_img.svg" alt="Вакансии">
+                        </div>
+                        <div class="filter_block">
+                            <input type="checkbox" name="global">
+                            <label for="global">Общее</label>
+                            <img src="img/Menu_Icons/psu.svg" alt="Общее">
+                        </div>
+                        <div class="filter_block">
+                            <input type="checkbox" name="knowledge">
+                            <label for="knowledge">Зания</label>
+                            <img src="img/Menu_Icons/graduation_img.svg" alt="Зания">
+                        </div>
+                    </div>
+                </div>
+                <button>
+                    <img src="img/Menu_Icons/information.svg" alt="Информация">
+                    Информация
+                </button>
+                <button>
+                    <img src="img/Menu_Icons/letter.svg" alt="Контакты">
+                    Контакты
+                </button>
+            </div>
+        </div>
+        <div class="feed">
+            <div class="feed_header">
+                <h2>Лента сообщений</h2>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="ThemesCreater">
+        <div class="modal__box">
+            <button class="modal__close-btn" onclick="toggleModal('ThemesCreater', 'close')">
+                <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z" fill="#333333" />
+                    <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333" />
+                </svg>
+            </button>
+            <h2>Создание темы</h2>
+            <form id="ThemesForm">
+                <div class="form-group">
+                    <label for="name">Название</label>
+                    <br>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="faculty">Факультет</label>
+                    <div class="btn_group" role="group">
+                        <button data-faculty="ГФ">
+                            <span style="color:#80be6b;">ГФ</span>
+                            <img src="img/Faculties_img/gf.svg" alt="ГФ">
+                        </button>
+                        <button type="button" data-faculty="ИСФ">
+                            <span style="color: #e96d54;">ИСФ</span>
+                            <img src="img/Faculties_img/isf.svg" alt="ИСФ">
+                        </button>
+                        <button type="button" data-faculty="МТФ">
+                            <span style="color: #596880;">МТФ</span>
+                            <img src="img/Faculties_img/mtf.svg" alt="МТФ">
+                        </button>
+                        <button type="button" data-faculty="ФИТ">
+                            <span style="color: #000;">ФИТ</span>
+                            <img src="img/Faculties_img/fit.svg" alt="ФИТ">
+                        </button>
+                        <button type="button" data-faculty="ФКНиЭ">
+                            <span style="color: #553084;">ФКНиЭ</span>
+                            <img src="img/Faculties_img/fkne.svg" alt="ФКНиЭ">
+                        </button>
+                        <button type="button" data-faculty="ФЭФ">
+                            <span style="color: #fcc600;">ФЭФ</span>
+                            <img src="img/Faculties_img/fef.svg" alt="ФЭФ">
+                        </button>
+                        <button type="button" data-faculty="ЮФ">
+                            <span style="color: #3bb7b5;">ЮФ</span>
+                            <img src="img/Faculties_img/uf.svg" alt="ЮФ">
+                        </button>
+                    </div>
+                    <input type="hidden" id="selectedFaculty" name="selectedFaculty" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Содержание</label>
+                    <br>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="EventsCreater">
+        <div class="modal__box">
+            <button class="modal__close-btn" onclick="toggleModal('EventsCreater', 'close')">
+                <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z" fill="#333333" />
+                    <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333" />
+                </svg>
+            </button>
+            <h2>Создание мероприятия</h2>
+            <form id="EventsForm">
+                <div class="form-group">
+                    <label for="name">Название</label>
+                    <br>
+                    <input type="text" id="events_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Категория</label>
+                    <div class="btn_group" role="group">
+                        <button type="button" data-category="Спорт">
+                            Спорт
+                            <img src="img/Menu_Icons/sprot_img.svg" alt="Спорт">
+                        </button>
+                        <button type="button" data-category="Концерт">
+                            Концерт
+                            <img src="img/Menu_Icons/microfhone_img.svg" alt="Концерт">
+                        </button>
+                        <button type="button" data-category="Вакансии">
+                            Вакансии
+                            <img src="img/Menu_Icons/vacancy_img.svg" alt="Вакансии">
+                        </button>
+                        <button type="button" data-category="Знания">
+                            Знания
+                            <img src="img/Menu_Icons/graduation_img.svg" alt="Знания">
+                        </button>
+                        <button type="button" data-category="Общее">
+                            Общее
+                            <img src="img/Menu_Icons/psu.svg" alt="Общее">
+                        </button>
+                    </div>
+                    <input type="hidden" id="selectedCategory" name="selectedCategory" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Дата проведения</label>
+                    <br>
+                    <input type="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Содержание</label>
+                    <br>
+                    <textarea id="events_message" name="message" required></textarea>
+                </div>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/scripts.js"></script>
+</body>
+</html>
