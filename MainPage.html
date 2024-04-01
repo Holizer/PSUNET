@@ -291,7 +291,7 @@
                             Общее
                         </button>
                     </div>
-                    <input type="hidden" id="selectedFaculty" name="selectedFaculty" required>
+                    <input type="hidden" id="selectedCategory" name="selectedCategory" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Содержание</label>
@@ -299,7 +299,7 @@
                 </div>
                 <div class="buttons__container">
                     <input type="submit" value="Создать мероприятие">
-                    <button type="button" onclick="toggleModal('EventsForm', 'close')"></button>
+                    <input type="reset" value="Отмена" onclick="toggleModal('EventsCreater', 'close')">
                 </div>
             </form>
         </div>
