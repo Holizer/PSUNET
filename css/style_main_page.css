@@ -24,6 +24,7 @@ html, body {
 }
 /*============Загловок============*/
 header {
+    position: fixed;
     display: flex;
     width: 100%;
     height: 65px;
@@ -94,15 +95,19 @@ header button {
 }
 main {
     display: grid;
+    position: relative;
     background-color: #fcfcfc;
     height: 100%;
-    grid-template-columns: 272px 1fr 272px;
+    top: 65px;
+    grid-template-columns: 1fr 380px;
     z-index: 1;
 }
 .left-sidebar {
+    position: fixed;
     background-color: #FFFFFF;
-    height: calc(100% - 65px);
+    height: 100%;
     overflow-y: auto;
+    width: 272px;
     border-right: 1px solid #bcbcbc;
 }
 .menu__block {
@@ -245,23 +250,24 @@ main {
     font-family: var(--first-family);
     border: 2px solid var(--content-content-border);
     border-radius: 20px;
-    padding: 25px;
     width: 552px;
-    height: 567px;
+    height: fit-content;
     background: var(--content-content-constant);
-    transform: translateY(0px);
+    padding: 25px;
+    transform: translateY(20px);
     transition: transform .5s;
 }
 .modal.open .modal__box {
     transform: translateY(-20px);
 }
 .modal__box h2 {
+    display: block;
     font-family: var(--first-family);
+    color: var(--content-content-primary);
     font-weight: 700;
     font-size: 24px;
     line-height: 30px;
     text-align: center;
-    color: var(--content-content-primary);
 }
 .modal__box form {
     display: flex;
@@ -282,13 +288,13 @@ form .form-group {
 }
 .modal__box input {
     border: 2px solid var(--content-content-border);
-    border-radius: 12px;
-    padding: 8px 16px;
-    width: 375px;
-    height: 45px;
     background: var(--content-content-constant);
     font-family: var(--first-family);
-    font-size: 16px;
+    font-size: var(--default-size);
+    border-radius: 12px;
+    width: 375px;
+    height: 45px;
+    padding: 8px 16px;
 }
 .form-group input[type="datetime-local"] {
     width: 200px;
@@ -308,21 +314,6 @@ form .form-group {
 }
 .modal.open .modal__box {
     transform: scale(1);
-}
-/*=========Cодержимое модального окна создания темы==========*/
-.modal__box h2 {
-    margin-left: 20px;
-    margin-top: -20px;
-    text-align: center;
-    font-size: 25px;
-}
-.form-group label {
-    margin-left: 10px;
-}
-.modal__box input {
-    font-family: var(--first-family);
-    font-size: 15px;
-    padding: 5px;
 }
 .btn_group {
     display: flex;
@@ -417,11 +408,118 @@ form .form-group {
     outline: none;
 }
 .posts-container {
+    margin-left: 272px;
     display: flex;
     flex-direction: column;
-    background-color: #d8d8d8;
+    background: #fbfaff;
     gap: 20px;
+    padding: 25px;
+}
+.post {
+    position: relative;
+    width: 100%;
+    padding: 25px;
+    height: fit-content;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.25);
+    background: var(--content-content-constant);
+}
+.user__info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.user_img {
+    border: 2px solid var(--content-content-constant);
+    border-radius: 30px;
+    width: 50px;
+    height: 50px;
+}
+.user_details {
+    font-family: var(--first-family);
+}
+.user_name {
+    font-weight: 500;
+    font-size: var(--default-size);
+    color: #000;
+}
+.time_of_creation {
+    font-size: var(--middle-size);
+    color: #6b7280;
+}
+.post__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px 0 20px 0;
+    font-family: var(--first-family);
+}
+.post__content h2 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000;
+}
+.post__content p {
+    font-weight: 400;
+    font-size: var(--default-size);
+    line-height: 24px;
+    line-height: 162%;
+    color: #6b7280;
+    text-align: justify;
+}
+.post__items {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    line-height: 20px;
+    font-weight: 500;
+    font-size: var(--middle-size);
+}
+.post__items :where(.likes, .comments, .favorites) {
+    display: flex;
+    gap: 5px;
+}
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.post__category_img {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+}
+.post__category_img img {
+    width: 32px;
+    height: 32px;
+}
+.post__category_text {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    font-family: var(--first-family);
+    font-weight: 500;
+    font-size: var(--middle-size);
+    text-align: center;
+    color: #374151;
 }
 .right-sidebar {
-    background-color: #8f8f8f;
+    padding: 25px;
+    padding-left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fbfaff;
+}
+.content_box {
+    position: sticky;
+    top: calc(65px + 25px);
+    width: 100%;
+    border-radius: 20px;
+    background-color: #d7d7d7;
+    height: 120px;
 }
