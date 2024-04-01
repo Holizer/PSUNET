@@ -32,6 +32,7 @@ header {
     background: #202020;
     gap: 20px;
     z-index: 2;
+    padding-right: 25px;
 }
 .input-container {
     width: 25%;
@@ -80,14 +81,14 @@ header {
     outline: none;
 }
 header button {
+    border-radius: 15px;
     margin-left: auto;
     padding: 10px 15px;
     margin-right: 20px;
     font-weight: 500;
-    font-size: 20px;
     color: #fff;
-    font-size: 16px;
-    background-color: transparent;
+    font-size: 14px;
+    background-color: #404040;
     border: none;
     cursor: pointer;
 }
