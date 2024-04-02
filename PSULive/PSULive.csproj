@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ApplicationContext.cs" />
+    <Content Include="PostData.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\img\close.svg" />
+    <None Include="wwwroot\img\Faculties_img\fef.svg" />
+    <None Include="wwwroot\img\Faculties_img\fit.svg" />
+    <None Include="wwwroot\img\Faculties_img\fkne.svg" />
+    <None Include="wwwroot\img\Faculties_img\gf.svg" />
+    <None Include="wwwroot\img\Faculties_img\isf.svg" />
+    <None Include="wwwroot\img\Faculties_img\mtf.svg" />
+    <None Include="wwwroot\img\Faculties_img\uf.svg" />
+    <None Include="wwwroot\img\logo-horizontal.svg" />
+    <None Include="wwwroot\img\Menu_Icons\Create_Theme.svg" />
+    <None Include="wwwroot\img\Menu_Icons\Favorites.svg" />
+    <None Include="wwwroot\img\Menu_Icons\graduation_img.svg" />
+    <None Include="wwwroot\img\Menu_Icons\information.svg" />
+    <None Include="wwwroot\img\Menu_Icons\letter.svg" />
+    <None Include="wwwroot\img\Menu_Icons\microfhone_img.svg" />
+    <None Include="wwwroot\img\Menu_Icons\NewEvent.svg" />
+    <None Include="wwwroot\img\Menu_Icons\psu.svg" />
+    <None Include="wwwroot\img\Menu_Icons\sprot_img.svg" />
+    <None Include="wwwroot\img\Menu_Icons\ToHome.svg" />
+    <None Include="wwwroot\img\Menu_Icons\vacancy_img.svg" />
+    <None Include="wwwroot\img\PsuLogo.svg" />
+    <None Include="wwwroot\img\search_img.svg" />
+    <None Include="wwwroot\img\user_img.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
+  </ItemGroup>
+
+</Project>

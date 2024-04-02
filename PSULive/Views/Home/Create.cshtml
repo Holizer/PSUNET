@@ -1,0 +1,51 @@
+﻿@model PSULive.Controls.HomeController.PostViewModel
+
+    <div class="modal__box">
+        <h2>Новое мероприятие</h2>
+    <form asp-action="Create" asp-controller="home" method="post" id="EventsForm">
+            <div class="form-group">
+                <label asp-for="NewPost.Title">Введите название</label>
+                <input asp-for="NewPost.Title" class="form-control" placeholder="Название" required />
+                <span asp-validation-for="NewPost.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewPost.OnSpecialDate">Дата проведения</label>
+                <input asp-for="NewPost.OnSpecialDate" class="form-control" type="datetime-local" required />
+                <span asp-validation-for="NewPost.OnSpecialDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewPost.Category">Выбирите категорию</label>
+                <div class="btn_group" role="group">
+                    <button  asp-type="button" data-category="Здоровье и Спорт">
+                        Здоровье и Спорт
+                    </button>
+                    <button asp-type="button" data-category="Выступления">
+                        Выступления
+                    </button>
+                    <button asp-type="button" data-category="Образование">
+                        Образование
+                    </button>
+                    <button asp-type="button" data-category="Технологии">
+                        Технологии
+                    </button>
+                    <button asp-type="button" data-category="Работа">
+                        Работа
+                    </button>
+                    <button asp-type="button" data-category="Общее">
+                        Общее
+                    </button>
+                </div>
+                <input asp-for="NewPost.Category" type="hidden" id="selectedCategory" name="selectedCategory" required />
+                <span asp-validation-for="NewPost.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewPost.Description">Содержание</label>
+                <textarea asp-for="NewPost.Description" class="form-control" placeholder="Опишите мероприятие" required></textarea>
+                <span asp-validation-for="NewPost.Description" class="text-danger"></span>
+            </div>
+            <div class="buttons__container">
+                <input type="submit" value="Создать мероприятие">
+                <input type="reset" value="Отмена" onclick="toggleModal('EventsCreater', 'close')">
+            </div>
+        </form>
+    </div>
