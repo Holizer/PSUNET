@@ -37,6 +37,7 @@ header {
     background: #202020;
     gap: 20px;
     z-index: 2;
+    padding-right: 25px;
 }
 .input-container {
     width: 25%;
