@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", function() {
         let buttons = form.querySelectorAll('.btn_group button');
         buttons.forEach(button => {
             button.addEventListener('click', function() {
+                buttons.forEach(btn => {
+                    if (btn !== this) {
+                        btn.classList.remove('selected');
+                    }
+                });
                 this.classList.toggle('selected');
                 this.selectedCategory = form === eventsForm ? this.getAttribute('data-category') : this.getAttribute('data-faculty');
                 hiddenInput.value = this.selectedCategory;

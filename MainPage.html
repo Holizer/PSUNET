@@ -20,7 +20,15 @@
             <input type="text" placeholder="Поиск" id="searchInput">
             <img src="img/search_img.svg" alt="Поиск" id="searchIcon">
         </div>
-        <button>Войти</button>
+        <div class="buttons__box">
+            <a href="#" class="notification">
+                <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.5 18H0.5V16H1.5V9.031C1.5 4.043 5.53 0 10.5 0C15.47 0 19.5 4.043 19.5 9.031V16H20.5V18ZM3.5 16H17.5V9.031C17.5 5.148 14.366 2 10.5 2C6.634 2 3.5 5.148 3.5 9.031V16ZM8 19H13C13 19.663 12.7366 20.2989 12.2678 20.7678C11.7989 21.2366 11.163 21.5 10.5 21.5C9.83696 21.5 9.20107 21.2366 8.73223 20.7678C8.26339 20.2989 8 19.663 8 19Z" fill="white" />
+                </svg>
+                <span class="badge">3</span>
+            </a>
+            <button>Войти</button>
+        </div>
     </header>
     <main>
         <div class="left-sidebar">
@@ -66,24 +74,28 @@
                 </button>
                 <div class="content">
                     <div class="checkbox__container">
-                        <input type="checkbox">
-                        <label for="sport">Спорт</label>
+                        <input type="checkbox" name="sport" value="sport">
+                        <label for="sport">Здоровье и Спорт</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
-                        <label for="sport">Концерты</label>
+                        <input type="checkbox" name="performances" value="performances">
+                        <label for="performances">Выступления</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
-                        <label for="sport">Вакнсии</label>
+                        <input type="checkbox" name="education" value="education">
+                        <label for="education">Образование</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
-                        <label for="sport">Знания</label>
+                        <input type="checkbox" name="technologies" value="technologies">
+                        <label for="technologies">Технологии</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
-                        <label for="sport">Общее</label>
+                        <input type="checkbox" name="work" value="work">
+                        <label for="work">Работа</label>
+                    </div>
+                    <div class="checkbox__container">
+                        <input type="checkbox" name="general" value="general">
+                        <label for="general">Общее</label>
                     </div>
                 </div>
             </div>
@@ -98,39 +110,39 @@
                 </button>
                 <div class="content">
                     <div class="checkbox__container">
-                        <input type="checkbox">
+                        <input type="checkbox" name="gf" value="gf">
                         <img src="img/Faculties_img/gf.svg" alt="">
-                        <label for="sport">ГФ</label>
+                        <label for="gf">ГФ</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
+                        <input type="checkbox" name="isf" value="isf">
                         <img src="img/Faculties_img/isf.svg" alt="ИСФ">
-                        <label for="sport">ИСФ</label>
+                        <label for="isf">ИСФ</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
+                        <input type="checkbox" name="mtf" value="mtf">
                         <img src="img/Faculties_img/mtf.svg" alt="МТФ">
-                        <label for="sport">МТФ</label>
+                        <label for="mtf">МТФ</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
+                        <input type="checkbox" name="fit" value="fit">
                         <img src="img/Faculties_img/fit.svg" alt="ФИТ">
-                        <label for="sport">ФИТ</label>
+                        <label for="fit">ФИТ</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
+                        <input type="checkbox" name="fkne" value="fkne">
                         <img src="img/Faculties_img/fkne.svg" alt="ФКНиЭ">
-                        <label for="sport">ФКНиЭ</label>
+                        <label for="fkne">ФКНиЭ</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
+                        <input type="checkbox" name="fef" value="fef">
                         <img src="img/Faculties_img/fef.svg" alt="ФЭФ">
-                        <label for="sport">ФЭФ</label>
+                        <label for="fef">ФЭФ</label>
                     </div>
                     <div class="checkbox__container">
-                        <input type="checkbox">
+                        <input type="checkbox" name="uf" value="uf">
                         <img src="img/Faculties_img/uf.svg" alt="ЮФ">
-                        <label for="sport">ЮФ</label>
+                        <label for="uf">ЮФ</label>
                     </div>
                 </div>
             </div>
@@ -197,12 +209,155 @@
                     </div>
                 </div>
             </div>
+            <div class="post">
+                <div class="post__inf">
+                    <div class="user__info">
+                        <img class="user_img" src="img/user_img.png" alt="">
+                        <div class="user_details">
+                            <div class="user_name">Тима Петухов</div>
+                            <div class="time_of_creation">недавно</div>
+                        </div>
+                    </div>
+                    <div class="post__content">
+                        <h2>Прием документов на  военную кафедру 2024!</h2>
+                        <p>В Полоцком государственном университете имени Евфросинии Полоцкой стартовал прием документов для обучения на военной кафедре. Студенты факультета информационных технологий и юридического факультета уже подали заявления в приемную комиссию и рассказали, почему приняли это решение...</p>
+                    </div>
+                    <div class="post__items">
+                        <div class="likes">
+                            <button class="icon">
+                                <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.4344 6.00005H16.5134C16.9343 6.00005 17.338 6.15809 17.6357 6.43939C17.9333 6.72069 18.1006 7.10223 18.1006 7.50005V9.07805C18.1008 9.27407 18.0603 9.46823 17.9815 9.64955L15.5254 15.2858C15.4654 15.4232 15.3637 15.5407 15.233 15.6234C15.1023 15.706 14.9485 15.7501 14.7913 15.7501H1.43513C1.22466 15.7501 1.02281 15.671 0.873978 15.5304C0.725151 15.3897 0.641541 15.199 0.641541 15.0001V7.50005C0.641541 7.30114 0.725151 7.11037 0.873978 6.96972C1.02281 6.82907 1.22466 6.75005 1.43513 6.75005H4.19842C4.32547 6.75008 4.45067 6.72128 4.5635 6.66608C4.67632 6.61087 4.77347 6.53087 4.84678 6.4328L9.17424 0.63755C9.22894 0.564284 9.30962 0.51197 9.40163 0.490093C9.49365 0.468215 9.59091 0.478222 9.67579 0.5183L11.1154 1.19855C11.5205 1.38992 11.8441 1.70654 12.0325 2.09579C12.2209 2.48504 12.2627 2.92349 12.151 3.3383L11.4344 6.00005ZM5.40309 7.94105V14.2501H14.2596L16.5134 9.07805V7.50005H11.4344C11.1927 7.50002 10.9541 7.4478 10.737 7.34739C10.5199 7.24698 10.3299 7.10103 10.1815 6.92066C10.0332 6.7403 9.93036 6.53029 9.88094 6.30667C9.83153 6.08304 9.83682 5.8517 9.89641 5.6303L10.613 2.9693C10.6354 2.8863 10.6271 2.79854 10.5894 2.72062C10.5518 2.64271 10.487 2.57934 10.4059 2.54105L9.88133 2.29355L6.14351 7.29755C5.94511 7.56305 5.69116 7.78055 5.40309 7.94105ZM3.81591 8.25005H2.22872V14.2501H3.81591V8.25005Z" fill="black" />
+                                </svg>
+                            </button>
+                            <span>3</span>
+                        </div>
+                        <div class="comments">
+                            <button class="icon">
+                                <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.93589 0.25H10.1103C11.794 0.25 13.4089 0.882141 14.5995 2.00736C15.7901 3.13258 16.459 4.6587 16.459 6.25C16.459 7.8413 15.7901 9.36742 14.5995 10.4926C13.4089 11.6179 11.794 12.25 10.1103 12.25V14.875C6.1423 13.375 0.587158 11.125 0.587158 6.25C0.587158 4.6587 1.25604 3.13258 2.44666 2.00736C3.63728 0.882141 5.2521 0.25 6.93589 0.25ZM8.52307 10.75H10.1103C10.7356 10.75 11.3547 10.6336 11.9324 10.4075C12.5101 10.1813 13.035 9.84984 13.4772 9.43198C13.9193 9.01412 14.2701 8.51804 14.5094 7.97208C14.7486 7.42611 14.8718 6.84095 14.8718 6.25C14.8718 5.65905 14.7486 5.07389 14.5094 4.52792C14.2701 3.98196 13.9193 3.48588 13.4772 3.06802C13.035 2.65016 12.5101 2.31869 11.9324 2.09254C11.3547 1.8664 10.7356 1.75 10.1103 1.75H6.93589C5.67305 1.75 4.46193 2.22411 3.56897 3.06802C2.676 3.91193 2.17434 5.05653 2.17434 6.25C2.17434 8.9575 4.12816 10.7245 8.52307 12.61V10.75Z" fill="black" />
+                                </svg>
+                            </button>
+                            <span>3</span>
+                        </div>
+                        <div class="favorites">
+                            <button class="icon">
+                                <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.66395 0.5H12.7742C12.9847 0.5 13.1866 0.579018 13.3354 0.71967C13.4842 0.860322 13.5678 1.05109 13.5678 1.25V15.6073C13.5679 15.6743 13.549 15.7402 13.513 15.7979C13.477 15.8557 13.4253 15.9033 13.3632 15.9358C13.3011 15.9683 13.231 15.9844 13.16 15.9826C13.0891 15.9807 13.02 15.9609 12.9599 15.9252L7.21909 12.5225L1.47825 15.9245C1.41823 15.9601 1.3492 15.9799 1.27835 15.9818C1.20749 15.9837 1.13739 15.9676 1.07534 15.9352C1.01329 15.9029 0.96155 15.8554 0.925502 15.7977C0.889454 15.74 0.870414 15.6742 0.870361 15.6073V1.25C0.870361 1.05109 0.953972 0.860322 1.1028 0.71967C1.25163 0.579018 1.45348 0.5 1.66395 0.5ZM11.9806 2H2.45754V13.574L7.21909 10.7533L11.9806 13.574V2Z" fill="black" />
+                                </svg>
+                            </button>
+                            <span>3</span>
+                        </div>
+                    </div>
+                    <div class="post__category_img">
+                        <img src="img/PsuLogo.svg" alt="">
+                    </div>
+                    <div class="post__category_text">
+                        ПГУ
+                    </div>
+                </div>
+            </div>
+            <div class="post">
+                <div class="post__inf">
+                    <div class="user__info">
+                        <img class="user_img" src="img/user_img.png" alt="">
+                        <div class="user_details">
+                            <div class="user_name">Тима Петухов</div>
+                            <div class="time_of_creation">недавно</div>
+                        </div>
+                    </div>
+                    <div class="post__content">
+                        <h2>Прием документов на  военную кафедру 2024!</h2>
+                        <p>В Полоцком государственном университете имени Евфросинии Полоцкой стартовал прием документов для обучения на военной кафедре. Студенты факультета информационных технологий и юридического факультета уже подали заявления в приемную комиссию и рассказали, почему приняли это решение...</p>
+                    </div>
+                    <div class="post__items">
+                        <div class="likes">
+                            <button class="icon">
+                                <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.4344 6.00005H16.5134C16.9343 6.00005 17.338 6.15809 17.6357 6.43939C17.9333 6.72069 18.1006 7.10223 18.1006 7.50005V9.07805C18.1008 9.27407 18.0603 9.46823 17.9815 9.64955L15.5254 15.2858C15.4654 15.4232 15.3637 15.5407 15.233 15.6234C15.1023 15.706 14.9485 15.7501 14.7913 15.7501H1.43513C1.22466 15.7501 1.02281 15.671 0.873978 15.5304C0.725151 15.3897 0.641541 15.199 0.641541 15.0001V7.50005C0.641541 7.30114 0.725151 7.11037 0.873978 6.96972C1.02281 6.82907 1.22466 6.75005 1.43513 6.75005H4.19842C4.32547 6.75008 4.45067 6.72128 4.5635 6.66608C4.67632 6.61087 4.77347 6.53087 4.84678 6.4328L9.17424 0.63755C9.22894 0.564284 9.30962 0.51197 9.40163 0.490093C9.49365 0.468215 9.59091 0.478222 9.67579 0.5183L11.1154 1.19855C11.5205 1.38992 11.8441 1.70654 12.0325 2.09579C12.2209 2.48504 12.2627 2.92349 12.151 3.3383L11.4344 6.00005ZM5.40309 7.94105V14.2501H14.2596L16.5134 9.07805V7.50005H11.4344C11.1927 7.50002 10.9541 7.4478 10.737 7.34739C10.5199 7.24698 10.3299 7.10103 10.1815 6.92066C10.0332 6.7403 9.93036 6.53029 9.88094 6.30667C9.83153 6.08304 9.83682 5.8517 9.89641 5.6303L10.613 2.9693C10.6354 2.8863 10.6271 2.79854 10.5894 2.72062C10.5518 2.64271 10.487 2.57934 10.4059 2.54105L9.88133 2.29355L6.14351 7.29755C5.94511 7.56305 5.69116 7.78055 5.40309 7.94105ZM3.81591 8.25005H2.22872V14.2501H3.81591V8.25005Z" fill="black" />
+                                </svg>
+                            </button>
+                            <span>3</span>
+                        </div>
+                        <div class="comments">
+                            <button class="icon">
+                                <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.93589 0.25H10.1103C11.794 0.25 13.4089 0.882141 14.5995 2.00736C15.7901 3.13258 16.459 4.6587 16.459 6.25C16.459 7.8413 15.7901 9.36742 14.5995 10.4926C13.4089 11.6179 11.794 12.25 10.1103 12.25V14.875C6.1423 13.375 0.587158 11.125 0.587158 6.25C0.587158 4.6587 1.25604 3.13258 2.44666 2.00736C3.63728 0.882141 5.2521 0.25 6.93589 0.25ZM8.52307 10.75H10.1103C10.7356 10.75 11.3547 10.6336 11.9324 10.4075C12.5101 10.1813 13.035 9.84984 13.4772 9.43198C13.9193 9.01412 14.2701 8.51804 14.5094 7.97208C14.7486 7.42611 14.8718 6.84095 14.8718 6.25C14.8718 5.65905 14.7486 5.07389 14.5094 4.52792C14.2701 3.98196 13.9193 3.48588 13.4772 3.06802C13.035 2.65016 12.5101 2.31869 11.9324 2.09254C11.3547 1.8664 10.7356 1.75 10.1103 1.75H6.93589C5.67305 1.75 4.46193 2.22411 3.56897 3.06802C2.676 3.91193 2.17434 5.05653 2.17434 6.25C2.17434 8.9575 4.12816 10.7245 8.52307 12.61V10.75Z" fill="black" />
+                                </svg>
+                            </button>
+                            <span>3</span>
+                        </div>
+                        <div class="favorites">
+                            <button class="icon">
+                                <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.66395 0.5H12.7742C12.9847 0.5 13.1866 0.579018 13.3354 0.71967C13.4842 0.860322 13.5678 1.05109 13.5678 1.25V15.6073C13.5679 15.6743 13.549 15.7402 13.513 15.7979C13.477 15.8557 13.4253 15.9033 13.3632 15.9358C13.3011 15.9683 13.231 15.9844 13.16 15.9826C13.0891 15.9807 13.02 15.9609 12.9599 15.9252L7.21909 12.5225L1.47825 15.9245C1.41823 15.9601 1.3492 15.9799 1.27835 15.9818C1.20749 15.9837 1.13739 15.9676 1.07534 15.9352C1.01329 15.9029 0.96155 15.8554 0.925502 15.7977C0.889454 15.74 0.870414 15.6742 0.870361 15.6073V1.25C0.870361 1.05109 0.953972 0.860322 1.1028 0.71967C1.25163 0.579018 1.45348 0.5 1.66395 0.5ZM11.9806 2H2.45754V13.574L7.21909 10.7533L11.9806 13.574V2Z" fill="black" />
+                                </svg>
+                            </button>
+                            <span>3</span>
+                        </div>
+                    </div>
+                    <div class="post__category_img">
+                        <img src="img/PsuLogo.svg" alt="">
+                    </div>
+                    <div class="post__category_text">
+                        ПГУ
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="right-sidebar">
-            <div class="content_box"></div>
+            <div class="scheduled_box">
+                <div class="personal_events">
+                    <div class="conent_header">
+                        <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.25 3.83325C3.25 1.76218 4.92893 0.083252 7 0.083252C9.07107 0.083252 10.75 1.76218 10.75 3.83325C10.75 5.90432 9.07107 7.58325 7 7.58325C4.92893 7.58325 3.25 5.90432 3.25 3.83325Z" fill="#505050" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7 8.41658C3.63976 8.41658 0.861419 10.9018 0.400401 14.1347C0.252432 15.1724 1.11708 15.9166 2 15.9166H12C12.8829 15.9166 13.7476 15.1724 13.5996 14.1347C13.1386 10.9018 10.3602 8.41658 7 8.41658Z" fill="#505050" />
+                        </svg>
+                        Ваши мероприятия
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <span>05.04</span>
+                            Волейбол
+                        </div>
+                        <div class="line"></div>
+                        <div class="item">
+                            <span>08.04</span>
+                            Стажер-разработчик Javascript
+                        </div>
+                    </div>
+                </div>
+                <div class="subscribed_events">
+                    <div class="conent_header">
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.5 11C4.22386 11 4 11.2239 4 11.5V12.5C4 12.7761 4.22386 13 4.5 13H5.5C5.77614 13 6 12.7761 6 12.5V11.5C6 11.2239 5.77614 11 5.5 11H4.5Z" fill="#505050" />
+                            <path d="M4 15.5C4 15.2239 4.22386 15 4.5 15H5.5C5.77614 15 6 15.2239 6 15.5V16.5C6 16.7761 5.77614 17 5.5 17H4.5C4.22386 17 4 16.7761 4 16.5V15.5Z" fill="#505050" />
+                            <path d="M9.5 11C9.22386 11 9 11.2239 9 11.5V12.5C9 12.7761 9.22386 13 9.5 13H10.5C10.7761 13 11 12.7761 11 12.5V11.5C11 11.2239 10.7761 11 10.5 11H9.5Z" fill="#505050" />
+                            <path d="M9 15.5C9 15.2239 9.22386 15 9.5 15H10.5C10.7761 15 11 15.2239 11 15.5V16.5C11 16.7761 10.7761 17 10.5 17H9.5C9.22386 17 9 16.7761 9 16.5V15.5Z" fill="#505050" />
+                            <path d="M14.5 11C14.2239 11 14 11.2239 14 11.5V12.5C14 12.7761 14.2239 13 14.5 13H15.5C15.7761 13 16 12.7761 16 12.5V11.5C16 11.2239 15.7761 11 15.5 11H14.5Z" fill="#505050" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6 1C6 0.447715 5.55228 0 5 0C4.44772 0 4 0.447715 4 1V2C1.79086 2 0 3.79086 0 6V17C0 19.2091 1.79086 21 4 21H16C18.2091 21 20 19.2091 20 17V6C20 3.79086 18.2091 2 16 2V1C16 0.447715 15.5523 0 15 0C14.4477 0 14 0.447715 14 1V2H6V1ZM16 4C17.1046 4 18 4.89543 18 6V7H2V6C2 4.89543 2.89543 4 4 4H16ZM2 17V9H18V17C18 18.1046 17.1046 19 16 19H4C2.89543 19 2 18.1046 2 17Z" fill="#505050" />
+                        </svg>
+                        Запланированно
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <span>03.04</span>
+                            Конкурс «Лучшая группа 2024»!
+                        </div>
+                        <div class="line"></div>
+                        <div class="item">
+                            <span>05.04</span>
+                            Прием документов на  военную кафедру 2024!
+                        </div>
+                        <div class="line"></div>
+                        <div class="item">
+                            <span>10.04</span>
+                            Шахматы
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
-
+    </main> 
     <div class="modal" id="ThemesCreater">
         <div class="modal__box">
             <h2>Новая тема</h2>
@@ -242,10 +397,6 @@
                             <span>ЮФ</span>
                             <img src="img/Faculties_img/uf.svg" alt="ЮФ">
                         </button>
-                        <button type="button" data-faculty="Общее">
-                            <span>Общее</span>
-                            <img src="img/PsuLogo.svg" alt="Общее">
-                        </button>
                     </div>
                     <input type="hidden" id="selectedFaculty" name="selectedFaculty" required>
                 </div>
@@ -275,17 +426,20 @@
                 <div class="form-group">
                     <label for="faculty">Выбирите категорию</label>
                     <div class="btn_group" role="group">
-                        <button type="button" data-category="Спорт">
-                            Спорт
+                        <button type="button" data-category="Здоровье и Спорт">
+                            Здоровье и Спорт
                         </button>
-                        <button type="button" data-category="Концерт">
-                            Концерт
+                        <button type="button" data-category="Выступления">
+                            Выступления
                         </button>
-                        <button type="button" data-category="Вакансии">
-                            Вакансии
+                        <button type="button" data-category="Образование">
+                            Образование
                         </button>
-                        <button type="button" data-category="Знания">
-                            Знания
+                        <button type="button" data-category="Технологии">
+                            Технологии
+                        </button>
+                        <button type="button" data-category="Работа">
+                            Работа
                         </button>
                         <button type="button" data-category="Общее">
                             Общее
