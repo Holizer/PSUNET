@@ -20,25 +20,6 @@ function toggleModal(modalId, action) {
   });
 }
 
-
-document.addEventListener("DOMContentLoaded", function() {
-  const searchInput = document.getElementById("searchInput");
-  const searchIcon = document.getElementById("searchIcon");
-  const inputContainer = document.querySelector(".input-container");
-
-  searchInput.addEventListener("focus", function() {
-      searchIcon.classList.add("hidden");
-      inputContainer.classList.add("focus");
-  });
-
-  searchInput.addEventListener("blur", function() {
-      if (searchInput.value === "") {
-          searchIcon.classList.remove("hidden");
-          inputContainer.classList.remove("focus");
-      }
-  });
-});
-
 var toggleButtons = document.querySelectorAll(".toggleBtn");
 var arrows = document.querySelectorAll(".arrow");
 

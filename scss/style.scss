@@ -9,8 +9,8 @@ $second-family: "Montserrat", sans-serif;
 $default-size: 16px;
 $middle-size: 14px;
 
-$primary-color: #FFFFFF;
-$place-holder-color: #DDDDDD;
+$primary-color: #404040;
+$place-holder-color: #6b7280;
 
 $content-content-constant: #fff;
 $content-content-border: rgba(33, 37, 41, 0.12);
@@ -59,21 +59,24 @@ html, body {
         background-color: rgb(100, 100, 100);
     }
 }
+
 header {
     position: fixed;
     display: flex;
     width: 100%;
     height: 65px;
-    align-items: center;
-    background: #202020;
     gap: 20px;
+    align-items: center;
+    background: $content-content-constant;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     z-index: 2;
+    padding: 0 70px;
+    
     
     .logo_container {
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 20px;
 
         h1 {
             font-size: 24px;
@@ -83,327 +86,336 @@ header {
     }
 
     .input-container {
-        width: 25%;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
         display: flex;
+        position: relative;
         align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        margin-left: 17%;
         gap: 20px;
+        width: 100%;
+        max-width: 544px;
+        min-width: 150px;
 
         input {
-            font-family: $first-family;
-            border: 1px solid rgba(20, 20, 20, 0.5);
-            border-radius: 15px;
-            background: #404040;
-            color: $primary-color;
-            font-size: $middle-size;
-            padding: 15px;
             width: 100%;
-            height: 33px;
-
+            height: 40px;
+            padding: 15px;
+            border-radius: 40px;
+            border: 1px solid #e8edf3;
+            font-family: $first-family;
+            color: $primary-color;
+            background: #f6f6f7;
+            font-size: $middle-size;
+            //Для того, чтобы не залазило на иконку 
+            padding-right: 32px;
+            
             &::placeholder {
-                font-family: $first-family;
                 position: absolute;
                 font-weight: 500;
-                font-size: 14px;
                 color: $place-holder-color;
-                margin-left: 18px;
             }
-
             
             &:hover {
-                border-color: rgba(100, 100, 100, 0.5);
+                border-color: rgb(180, 180, 180);
             }
 
             &:focus {
-                border: 2px solid;
-                border-color: rgba(160, 160, 160, 0.5);
+                border: 2px solid rgb(120, 120, 120);
                 outline: none;
             }
         }
-        
-        &.focus input::placeholder {
-            margin-left: 0;
-        }
-
-        img {
+        svg {
             position: absolute;
-            top: 50%;
             transform: translateY(-50%);
-            left: 5px;
-            width: 25px;
+            top: 50%;
+            right: 15px;
         }
     }
 
     .buttons__box {
-        margin-left: auto;
         display: flex;
         align-items: center;
-        justify-content: center;
-    
-        button, a {
+        margin-left: auto;
+        gap: 20px;
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .sign_in_btn, .notification {
             display: flex;
-            position: relative;
             align-items: center;
             font-family: $first-family;
             font-weight: 500;
-            font-size: $middle-size;
-            color: $content-content-constant;
-            border-radius: 50px;
-            margin-right: 20px;
             padding: 10px;
-            height: 37px;
-            background: #404040;
             outline: none;
-            border: none;
+            border-radius: 50%;
             cursor: pointer;
-    
-            &:hover {
-                background-color: #4e4e4e;
-            }
-    
-            &:active {
-                background-color: #747474;
-            }
-    
+        }
+
+        .notification {
+            position: relative;
+            font-size: $middle-size;
+            color: $primary-color;
+
             .badge {
                 position: absolute;
                 font-size: 12px;
                 font-weight: 700;
-                top: -6px;
-                right: -6px;
-                padding: 3px 7px;
+                top: 3px;
+                right: 3px;
+                padding: 2px 6px;
                 border-radius: 50%;
-                background-color: red;
-                color: white;
+                background-color: #ff4f4f;
+                font-family: $first-family;
+                font-weight: 700;
+                font-size: 12px;
+                color: $content-content-constant;
             }
         }
-        a {
-            border-radius: 50%;
+
+        .sign_in_btn, .notification {
+            &:hover {
+                background-color: #efefef;
+            }
+    
+            &:active {
+                background-color: #dedede;
+            }
         }
     }
 }
-.hidden {
-    display: none;
-}
+
 main {
     display: grid;
     position: relative;
     background-color: #fcfcfc;
-    height: 100%;
+    width: 100%;
     top: 65px;
-    grid-template-columns: 1fr 330px;
+    grid-template-columns: 18% 1fr 22%;
     z-index: 1;
-
+    
     .left-sidebar {
-        position: fixed;
+        width: 100%;
+        min-width: 215px;
         background-color: #FFFFFF;
-        height: calc(100% - 65px);
-        overflow-y: auto;
-        width: 272px;
         border-right: 1px solid #bcbcbc;
+        position: relative;
 
-        .menu__block {
+        .menu {
             display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding: 6px 10px;
-            width: 100%;
-            position: relative;
-
-            &::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 6%;
-                width: 88%;
-                height: 1px;
-                background-color: #bcbcbc;
-                border-radius: 20px;
-            }
-
-            button {
-                display: flex;
-                align-items: center;
-                padding: 10px;
-                height: 40px;
-                gap: 10px;
-                font-family: $first-family;
-                font-size: $middle-size;
-                line-height: 20px;
-                background-color: transparent;
-                border-radius: 10px;
-                border: none;
-                cursor: pointer;
-                transition: background-color 0.1s linear;
-
-                &:hover {
-                    background-color: rgba(0, 0, 0, 0.1);
-                }
-
-                &:active {
-                    background-color: rgba(0, 0, 0, 0.2);
-                }
-            }
-        }
-
-        .arrow {
-            margin-left: auto;
-            transition: all 0.3s ease-in-out;
-
-            &.open {
-                transform: rotate(180deg);
-            }
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
-            max-height: 0;
-
-            &.expanded {
-                max-height: 700px;
-            }
-
-            .checkbox__container {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                padding: 10px;
-    
-                label {
+            position: sticky;
+            overflow-y: auto;
+            top: 65px;
+            
+            .menu-content {
+                max-height: calc(100vh - 65px); 
+                
+                .menu__block {
                     display: flex;
-                    font-weight: 400;
-                    font-family: $first-family;
-                    font-size: 14px;
-                    line-height: 20px;
-                    color: #000;
-                }
-    
-                input {
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 10px;
+                    padding: 15px;
                     position: relative;
-                    border: 2px solid $background-overlay-light;
-                    outline: none;
-                    border-radius: 4px;
-                    width: 20px;
-                    height: 20px;
-                    appearance: none;
-    
-                    &:checked {
-                        background-color: $accent-accent-primary;
-    
-                        &::after {
-                            content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='11' viewBox='0 0 14 11' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M0.518211 5.58921C0.843648 5.26377 1.37129 5.26377 1.69672 5.58921L4.643 8.53549L12.3033 0.875165C12.6288 0.549728 13.1564 0.549729 13.4818 0.875166C13.8073 1.2006 13.8073 1.72824 13.4818 2.05368L5.23226 10.3033C4.90682 10.6287 4.37918 10.6287 4.05374 10.3033L0.518211 6.76772C0.192774 6.44229 0.192774 5.91465 0.518211 5.58921Z' fill='white' /></svg>");
-                            position: absolute;
-                            top: 60%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                        }
-                    }
-                }
-            }
 
-            &.faculty {
-                .checkbox__container {
-                    label {
-                        padding: 10px;
-                        border-radius: 5px;
-                    }
-                       
-                    input {
-                        display: none;
-
-                        @mixin custom-outline($color) {
-                            outline: 2px solid $color;
-                        }
-
-                        &:checked + {
-                            .gf-label {
-                                @include custom-outline($gf-color);
-                            }
-                            .isf-label {
-                                @include custom-outline($isf-color);
-                            }
-                            .mtf-label {
-                                @include custom-outline($mtf-color);
-                            }
-                            .fit-label {
-                                @include custom-outline($fit-color);
-                            }
-                            .fef-label {
-                                @include custom-outline($fef-color);
-                            }
-                            .fkne-label {
-                                @include custom-outline($fkne-color);
-                            }
-                            .uf-label {
-                                @include custom-outline($uf-color);
-                            }
-                        }
-                        
-                    }
-                    
-                    @mixin custom-hover($color) {
-                        &:hover {
-                            outline: 2px solid rgba($color, 0.5);
-                        }
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        bottom: 0;
+                        left: 6%;
+                        width: 90%;
+                        border: 1px solid #e9e9e9;
+                        margin: 0 auto;
+                        border-radius: 20px;
                     }
 
-                   .gf-label {
-                        @include custom-hover($gf-color);
-                    }
-                    .isf-label {
-                        @include custom-hover($isf-color);
-                    }
-                    .mtf-label {
-                        @include custom-hover($mtf-color);
-                    }
-                    .fit-label {
-                        @include custom-hover($fit-color);
-                    }
-                    .fef-label {
-                        @include custom-hover($fef-color);
-                    }
-                    .fkne-label {
-                        @include custom-hover($fkne-color);
-                    }
-                    .uf-label {
-                        @include custom-hover($uf-color);
-                    }
-
-                    label {
+                    button {
                         display: flex;
                         align-items: center;
+                        padding: 10px;
+                        height: 40px;
                         gap: 10px;
-                        
+                        font-family: $first-family;
+                        font-size: $middle-size;
+                        line-height: 20px;
+                        background-color: transparent;
+                        border-radius: 10px;
+                        border: none;
+                        cursor: pointer;
+                        transition: background-color 0.1s linear;
 
-                        img {
-                            width: 40px;
-                            height: 46px;
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.1);
                         }
 
-                        .teg_container {
-                            font-family: $first-family;
-                            font-size: $middle-size;
-                            font-weight: 500;
-                            margin-left: 10px;
-                            cursor: pointer;
-                            
-                            p {
-                                font-size: 12px;
-                                color: rgb(140, 140, 140);
+                        &:active {
+                            background-color: rgba(0, 0, 0, 0.2);
+                        }
+                        
+                        .arrow {
+                            margin-left: auto;
+                            transition: all 0.3s ease-in-out;
+                    
+                            &.open {
+                                transform: rotate(180deg);
+                            }
+                        }
+                    }
+
+                    .content {
+                        display: flex;
+                        flex-direction: column;
+                        overflow: hidden;
+                        transition: max-height 0.3s ease-in-out;
+                        max-height: 0;
+                        margin-top: -10px;
+            
+                        &.expanded {
+                            max-height: 700px;
+                        }
+            
+                        .checkbox__container {
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                            padding: 10px;
+                
+                            label {
+                                display: flex;
+                                font-weight: 400;
+                                font-family: $first-family;
+                                font-size: 14px;
+                                line-height: 20px;
+                                color: #000;
+                            }
+                
+                            input {
+                                position: relative;
+                                border: 2px solid $background-overlay-light;
+                                outline: none;
+                                border-radius: 4px;
+                                width: 20px;
+                                height: 20px;
+                                appearance: none;
+                
+                                &:checked {
+                                    background-color: $accent-accent-primary;
+                
+                                    &::after {
+                                        content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='11' viewBox='0 0 14 11' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M0.518211 5.58921C0.843648 5.26377 1.37129 5.26377 1.69672 5.58921L4.643 8.53549L12.3033 0.875165C12.6288 0.549728 13.1564 0.549729 13.4818 0.875166C13.8073 1.2006 13.8073 1.72824 13.4818 2.05368L5.23226 10.3033C4.90682 10.6287 4.37918 10.6287 4.05374 10.3033L0.518211 6.76772C0.192774 6.44229 0.192774 5.91465 0.518211 5.58921Z' fill='white' /></svg>");
+                                        position: absolute;
+                                        top: 60%;
+                                        left: 50%;
+                                        transform: translate(-50%, -50%);
+                                    }
+                                }
+                            }
+                        }
+            
+                        &.faculty {
+                            .checkbox__container {
+                                label {
+                                    padding: 10px;
+                                    border-radius: 5px;
+                                }
+                                
+                                input {
+                                    display: none;
+            
+                                    @mixin custom-outline($color) {
+                                        outline: 2px solid $color;
+                                    }
+            
+                                    &:checked + {
+                                        .gf-label {
+                                            @include custom-outline($gf-color);
+                                        }
+                                        .isf-label {
+                                            @include custom-outline($isf-color);
+                                        }
+                                        .mtf-label {
+                                            @include custom-outline($mtf-color);
+                                        }
+                                        .fit-label {
+                                            @include custom-outline($fit-color);
+                                        }
+                                        .fef-label {
+                                            @include custom-outline($fef-color);
+                                        }
+                                        .fkne-label {
+                                            @include custom-outline($fkne-color);
+                                        }
+                                        .uf-label {
+                                            @include custom-outline($uf-color);
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                @mixin custom-hover($color) {
+                                    &:hover {
+                                        outline: 2px solid rgba($color, 0.5);
+                                    }
+                                }
+            
+                            .gf-label {
+                                    @include custom-hover($gf-color);
+                                }
+                                .isf-label {
+                                    @include custom-hover($isf-color);
+                                }
+                                .mtf-label {
+                                    @include custom-hover($mtf-color);
+                                }
+                                .fit-label {
+                                    @include custom-hover($fit-color);
+                                }
+                                .fef-label {
+                                    @include custom-hover($fef-color);
+                                }
+                                .fkne-label {
+                                    @include custom-hover($fkne-color);
+                                }
+                                .uf-label {
+                                    @include custom-hover($uf-color);
+                                }
+            
+                                label {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 10px;
+                                    
+            
+                                    img {
+                                        width: 40px;
+                                        height: 46px;
+                                    }
+            
+                                    .teg_container {
+                                        font-family: $first-family;
+                                        font-size: $middle-size;
+                                        font-weight: 500;
+                                        margin-left: 10px;
+                                        cursor: pointer;
+                                        
+                                        p {
+                                            font-size: 12px;
+                                            color: rgb(140, 140, 140);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
         }
-    }
+    } 
+
     .posts-container {
-        margin-left: 272px;
         display: flex;
         flex-direction: column;
         background: #fbfaff;
@@ -517,6 +529,7 @@ main {
             }
         }
     }
+
     .right-sidebar {
         padding: 25px 10px;
         width: 100%;
@@ -539,7 +552,7 @@ main {
                 background: $content-content-constant;
             }
 
-            .conent_header {
+            .events_header {
                 display: flex;
                 align-items: center;
                 margin-bottom: 20px;
@@ -559,28 +572,31 @@ main {
                 .item {
                     display: flex;
                     align-items: center;
-                    padding: 5px;
+                    padding: 10px;
 
-                    span {
-                        margin-right: 10px;
+                    &:not(:last-child) {
+                        border-bottom: 1px solid #e9e9e9;
                     }
-                }
-                .line {
-                    border: 1px solid #e9e9e9;
-                    margin: 0 auto;
-                    width: 100%;
+                    span {
+                        align-self: flex-start;
+                        margin-right: 10px;
+                        font-size: $middle-size;
+                        line-height: 24px;
+                        color: #6b7280;
+                    }
                 }
             }
         }
     }
 }
+
 .modal {
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 100vh;
-    z-index: 99998;
+    z-index: 3;
     background-color: rgba(0, 0, 0, .3);
     display: grid;
     align-items: center;
@@ -604,9 +620,10 @@ main {
         position: relative;
         font-size: $default-size;
         font-family: $first-family;
+        margin: 0 auto;
+        width: 70%;
         border: 2px solid $content-content-border;
         border-radius: 20px;
-        width: 552px;
         height: fit-content;
         background: $content-content-constant;
         padding: 25px;
@@ -627,13 +644,12 @@ main {
             font-family: $first-family;
             font-size: $default-size;
             border-radius: 12px;
-            width: 375px;
+            width: 70%;
             height: 45px;
             padding: 8px 16px;
         }
 
         h2 {
-            display: block;
             font-family: $first-family;
             color: black;
             font-weight: 700;
@@ -645,7 +661,7 @@ main {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-top: 38px;
+            margin-top: 9%;
 
             .form-group {
                 display: flex;
@@ -661,7 +677,7 @@ main {
 
                 input {
                     &[type="datetime-local"] {
-                        width: 200px;
+                        width: min-content;
                     }
                 }
 
@@ -679,7 +695,7 @@ main {
                         height: 38px;
                         gap: 5px;
                         border-radius: 10px;
-                        padding: 5px 11px;
+                        padding: 7px 9px;
                         font-size: $default-size;
                         font-family: $first-family;
                         transition: all 0.3s ease-out;
@@ -697,8 +713,8 @@ main {
                     }
                 
                     img {
-                        width: 30px;
-                        height: 30px;
+                        width: 27px;
+                        height: auto;
                     }
                 }
                 textarea {
@@ -739,17 +755,18 @@ main {
     .buttons__container {
         display: flex;
         gap: 16px;
+        width: 100%;
     
         input {
+            width: 100%;
+            height: 52px;
             border-radius: 16px;
             padding: 14px 16px;
-            width: 243px;
-            height: 52px;
-            border: none;
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 24px;
             text-align: center;
+            font-weight: 700;
+            border: none;
+            font-size: $default-size;
+            line-height: 24px;
             cursor: pointer;
     
             &[type="submit"] {
