@@ -1,4 +1,14 @@
 {
+  "name": "PSUNet",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run sass:watch",
+    "sass": "sass scss/style.scss css/style.css",
+    "sass:watch": "sass --watch scss/style.scss:css/style.css"
+  },
+  "devDependenciesт": {
+    "sass": "^1.42.0"
+  },
   "dependencies": {
     "sqlite3": "^5.1.7"
   }
