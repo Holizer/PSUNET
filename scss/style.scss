@@ -194,43 +194,39 @@ main {
     background-color: #fcfcfc;
     width: 100%;
     top: 65px;
-    grid-template-columns: 18% 1fr 22%;
+    grid-template-columns: minmax(230px, 18%) 1fr minmax(205px, 22%);
     z-index: 1;
     
     .left-sidebar {
+        padding: 25px 10px;
         width: 100%;
-        min-width: 215px;
-        background-color: #FFFFFF;
-        border-right: 1px solid #bcbcbc;
-        position: relative;
+        background-color: #FBFAFF;
+        min-width: 230px;
 
         .menu {
             display: flex;
             position: sticky;
-            overflow-y: auto;
-            top: 65px;
+            top: calc(65px + 25px);
+            gap: 20px;
+            flex-direction: column;
             
             .menu-content {
-                max-height: calc(100vh - 65px); 
+                margin-left: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
                 
                 .menu__block {
+                    border-radius: 10px;
                     display: flex;
                     flex-direction: column;
                     width: 100%;
                     gap: 10px;
                     padding: 15px;
                     position: relative;
-
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        bottom: 0;
-                        left: 6%;
-                        width: 90%;
-                        border: 1px solid #e9e9e9;
-                        margin: 0 auto;
-                        border-radius: 20px;
-                    }
+                    background-color: #FFFFFF;
+                    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
 
                     button {
                         display: flex;
@@ -534,6 +530,7 @@ main {
         padding: 25px 10px;
         width: 100%;
         background-color: #FBFAFF;
+        min-width: 205px;
 
         .scheduled_box {
             display: flex;
