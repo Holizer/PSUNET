@@ -10,6 +10,26 @@ html, body {
   color: black;
 }
 
+::-webkit-scrollbar {
+  cursor: pointer;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsla(0, 0%, 95%, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(40, 70, 140, 0.2);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(130, 130, 130);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: rgb(100, 100, 100);
+}
+
 header {
   position: fixed;
   display: flex;
@@ -234,30 +254,52 @@ main .left-sidebar .content .checkbox__container input:checked::after {
 main .left-sidebar .content.faculty .checkbox__container label {
   padding: 10px;
   border-radius: 5px;
+  transition: all 0.3s ease-in-out;
 }
 main .left-sidebar .content.faculty .checkbox__container input {
   display: none;
 }
 main .left-sidebar .content.faculty .checkbox__container input:checked + .gf-label {
-  outline: 2px solid #b7e68f;
+  outline: 2px solid rgb(183, 230, 143);
 }
 main .left-sidebar .content.faculty .checkbox__container input:checked + .isf-label {
-  outline: 2px solid #E96C59;
+  outline: 2px solid rgb(233, 108, 89);
 }
 main .left-sidebar .content.faculty .checkbox__container input:checked + .mtf-label {
-  outline: 2px solid #506793;
+  outline: 2px solid rgb(80, 103, 147);
 }
 main .left-sidebar .content.faculty .checkbox__container input:checked + .fit-label {
-  outline: 2px solid #0060A6;
+  outline: 2px solid rgb(0, 96, 166);
 }
 main .left-sidebar .content.faculty .checkbox__container input:checked + .fef-label {
-  outline: 2px solid #FEC600;
+  outline: 2px solid rgb(254, 198, 0);
 }
 main .left-sidebar .content.faculty .checkbox__container input:checked + .fkne-label {
-  outline: 2px solid #5509AC;
+  outline: 2px solid rgb(85, 9, 172);
 }
 main .left-sidebar .content.faculty .checkbox__container input:checked + .uf-label {
-  outline: 2px solid #01BBBA;
+  outline: 2px solid rgb(1, 187, 186);
+}
+main .left-sidebar .content.faculty .checkbox__container .gf-label:hover {
+  outline: 2px solid rgba(183, 230, 143, 0.5);
+}
+main .left-sidebar .content.faculty .checkbox__container .isf-label:hover {
+  outline: 2px solid rgba(233, 108, 89, 0.5);
+}
+main .left-sidebar .content.faculty .checkbox__container .mtf-label:hover {
+  outline: 2px solid rgba(80, 103, 147, 0.5);
+}
+main .left-sidebar .content.faculty .checkbox__container .fit-label:hover {
+  outline: 2px solid rgba(0, 96, 166, 0.5);
+}
+main .left-sidebar .content.faculty .checkbox__container .fef-label:hover {
+  outline: 2px solid rgba(254, 198, 0, 0.5);
+}
+main .left-sidebar .content.faculty .checkbox__container .fkne-label:hover {
+  outline: 2px solid rgba(85, 9, 172, 0.5);
+}
+main .left-sidebar .content.faculty .checkbox__container .uf-label:hover {
+  outline: 2px solid rgba(1, 187, 186, 0.5);
 }
 main .left-sidebar .content.faculty .checkbox__container label {
   display: flex;
@@ -607,26 +649,6 @@ main .right-sidebar .scheduled_box .items .line {
 }
 .modal .buttons__container input[type=reset]:active {
   background-color: rgba(42, 131, 242, 0.28);
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-  cursor: pointer;
-}
-
-::-webkit-scrollbar-track {
-  background-color: hsla(0, 0%, 95%, 0.5);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba(40, 70, 140, 0.2);
-  border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(130, 130, 130);
-}
-::-webkit-scrollbar-thumb:active {
-  background-color: rgb(100, 100, 100);
 }
 
 /*# sourceMappingURL=style.css.map */

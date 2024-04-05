@@ -23,12 +23,42 @@ $accent-accent-primary: #2a83f2;
 $accent-accent-disabled: rgba(42, 131, 242, 0.28);
 $accent-accent-background: rgba(42, 131, 242, 0.12);
 
+$gf-color: rgb(183, 230, 143);
+$isf-color: rgb(233, 108, 89);
+$mtf-color: rgb(80, 103, 147);
+$fit-color: rgb(0, 96, 166);
+$fef-color: rgb(254, 198, 0);
+$fkne-color: rgb(85, 9, 172);
+$uf-color: rgb(1, 187, 186);
+
 html, body {
     height: 100%;
     font-family: $first-family;
     color: black;
 }
 
+::-webkit-scrollbar {
+    cursor: pointer;
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: hsla(0, 0%, 95%, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(40, 70, 140, 0.2);
+    border-radius: 6px;
+
+
+    &:hover {
+        background-color: rgb(130, 130, 130);
+    }
+
+    &:active {
+        background-color: rgb(100, 100, 100);
+    }
+}
 header {
     position: fixed;
     display: flex;
@@ -281,36 +311,70 @@ main {
                     label {
                         padding: 10px;
                         border-radius: 5px;
+                        transition: all 0.3s ease-in-out;
                     }
                        
                     input {
                         display: none;
 
+                        @mixin custom-outline($color) {
+                            outline: 2px solid $color;
+                        }
+
                         &:checked + {
                             .gf-label {
-                                outline: 2px solid #b7e68f;
+                                @include custom-outline($gf-color);
                             }
                             .isf-label {
-                                outline: 2px solid #E96C59;
+                                @include custom-outline($isf-color);
                             }
                             .mtf-label {
-                                outline: 2px solid #506793;
+                                @include custom-outline($mtf-color);
                             }
                             .fit-label {
-                                outline: 2px solid #0060A6;
+                                @include custom-outline($fit-color);
                             }
                             .fef-label {
-                                outline: 2px solid #FEC600;
+                                @include custom-outline($fef-color);
                             }
                             .fkne-label {
-                                outline: 2px solid #5509AC;
+                                @include custom-outline($fkne-color);
                             }
                             .uf-label {
-                                outline: 2px solid #01BBBA;
+                                @include custom-outline($uf-color);
                             }
                         }
+                        
                     }
                     
+                    @mixin custom-hover($color) {
+                        &:hover {
+                            outline: 2px solid rgba($color, 0.5);
+                        }
+                    }
+
+                   .gf-label {
+                        @include custom-hover($gf-color);
+                    }
+                    .isf-label {
+                        @include custom-hover($isf-color);
+                    }
+                    .mtf-label {
+                        @include custom-hover($mtf-color);
+                    }
+                    .fit-label {
+                        @include custom-hover($fit-color);
+                    }
+                    .fef-label {
+                        @include custom-hover($fef-color);
+                    }
+                    .fkne-label {
+                        @include custom-hover($fkne-color);
+                    }
+                    .uf-label {
+                        @include custom-hover($uf-color);
+                    }
+
                     label {
                         display: flex;
                         align-items: center;
@@ -714,27 +778,5 @@ main {
                 }
             }
         }
-    }
-}
-
-::-webkit-scrollbar {
-    width: 6px;
-    cursor: pointer;
-}
-
-::-webkit-scrollbar-track {
-    background-color: hsla(0, 0%, 95%, 0.5);
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(40, 70, 140, 0.2);
-    border-radius: 6px;
-
-    &:hover {
-        background-color: rgb(130, 130, 130);
-    }
-
-    &:active {
-        background-color: rgb(100, 100, 100);
     }
 }
