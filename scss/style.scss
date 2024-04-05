@@ -198,24 +198,30 @@ main {
     z-index: 1;
     
     .left-sidebar {
+        top: calc(65px + 25px);
         padding: 25px 10px;
         width: 100%;
         background-color: #FBFAFF;
         min-width: 230px;
+        max-height: 90vh;
+        overflow: overlay;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         .menu {
             display: flex;
             position: sticky;
-            top: calc(65px + 25px);
+            top: 0  ;
             gap: 20px;
             flex-direction: column;
-            
+
             .menu-content {
                 margin-left: 20px;
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-
                 
                 .menu__block {
                     border-radius: 10px;

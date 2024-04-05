@@ -150,15 +150,21 @@ main {
   z-index: 1;
 }
 main .left-sidebar {
+  top: 90px;
   padding: 25px 10px;
   width: 100%;
   background-color: #FBFAFF;
   min-width: 230px;
+  max-height: 90vh;
+  overflow: overlay;
+}
+main .left-sidebar::-webkit-scrollbar {
+  display: none;
 }
 main .left-sidebar .menu {
   display: flex;
   position: sticky;
-  top: 90px;
+  top: 0;
   gap: 20px;
   flex-direction: column;
 }
