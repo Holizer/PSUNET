@@ -35,25 +35,23 @@ header {
   display: flex;
   width: 100%;
   height: 65px;
-  gap: 20px;
   align-items: center;
-  background: #fff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  background: #202020;
+  gap: 20px;
   z-index: 2;
-  padding: 0 70px;
 }
 header .logo_container {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 20px;
 }
 header .logo_container h1 {
   font-size: 24px;
-  color: #404040;
+  color: #FFFFFF;
   font-family: "Montserrat", sans-serif;
 }
 header .input-container {
-<<<<<<< HEAD
   width: 25%;
   position: absolute;
   left: 50%;
@@ -100,139 +98,83 @@ header .buttons__box {
   justify-content: center;
 }
 header .buttons__box button, header .buttons__box a {
-=======
->>>>>>> DenisPro
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  margin-left: 17%;
-  gap: 20px;
-  width: 100%;
-  max-width: 544px;
-  min-width: 150px;
-}
-header .input-container input {
-  width: 100%;
-  height: 40px;
-  padding: 15px;
-  border-radius: 40px;
-  border: 1px solid #e8edf3;
   font-family: "Roboto", sans-serif;
-  color: #404040;
-  background: #f6f6f7;
+  font-weight: 500;
   font-size: 14px;
-  padding-right: 32px;
-}
-header .input-container input::placeholder {
-  position: absolute;
-  font-weight: 500;
-  color: #6b7280;
-}
-header .input-container input:hover {
-  border-color: rgb(180, 180, 180);
-}
-header .input-container input:focus {
-  border: 2px solid rgb(120, 120, 120);
-  outline: none;
-}
-header .input-container svg {
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
-  right: 15px;
-}
-header .buttons__box {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  gap: 20px;
-}
-header .buttons__box svg {
-  width: 24px;
-  height: 24px;
-}
-header .buttons__box .sign_in_btn, header .buttons__box .notification {
-  display: flex;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  color: #fff;
+  border-radius: 50px;
+  margin-right: 20px;
   padding: 10px;
+  height: 37px;
+  background: #404040;
   outline: none;
-  border-radius: 50%;
+  border: none;
   cursor: pointer;
 }
-header .buttons__box .notification {
-  position: relative;
-  font-size: 14px;
-  color: #404040;
+header .buttons__box button:hover, header .buttons__box a:hover {
+  background-color: #4e4e4e;
 }
-header .buttons__box .notification .badge {
+header .buttons__box button:active, header .buttons__box a:active {
+  background-color: #747474;
+}
+header .buttons__box button .badge, header .buttons__box a .badge {
   position: absolute;
   font-size: 12px;
   font-weight: 700;
-  top: 3px;
-  right: 3px;
-  padding: 2px 6px;
+  top: -6px;
+  right: -6px;
+  padding: 3px 7px;
   border-radius: 50%;
-  background-color: #ff4f4f;
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #fff;
+  background-color: red;
+  color: white;
 }
-header .buttons__box .sign_in_btn:hover, header .buttons__box .notification:hover {
-  background-color: #efefef;
+header .buttons__box a {
+  border-radius: 50%;
 }
-header .buttons__box .sign_in_btn:active, header .buttons__box .notification:active {
-  background-color: #dedede;
+
+.hidden {
+  display: none;
 }
 
 main {
   display: grid;
   position: relative;
   background-color: #fcfcfc;
-  width: 100%;
+  height: 100%;
   top: 65px;
-  grid-template-columns: 18% 1fr 22%;
+  grid-template-columns: 1fr 330px;
   z-index: 1;
 }
 main .left-sidebar {
-  width: 100%;
-  min-width: 215px;
+  position: fixed;
   background-color: #FFFFFF;
-  border-right: 1px solid #bcbcbc;
-  position: relative;
-}
-main .left-sidebar .menu {
-  display: flex;
-  position: sticky;
+  height: calc(100% - 65px);
   overflow-y: auto;
-  top: 65px;
+  width: 272px;
+  border-right: 1px solid #bcbcbc;
 }
-main .left-sidebar .menu .menu-content {
-  max-height: calc(100vh - 65px);
-}
-main .left-sidebar .menu .menu-content .menu__block {
+main .left-sidebar .menu__block {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  padding: 6px 10px;
   width: 100%;
-  gap: 10px;
-  padding: 15px;
   position: relative;
 }
-main .left-sidebar .menu .menu-content .menu__block::after {
+main .left-sidebar .menu__block::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 6%;
-  width: 90%;
-  border: 1px solid #e9e9e9;
-  margin: 0 auto;
+  width: 88%;
+  height: 1px;
+  background-color: #bcbcbc;
   border-radius: 20px;
 }
-main .left-sidebar .menu .menu-content .menu__block button {
+main .left-sidebar .menu__block button {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -247,37 +189,36 @@ main .left-sidebar .menu .menu-content .menu__block button {
   cursor: pointer;
   transition: background-color 0.1s linear;
 }
-main .left-sidebar .menu .menu-content .menu__block button:hover {
+main .left-sidebar .menu__block button:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
-main .left-sidebar .menu .menu-content .menu__block button:active {
+main .left-sidebar .menu__block button:active {
   background-color: rgba(0, 0, 0, 0.2);
 }
-main .left-sidebar .menu .menu-content .menu__block button .arrow {
+main .left-sidebar .arrow {
   margin-left: auto;
   transition: all 0.3s ease-in-out;
 }
-main .left-sidebar .menu .menu-content .menu__block button .arrow.open {
+main .left-sidebar .arrow.open {
   transform: rotate(180deg);
 }
-main .left-sidebar .menu .menu-content .menu__block .content {
+main .left-sidebar .content {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
   max-height: 0;
-  margin-top: -10px;
 }
-main .left-sidebar .menu .menu-content .menu__block .content.expanded {
+main .left-sidebar .content.expanded {
   max-height: 700px;
 }
-main .left-sidebar .menu .menu-content .menu__block .content .checkbox__container {
+main .left-sidebar .content .checkbox__container {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 10px;
 }
-main .left-sidebar .menu .menu-content .menu__block .content .checkbox__container label {
+main .left-sidebar .content .checkbox__container label {
   display: flex;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
@@ -285,7 +226,7 @@ main .left-sidebar .menu .menu-content .menu__block .content .checkbox__containe
   line-height: 20px;
   color: #000;
 }
-main .left-sidebar .menu .menu-content .menu__block .content .checkbox__container input {
+main .left-sidebar .content .checkbox__container input {
   position: relative;
   border: 2px solid rgba(33, 37, 41, 0.52);
   outline: none;
@@ -294,86 +235,87 @@ main .left-sidebar .menu .menu-content .menu__block .content .checkbox__containe
   height: 20px;
   appearance: none;
 }
-main .left-sidebar .menu .menu-content .menu__block .content .checkbox__container input:checked {
+main .left-sidebar .content .checkbox__container input:checked {
   background-color: #2a83f2;
 }
-main .left-sidebar .menu .menu-content .menu__block .content .checkbox__container input:checked::after {
+main .left-sidebar .content .checkbox__container input:checked::after {
   content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='11' viewBox='0 0 14 11' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M0.518211 5.58921C0.843648 5.26377 1.37129 5.26377 1.69672 5.58921L4.643 8.53549L12.3033 0.875165C12.6288 0.549728 13.1564 0.549729 13.4818 0.875166C13.8073 1.2006 13.8073 1.72824 13.4818 2.05368L5.23226 10.3033C4.90682 10.6287 4.37918 10.6287 4.05374 10.3033L0.518211 6.76772C0.192774 6.44229 0.192774 5.91465 0.518211 5.58921Z' fill='white' /></svg>");
   position: absolute;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container label {
+main .left-sidebar .content.faculty .checkbox__container label {
   padding: 10px;
   border-radius: 5px;
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container input {
+main .left-sidebar .content.faculty .checkbox__container input {
   display: none;
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container input:checked + .gf-label {
+main .left-sidebar .content.faculty .checkbox__container input:checked + .gf-label {
   outline: 2px solid rgb(183, 230, 143);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container input:checked + .isf-label {
+main .left-sidebar .content.faculty .checkbox__container input:checked + .isf-label {
   outline: 2px solid rgb(233, 108, 89);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container input:checked + .mtf-label {
+main .left-sidebar .content.faculty .checkbox__container input:checked + .mtf-label {
   outline: 2px solid rgb(80, 103, 147);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container input:checked + .fit-label {
+main .left-sidebar .content.faculty .checkbox__container input:checked + .fit-label {
   outline: 2px solid rgb(0, 96, 166);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container input:checked + .fef-label {
+main .left-sidebar .content.faculty .checkbox__container input:checked + .fef-label {
   outline: 2px solid rgb(254, 198, 0);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container input:checked + .fkne-label {
+main .left-sidebar .content.faculty .checkbox__container input:checked + .fkne-label {
   outline: 2px solid rgb(85, 9, 172);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container input:checked + .uf-label {
+main .left-sidebar .content.faculty .checkbox__container input:checked + .uf-label {
   outline: 2px solid rgb(1, 187, 186);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container .gf-label:hover {
+main .left-sidebar .content.faculty .checkbox__container .gf-label:hover {
   outline: 2px solid rgba(183, 230, 143, 0.5);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container .isf-label:hover {
+main .left-sidebar .content.faculty .checkbox__container .isf-label:hover {
   outline: 2px solid rgba(233, 108, 89, 0.5);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container .mtf-label:hover {
+main .left-sidebar .content.faculty .checkbox__container .mtf-label:hover {
   outline: 2px solid rgba(80, 103, 147, 0.5);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container .fit-label:hover {
+main .left-sidebar .content.faculty .checkbox__container .fit-label:hover {
   outline: 2px solid rgba(0, 96, 166, 0.5);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container .fef-label:hover {
+main .left-sidebar .content.faculty .checkbox__container .fef-label:hover {
   outline: 2px solid rgba(254, 198, 0, 0.5);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container .fkne-label:hover {
+main .left-sidebar .content.faculty .checkbox__container .fkne-label:hover {
   outline: 2px solid rgba(85, 9, 172, 0.5);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container .uf-label:hover {
+main .left-sidebar .content.faculty .checkbox__container .uf-label:hover {
   outline: 2px solid rgba(1, 187, 186, 0.5);
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container label {
+main .left-sidebar .content.faculty .checkbox__container label {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container label img {
+main .left-sidebar .content.faculty .checkbox__container label img {
   width: 40px;
   height: 46px;
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container label .teg_container {
+main .left-sidebar .content.faculty .checkbox__container label .teg_container {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 500;
   margin-left: 10px;
   cursor: pointer;
 }
-main .left-sidebar .menu .menu-content .menu__block .content.faculty .checkbox__container label .teg_container p {
+main .left-sidebar .content.faculty .checkbox__container label .teg_container p {
   font-size: 12px;
   color: rgb(140, 140, 140);
 }
 main .posts-container {
+  margin-left: 272px;
   display: flex;
   flex-direction: column;
   background: #fbfaff;
@@ -494,7 +436,7 @@ main .right-sidebar .scheduled_box .personal_events, main .right-sidebar .schedu
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   background: #fff;
 }
-main .right-sidebar .scheduled_box .events_header {
+main .right-sidebar .scheduled_box .conent_header {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -513,17 +455,15 @@ main .right-sidebar .scheduled_box .items {
 main .right-sidebar .scheduled_box .items .item {
   display: flex;
   align-items: center;
-  padding: 10px;
-}
-main .right-sidebar .scheduled_box .items .item:not(:last-child) {
-  border-bottom: 1px solid #e9e9e9;
+  padding: 5px;
 }
 main .right-sidebar .scheduled_box .items .item span {
-  align-self: flex-start;
   margin-right: 10px;
-  font-size: 14px;
-  line-height: 24px;
-  color: #6b7280;
+}
+main .right-sidebar .scheduled_box .items .line {
+  border: 1px solid #e9e9e9;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .modal {
@@ -532,7 +472,7 @@ main .right-sidebar .scheduled_box .items .item span {
   top: 0;
   width: 100%;
   height: 100vh;
-  z-index: 3;
+  z-index: 99998;
   background-color: rgba(0, 0, 0, 0.3);
   display: grid;
   align-items: center;
@@ -554,10 +494,9 @@ main .right-sidebar .scheduled_box .items .item span {
   position: relative;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
-  margin: 0 auto;
-  width: 70%;
   border: 2px solid rgba(33, 37, 41, 0.12);
   border-radius: 20px;
+  width: 552px;
   height: fit-content;
   background: #fff;
   padding: 25px;
@@ -577,11 +516,12 @@ main .right-sidebar .scheduled_box .items .item span {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   border-radius: 12px;
-  width: 70%;
+  width: 375px;
   height: 45px;
   padding: 8px 16px;
 }
 .modal .modal__box h2 {
+  display: block;
   font-family: "Roboto", sans-serif;
   color: black;
   font-weight: 700;
@@ -593,7 +533,7 @@ main .right-sidebar .scheduled_box .items .item span {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 9%;
+  margin-top: 38px;
 }
 .modal .modal__box form .form-group {
   display: flex;
@@ -607,7 +547,7 @@ main .right-sidebar .scheduled_box .items .item span {
   margin-left: 10px;
 }
 .modal .modal__box form .form-group input[type=datetime-local] {
-  width: min-content;
+  width: 200px;
 }
 .modal .modal__box form .form-group .btn_group {
   display: flex;
@@ -623,7 +563,7 @@ main .right-sidebar .scheduled_box .items .item span {
   height: 38px;
   gap: 5px;
   border-radius: 10px;
-  padding: 7px 9px;
+  padding: 5px 11px;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   transition: all 0.3s ease-out;
@@ -638,8 +578,8 @@ main .right-sidebar .scheduled_box .items .item span {
   border: 2px solid #2a83f2;
 }
 .modal .modal__box form .form-group .btn_group img {
-  width: 27px;
-  height: auto;
+  width: 30px;
+  height: 30px;
 }
 .modal .modal__box form .form-group textarea {
   font-family: "Roboto", sans-serif;
@@ -671,18 +611,17 @@ main .right-sidebar .scheduled_box .items .item span {
 .modal .buttons__container {
   display: flex;
   gap: 16px;
-  width: 100%;
 }
 .modal .buttons__container input {
-  width: 100%;
-  height: 52px;
   border-radius: 16px;
   padding: 14px 16px;
-  text-align: center;
-  font-weight: 700;
+  width: 243px;
+  height: 52px;
   border: none;
+  font-weight: 700;
   font-size: 16px;
   line-height: 24px;
+  text-align: center;
   cursor: pointer;
 }
 .modal .buttons__container input[type=submit] {
