@@ -254,7 +254,6 @@ main .left-sidebar .content .checkbox__container input:checked::after {
 main .left-sidebar .content.faculty .checkbox__container label {
   padding: 10px;
   border-radius: 5px;
-  transition: all 0.3s ease-in-out;
 }
 main .left-sidebar .content.faculty .checkbox__container input {
   display: none;
