@@ -194,12 +194,13 @@ main {
     background-color: #fcfcfc;
     width: 100%;
     top: 65px;
-    grid-template-columns: 18% 1fr 22%;
+    grid-template-columns: minmax(230px, 18%) 1fr minmax(205px, 18%);
     z-index: 1;
     
     .left-sidebar {
         width: 100%;
         min-width: 215px;
+        max-width: 300px;
         background-color: #FFFFFF;
         border-right: 1px solid #bcbcbc;
         position: relative;
@@ -420,6 +421,7 @@ main {
         flex-direction: column;
         background: #fbfaff;
         gap: 20px;
+        max-width: 2000px;
         padding: 25px;
     
         .post {
@@ -533,6 +535,7 @@ main {
     .right-sidebar {
         padding: 25px 10px;
         width: 100%;
+        max-width: 500px;
         background-color: #FBFAFF;
 
         .scheduled_box {
