@@ -18,6 +18,10 @@ $background-overlay-light: rgba(33, 37, 41, 0.52);
 $content-content-disabled: rgba(33, 37, 41, 0.28);
 $content-content-background: rgba(33, 37, 41, 0.04);
 
+//перевод цветов в конствнты
+$background-colour: #FBFAFF;
+$borders-colour: #e8edf3;
+
 $accent-accent-border: rgba(42, 131, 242, 0.2);
 $accent-accent-primary: #2a83f2;
 $accent-accent-disabled: rgba(42, 131, 242, 0.28);
@@ -102,7 +106,7 @@ header {
             height: 40px;
             padding: 15px;
             border-radius: 40px;
-            border: 1px solid #e8edf3;
+            border: 1px solid $borders-colour;
             font-family: $first-family;
             color: $primary-color;
             background: #f6f6f7;
@@ -191,19 +195,22 @@ header {
 main {
     display: grid;
     position: relative;
-    background-color: #fcfcfc;
+    background-color: $background-colour;
     width: 100%;
     top: 65px;
-    grid-template-columns: minmax(230px, 18%) 1fr minmax(205px, 22%);
+    grid-template-columns: minmax(230px, 18%) 1fr minmax(205px, 18%);
     z-index: 1;
     
     .left-sidebar {
-        top: calc(65px + 25px);
+        display: flex;
+        position: sticky;
+        top: 65px;
         padding: 25px 10px;
+        margin-bottom: 25px;  
         width: 100%;
-        background-color: #FBFAFF;
+        background-color: transparent;
         min-width: 230px;
-        max-height: 90vh;
+        height: 85vh;
         overflow: overlay;
 
         &::-webkit-scrollbar {
@@ -211,9 +218,6 @@ main {
         }
 
         .menu {
-            display: flex;
-            position: sticky;
-            top: 0  ;
             gap: 20px;
             flex-direction: column;
 
@@ -222,6 +226,7 @@ main {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+                padding-bottom: 20px;
                 
                 .menu__block {
                     border-radius: 10px;
@@ -420,7 +425,7 @@ main {
     .posts-container {
         display: flex;
         flex-direction: column;
-        background: #fbfaff;
+        background: transparent;
         gap: 20px;
         padding: 25px;
     
@@ -428,7 +433,7 @@ main {
             position: relative;
             width: 100%;
             padding: 25px;
-            border: 1px solid #e8edf3;
+            border: 1px solid $borders-colour;
             height: fit-content;
             border-radius: 10px;
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
@@ -535,7 +540,7 @@ main {
     .right-sidebar {
         padding: 25px 10px;
         width: 100%;
-        background-color: #FBFAFF;
+        background-color: transparent;
         min-width: 205px;
 
         .scheduled_box {
@@ -548,7 +553,7 @@ main {
 
             .personal_events, .subscribed_events {
                 width: 100%;
-                border: 1px solid #e8edf3;
+                border: 1px solid $borders-colour;
                 border-radius: 10px;
                 padding: 15px 10px;
                 box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
