@@ -147,16 +147,14 @@ main {
   width: 100%;
   height: 100%;
   top: 65px;
-  grid-template-columns: minmax(230px, 18%) 1fr minmax(215px, 18%);
+  grid-template-columns: minmax(230px, 18%) 1fr minmax(215px, 22%);
   z-index: 1;
 }
 main .left-sidebar {
   width: 100%;
-  min-width: 215px;
   background-color: #FFFFFF;
   border-right: 1px solid #bcbcbc;
   position: relative;
-  justify-self: flex-end;
 }
 main .left-sidebar .menu {
   display: flex;
@@ -410,16 +408,16 @@ main .posts-container .post .icon {
   background-color: transparent;
   cursor: pointer;
 }
-main .posts-container .post .post__category_img {
+main .posts-container .post .post_type .post_type__img {
   position: absolute;
   right: 25px;
   top: 25px;
 }
-main .posts-container .post .post__category_img img {
-  width: 32px;
-  height: 32px;
+main .posts-container .post .post_type .post_type__img img {
+  width: 25px;
+  height: 29px;
 }
-main .posts-container .post .post__category_text {
+main .posts-container .post .post_type .post_type__teg {
   position: absolute;
   right: 25px;
   bottom: 25px;
@@ -433,7 +431,6 @@ main .right-sidebar {
   padding: 25px 10px;
   width: 100%;
   background-color: #FBFAFF;
-  justify-self: flex-start;
 }
 main .right-sidebar .scheduled_box {
   display: flex;
@@ -615,13 +612,13 @@ main .right-sidebar .scheduled_box .items .item span {
   margin: 4px;
   border-radius: 12px;
 }
-.modal .modal__box input, .modal .modal__box textarea {
+.modal .modal__box form input, .modal .modal__box form textarea {
   transition: border-color 0.3s ease;
 }
-.modal .modal__box input:hover, .modal .modal__box textarea:hover {
+.modal .modal__box form input:hover, .modal .modal__box form textarea:hover {
   border-color: rgba(60, 60, 60, 0.5);
 }
-.modal .modal__box input:focus, .modal .modal__box textarea:focus {
+.modal .modal__box form input:focus, .modal .modal__box form textarea:focus {
   border-color: rgba(60, 60, 60, 0.9);
   outline: none;
 }

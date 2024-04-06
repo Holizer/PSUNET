@@ -31,6 +31,42 @@ toggleButtons.forEach(function(btn, index) {
   });
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const postsContainer = document.querySelector('.posts-container'); 
+    const posts = Array.from(document.querySelectorAll('.post'));
+
+    const sortCheckboxes = document.querySelectorAll('.checkbox__container input');
+    sortCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', sortItems);
+    });
+
+    function sortItems() {
+        // Создаем массив тегов (все активированные кнопки фильтра закидывают свои значения в массив checkedTags)
+        const checkedTags = Array.from(document.querySelectorAll('.checkbox__container input:checked')).map(checkbox => checkbox.dataset.displayValue);
+        // Если нет выбранных тегов, возвращаем все посты(чтобы посты не исчизали после отключения фильтров)
+        if (checkedTags.length === 0) {
+            updateDOM(posts);
+            return;
+        }
+
+        const filteredPosts = posts.filter(post => { 
+            // Из каждого поста достаем его теги и закидываем их в создаваемый массив postTags
+            const postTags = Array.from(post.querySelectorAll('.post_type__teg span')).map(tag => tag.textContent);
+            // Проверяем, содержит ли хотя бы один из тегов поста (postTags) значение из массива checkedTags
+            return checkedTags.some(tag => postTags.includes(tag));
+        });
+
+        updateDOM(filteredPosts);
+    }
+
+    function updateDOM(filteredPosts) {
+        postsContainer.innerHTML = '';
+        filteredPosts.forEach(post => postsContainer.appendChild(post));
+    }
+});
+
+  
 document.addEventListener("DOMContentLoaded", function() {
   const themesForm = document.getElementById("ThemesForm");
   const eventsForm = document.getElementById("EventsForm");
@@ -124,3 +160,4 @@ document.addEventListener("DOMContentLoaded", function() {
   handleFormSubmission(themesForm, document.getElementById("selectedFaculty"), themesForm.querySelector('input[type="submit"]'));
   handleFormSubmission(eventsForm, document.getElementById("selectedCategory"), eventsForm.querySelector('input[type="submit"]'));
 });
+
