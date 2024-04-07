@@ -12,8 +12,8 @@ $middle-size: 14px;
 $primary-color: #404040;
 $place-holder-color: #6b7280;
 
-$content-content-constant: #fff;
-$content-content-border: rgba(33, 37, 41, 0.12);
+$content-constant: #fff;
+$content-border: rgba(33, 37, 41, 0.12);
 $background-overlay-light: rgba(33, 37, 41, 0.52);
 $content-content-disabled: rgba(33, 37, 41, 0.28);
 $content-content-background: rgba(33, 37, 41, 0.04);
@@ -22,6 +22,9 @@ $accent-accent-border: rgba(42, 131, 242, 0.2);
 $accent-accent-primary: #2a83f2;
 $accent-accent-disabled: rgba(42, 131, 242, 0.28);
 $accent-accent-background: rgba(42, 131, 242, 0.12);
+
+$input-background: #f6f6f7;
+$input-background-focus: #efeded;
 
 $gf-color: rgb(183, 230, 143);
 $isf-color: rgb(233, 108, 89);
@@ -67,11 +70,10 @@ header {
     height: 65px;
     gap: 20px;
     align-items: center;
-    background: $content-content-constant;
+    background: $content-constant;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     z-index: 2;
     padding: 0 70px;
-    
     
     .logo_container {
         display: flex;
@@ -96,6 +98,13 @@ header {
         width: 100%;
         max-width: 544px;
         min-width: 150px;
+        height: fit-content;
+        border-radius: 20px;
+        box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+
+        &.Active {
+            border-radius: 20px 20px 0 0;
+        }
 
         input {
             width: 100%;
@@ -105,10 +114,13 @@ header {
             border: 1px solid #e8edf3;
             font-family: $first-family;
             color: $primary-color;
-            background: #f6f6f7;
+            background: $input-background;
             font-size: $middle-size;
+            z-index: 3;
+            outline: none;
             //Для того, чтобы не залазило на иконку 
             padding-right: 32px;
+
             
             &::placeholder {
                 position: absolute;
@@ -116,20 +128,49 @@ header {
                 color: $place-holder-color;
             }
             
-            &:hover {
-                border-color: rgb(180, 180, 180);
+            &.HasResult {
+                border-bottom: none;
+                border-radius: 20px 20px 0 0;
             }
-
-            &:focus {
-                border: 2px solid rgb(120, 120, 120);
-                outline: none;
-            }
-        }
+        }       
+        
         svg {
             position: absolute;
             transform: translateY(-50%);
             top: 50%;
             right: 15px;
+            z-index: 3;
+        }
+
+        #searchResults {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            max-height: 200px;
+            overflow-y: auto;
+            list-style: none;
+            background-color: $input-background;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+            
+            li, a {
+                font-family: $first-family;
+                color: $primary-color;
+                text-decoration: none;
+                padding: 8px 8px;
+                cursor: pointer;
+                
+                &:hover {
+                    background-color: #ffffff;
+                }
+                
+                &:last-child {
+                    border-radius: 0 0 20px 20px;
+                    padding-bottom: 12px;
+                }
+            }
         }
     }
 
@@ -172,7 +213,7 @@ header {
                 font-family: $first-family;
                 font-weight: 700;
                 font-size: 12px;
-                color: $content-content-constant;
+                color: $content-constant;
             }
         }
 
@@ -187,7 +228,6 @@ header {
         }
     }
 }
-
 main {
     display: grid;
     position: relative;
@@ -433,7 +473,7 @@ main {
             height: fit-content;
             border-radius: 10px;
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
-            background: $content-content-constant;
+            background: $content-constant;
         
             .user__info {
                 display: flex;
@@ -441,7 +481,7 @@ main {
                 gap: 10px;
         
                 .user_img {
-                    border: 2px solid $content-content-constant;
+                    border: 2px solid $content-constant;
                     border-radius: 30px;
                     width: 50px;
                     height: 50px;
@@ -554,7 +594,7 @@ main {
                 border-radius: 10px;
                 padding: 15px 10px;
                 box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
-                background: $content-content-constant;
+                background: $content-constant;
             }
 
             .events_header {
@@ -601,7 +641,7 @@ main {
     top: 0;
     width: 100%;
     height: 100vh;
-    z-index: 3;
+    z-index: 9998;
     background-color: rgba(0, 0, 0, .3);
     display: grid;
     align-items: center;
@@ -627,10 +667,10 @@ main {
         font-family: $first-family;
         margin: 0 auto;
         width: 70%;
-        border: 2px solid $content-content-border;
+        border: 2px solid $content-border;
         border-radius: 20px;
         height: fit-content;
-        background: $content-content-constant;
+        background: $content-constant;
         padding: 25px;
         transform: translateY(20px);
         transition: transform .5s;
@@ -644,8 +684,8 @@ main {
         }
 
         input {
-            border: 2px solid $content-content-border;
-            background: $content-content-constant;
+            border: 2px solid $content-border;
+            background: $content-constant;
             font-family: $first-family;
             font-size: $default-size;
             border-radius: 12px;
@@ -696,7 +736,7 @@ main {
                         align-items: center;
                         justify-content: center;
                         background-color: transparent;
-                        border: 2px solid $content-content-border;
+                        border: 2px solid $content-border;
                         height: 38px;
                         gap: 5px;
                         border-radius: 10px;
@@ -725,7 +765,7 @@ main {
                 textarea {
                     font-family: $first-family;
                     font-size: $default-size;
-                    border: 2px solid $content-content-border;
+                    border: 2px solid $content-border;
                     border-radius: 12px;
                     padding: 8px 16px;
                     width: 100%;
@@ -777,7 +817,7 @@ main {
                 background-color: $content-content-background;
     
                 &:hover {
-                    background-color: $content-content-border;
+                    background-color: $content-border;
                 }
     
                 &:active {

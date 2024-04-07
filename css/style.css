@@ -63,6 +63,12 @@ header .input-container {
   width: 100%;
   max-width: 544px;
   min-width: 150px;
+  height: fit-content;
+  border-radius: 20px;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+header .input-container.Active {
+  border-radius: 20px 20px 0 0;
 }
 header .input-container input {
   width: 100%;
@@ -74,6 +80,8 @@ header .input-container input {
   color: #404040;
   background: #f6f6f7;
   font-size: 14px;
+  z-index: 3;
+  outline: none;
   padding-right: 32px;
 }
 header .input-container input::placeholder {
@@ -81,18 +89,43 @@ header .input-container input::placeholder {
   font-weight: 500;
   color: #6b7280;
 }
-header .input-container input:hover {
-  border-color: rgb(180, 180, 180);
-}
-header .input-container input:focus {
-  border: 2px solid rgb(120, 120, 120);
-  outline: none;
+header .input-container input.HasResult {
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
 }
 header .input-container svg {
   position: absolute;
   transform: translateY(-50%);
   top: 50%;
   right: 15px;
+  z-index: 3;
+}
+header .input-container #searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  background-color: #f6f6f7;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+header .input-container #searchResults li, header .input-container #searchResults a {
+  font-family: "Roboto", sans-serif;
+  color: #404040;
+  text-decoration: none;
+  padding: 8px 8px;
+  cursor: pointer;
+}
+header .input-container #searchResults li:hover, header .input-container #searchResults a:hover {
+  background-color: #ffffff;
+}
+header .input-container #searchResults li:last-child, header .input-container #searchResults a:last-child {
+  border-radius: 0 0 20px 20px;
+  padding-bottom: 12px;
 }
 header .buttons__box {
   display: flex;
@@ -486,7 +519,7 @@ main .right-sidebar .scheduled_box .items .item span {
   top: 0;
   width: 100%;
   height: 100vh;
-  z-index: 3;
+  z-index: 9998;
   background-color: rgba(0, 0, 0, 0.3);
   display: grid;
   align-items: center;
