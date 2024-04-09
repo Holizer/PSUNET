@@ -66,19 +66,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 //Открытие модальных окон
 function toggleModal(modalId, action) {
     var modal = document.getElementById(modalId);
+    var body = document.body;
+
     if (!modal) {
         return; // Проверяем, существует ли модальное окно с заданным идентификатором
-    } 
-  
+    }
+
     if (action === "open") {
         modal.classList.add("open");
-    } 
-    else if (action === "close") {
+        body.classList.add("modal-open");
+    } else if (action === "close") {
         modal.classList.remove("open");
+        body.classList.remove("modal-open");
     }
+
     // Обработчик события для клика внутри модального окна
     document.querySelector(`#${modalId} .modal__box`).addEventListener('click', event => {
         event._isClickWithInModal = true;
@@ -90,55 +95,10 @@ function toggleModal(modalId, action) {
             return;
         }
         event.currentTarget.classList.remove('open');
+        body.classList.remove("modal-open");
     });
 }
 
-//Открытие фильтров
-var toggleButtons = document.querySelectorAll(".toggleBtn");
-var arrows = document.querySelectorAll(".arrow");
-
-toggleButtons.forEach(function(btn, index) {
-    btn.addEventListener("click", function() {
-        var content = this.nextElementSibling;
-        content.classList.toggle("expanded");
-        arrows[index].classList.toggle("open");
-    });
-});
-
-//Cортировка
-document.addEventListener('DOMContentLoaded', () => {
-    const postsContainer = document.querySelector('.posts-container'); 
-    const posts = Array.from(document.querySelectorAll('.post')); //БД
-
-    const sortCheckboxes = document.querySelectorAll('.checkbox__container input');
-    sortCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', sortItems);
-    });
-
-    function sortItems() {
-        // Создаем массив тегов (все активированные кнопки фильтра закидывают свои значения в массив checkedTags)
-        const checkedTags = Array.from(document.querySelectorAll('.checkbox__container input:checked')).map(checkbox => checkbox.dataset.displayValue);
-        // Если нет выбранных тегов, возвращаем все посты(чтобы посты не исчизали после отключения фильтров)
-        if (checkedTags.length === 0) {
-            updateDOM(posts);
-            return;
-        }
-
-        const filteredPosts = posts.filter(post => { 
-            // Из каждого поста достаем его теги и закидываем их в создаваемый массив postTags
-            const postTags = Array.from(post.querySelectorAll('.post_type__teg span')).map(tag => tag.textContent);
-            // Проверяем, содержит ли хотя бы один из тегов поста (postTags) значение из массива checkedTags
-            return checkedTags.some(tag => postTags.includes(tag));
-        });
-
-        updateDOM(filteredPosts);
-    }
-
-    function updateDOM(filteredPosts) {
-        postsContainer.innerHTML = '';
-        filteredPosts.forEach(post => postsContainer.appendChild(post));
-    }
-});
 
 //Кнопки уебки в модальных окнах
 document.addEventListener("DOMContentLoaded", function() {
@@ -177,3 +137,83 @@ document.addEventListener("DOMContentLoaded", function() {
     handleFormSubmission(themesForm, document.getElementById("selectedFaculty"), themesForm.querySelector('input[type="submit"]'));
     handleFormSubmission(eventsForm, document.getElementById("selectedCategory"), eventsForm.querySelector('input[type="submit"]'));
 });
+
+//Прогресс бар
+const progressBar = document.querySelector('.progress-bar-inner');
+
+function updateProgressBar(value) {
+progressBar.style.width = value + '%';
+}
+updateProgressBar(58);
+
+//Открытие расткрытия
+function toggleButtons() {
+    var toggleButtons = document.querySelectorAll(".toggleBtn");
+    var arrows = document.querySelectorAll(".arrow");
+    
+    toggleButtons.forEach(function(btn, index) {
+        btn.addEventListener("click", function() {
+            var content = this.nextElementSibling;
+            content.classList.toggle("expanded");
+            arrows[index].classList.toggle("open");
+        });
+    });
+}
+toggleButtons();
+
+
+//Cортировка
+document.addEventListener('DOMContentLoaded', () => {
+    const postsContainer = document.querySelector('.posts-container'); 
+    const posts = Array.from(document.querySelectorAll('.post')); //БД
+
+    const sortCheckboxes = document.querySelectorAll('.checkbox__container input');
+    sortCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', sortItems);
+    });
+
+    function sortItems() {
+        // Создаем массив тегов (все активированные кнопки фильтра закидывают свои значения в массив checkedTags)
+        const checkedTags = Array.from(document.querySelectorAll('.checkbox__container input:checked')).map(checkbox => checkbox.dataset.displayValue);
+        // Если нет выбранных тегов, возвращаем все посты(чтобы посты не исчизали после отключения фильтров)
+        if (checkedTags.length === 0) {
+            updateDOM(posts);
+            return;
+        }
+
+        const filteredPosts = posts.filter(post => { 
+            // Из каждого поста достаем его теги и закидываем их в создаваемый массив postTags
+            const postTags = Array.from(post.querySelectorAll('.post_type__teg span')).map(tag => tag.textContent);
+            // Проверяем, содержит ли хотя бы один из тегов поста (postTags) значение из массива checkedTags
+            return checkedTags.some(tag => postTags.includes(tag));
+        });
+
+        updateDOM(filteredPosts);
+    }
+
+    function updateDOM(filteredPosts) {
+        postsContainer.innerHTML = '';
+        filteredPosts.forEach(post => postsContainer.appendChild(post));
+    }
+});
+
+const humb = document.querySelector('.hamb');
+const hamb__field = document.querySelector('.hamb__field');
+const menu = document.querySelector('.left-sidebar');
+
+humb.addEventListener('click', (e) => {
+    hamb__field.classList.toggle('active');
+    menu.classList.toggle('open');
+    e.stopPropagation(); 
+});
+
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !humb.contains(e.target) && !modal.contains(e.target)) {
+        hamb__field.classList.remove('active');
+        menu.classList.remove('open');
+    }
+});
+
+document.querySelector('.themeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-theme');
+  });

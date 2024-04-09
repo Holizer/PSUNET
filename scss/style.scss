@@ -9,22 +9,32 @@ $second-family: "Montserrat", sans-serif;
 $default-size: 16px;
 $middle-size: 14px;
 
-$primary-color: #404040;
-$place-holder-color: #6b7280;
 
-$content-constant: #fff;
-$content-border: rgba(33, 37, 41, 0.12);
-$background-overlay-light: rgba(33, 37, 41, 0.52);
-$content-content-disabled: rgba(33, 37, 41, 0.28);
-$content-content-background: rgba(33, 37, 41, 0.04);
+:root {
+    --primary-color: #404040;
+    --place-holder-color: #6b7280;
 
-$accent-accent-border: rgba(42, 131, 242, 0.2);
-$accent-accent-primary: #2a83f2;
-$accent-accent-disabled: rgba(42, 131, 242, 0.28);
-$accent-accent-background: rgba(42, 131, 242, 0.12);
+    --input-background: #f6f6f7;
+    --content-constant: #fff;
+    --content-border: rgba(33, 37, 41, 0.12);
+    --background-overlay-light: rgba(33, 37, 41, 0.52);
+    --content-disabled: rgba(33, 37, 41, 0.28);
+    --content-background: rgba(33, 37, 41, 0.04);
 
-$input-background: #f6f6f7;
-$input-background-focus: #efeded;
+    --accent-border: rgba(42, 131, 242, 0.2);
+    --accent-primary: #2a83f2;
+    --accent-disabled: rgba(42, 131, 242, 0.28);
+    --accent-background: rgba(42, 131, 242, 0.12);
+    
+    --posts-container-background: #fbfaff 
+
+    --input-background: #f6f6f7;
+    --input-background-focus: #efeded;
+}
+
+$breakpoint-laptop: 1025px;
+$breakpoint-tablet: 767px;
+$breakpoint-mobile: 426px;
 
 $gf-color: rgb(183, 230, 143);
 $isf-color: rgb(233, 108, 89);
@@ -38,6 +48,29 @@ html, body {
     height: 100%;
     font-family: $first-family;
     color: black;
+    
+    &.modal-open {
+        //overflow: hidden;
+    }
+}
+body.dark-theme {
+    --primary-color: #bfbfbf;
+    --place-holder-color: #948b7f;
+
+    --input-background: #090908;
+    --content-constant: #000;
+    --content-border: rgba(222, 218, 214, 0.12);
+    --background-overlay-light: rgba(222, 218, 214, 0.52);
+    --content-disabled: rgba(222, 218, 214, 0.28);
+    --content-background: rgba(222, 218, 214, 0.04);
+
+    --accent-border: rgba(213, 124, 13, 0.2);
+    --accent-primary: #d57c0d;
+    --accent-disabled: rgba(213, 124, 13, 0.28);
+    --accent-background: rgba(213, 124, 13, 0.12);
+
+    --input-background: #000091;
+    --input-background-focus: #101212;
 }
 
 ::-webkit-scrollbar {
@@ -70,10 +103,10 @@ header {
     height: 65px;
     gap: 20px;
     align-items: center;
-    background: $content-constant;
+    background: var(--content-constant);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     z-index: 2;
-    padding: 0 70px;
+    padding: 0 5vw;
     
     .logo_container {
         display: flex;
@@ -81,9 +114,18 @@ header {
         gap: 10px;
 
         h1 {
+            font-weight: 700px;
             font-size: 24px;
-            color: $primary-color;
+            color: var(--primary-color);
             font-family: $second-family;
+
+            span {
+                color: #7498C7;
+            }
+       
+            @media (max-width: $breakpoint-tablet) {
+                display: none;
+            }
         }
     }
 
@@ -95,12 +137,15 @@ header {
         align-items: center;
         margin: auto;
         gap: 20px;
-        width: 100%;
-        max-width: 544px;
+        width: 45%;
         min-width: 150px;
         height: fit-content;
         border-radius: 20px;
-        box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        //box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+
+        @media (max-width: $breakpoint-tablet) {
+            width: 55%;
+        }
 
         &.Active {
             border-radius: 20px 20px 0 0;
@@ -113,19 +158,18 @@ header {
             border-radius: 40px;
             border: 1px solid #e8edf3;
             font-family: $first-family;
-            color: $primary-color;
-            background: $input-background;
+            color: var(--primary-color);
+            background: var(--input-background);
             font-size: $middle-size;
             z-index: 3;
             outline: none;
             //Для того, чтобы не залазило на иконку 
             padding-right: 32px;
-
             
             &::placeholder {
                 position: absolute;
                 font-weight: 500;
-                color: $place-holder-color;
+                color: var(--place-holder-color);
             }
             
             &.HasResult {
@@ -151,13 +195,13 @@ header {
             max-height: 200px;
             overflow-y: auto;
             list-style: none;
-            background-color: $input-background;
+            background-color: var(--input-background);
             border-radius: 0 0 20px 20px;
             box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
             
             li, a {
                 font-family: $first-family;
-                color: $primary-color;
+                color: var(--primary-color);
                 text-decoration: none;
                 padding: 8px 8px;
                 cursor: pointer;
@@ -180,54 +224,93 @@ header {
         margin-left: auto;
         gap: 20px;
 
-        svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .sign_in_btn, .notification {
+        .sign_in_btn, .themeToggle, .notification {
             display: flex;
             align-items: center;
             font-family: $first-family;
             font-weight: 500;
             padding: 10px;
             outline: none;
+            border: none;
+            background-color: transparent;
             border-radius: 50%;
             cursor: pointer;
+            
+            @media (max-width: $breakpoint-tablet) {
+                display: none;
+            }
         }
 
         .notification {
             position: relative;
             font-size: $middle-size;
-            color: $primary-color;
-
+            color: var(--primary-color);
+        
             .badge {
                 position: absolute;
-                font-size: 12px;
-                font-weight: 700;
                 top: 3px;
                 right: 3px;
-                padding: 2px 6px;
+                padding: 1px 6px;
                 border-radius: 50%;
                 background-color: #ff4f4f;
                 font-family: $first-family;
                 font-weight: 700;
                 font-size: 12px;
-                color: $content-constant;
+                line-height: 16px;
+                color: var(--content-constant);
             }
         }
 
-        .sign_in_btn, .notification {
+        .sign_in_btn, .themeToggle, .notification {
             &:hover {
                 background-color: #efefef;
             }
-    
+        
             &:active {
                 background-color: #dedede;
             }
         }
+
+        .hamb {
+            display: none;
+
+            @media (max-width: $breakpoint-tablet) {
+                display: flex;
+                align-items: center;
+            
+                .hamb__field {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 5px;
+                    cursor: pointer;
+
+                    .bar {
+                        display: block;
+                        width: 30px;
+                        height: 3px;
+                        margin: 0 auto;
+                        background-color: #505050;
+                        transition: 0.2s;
+                    }
+                
+                    &.active .bar:nth-child(2) {
+                        opacity: 0;
+                    }
+
+                    &.active.active .bar:nth-child(1) {
+                        transform: translateY(8px) rotate(45deg);
+                    }
+
+                    &.active.active .bar:nth-child(3) {
+                        transform: translateY(-8px) rotate(-45deg);
+                    }
+                }
+            }
+        } 
     }
 }
+
 main {
     display: grid;
     position: relative;
@@ -235,8 +318,16 @@ main {
     width: 100%;
     height: 100%;
     top: 65px;
-    grid-template-columns: minmax(230px, 18%) 1fr minmax(215px, 22%);
+    grid-template-columns: minmax(220px, 18%) 1fr minmax(215px, 22%);
     z-index: 1;
+
+    @media (max-width: $breakpoint-laptop) {
+        grid-template-columns: minmax(220px, 18%) 1fr;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+        grid-template-columns: 1fr;
+    }
     
     .left-sidebar {
         width: 100%;
@@ -244,16 +335,57 @@ main {
         border-right: 1px solid #bcbcbc;
         position: relative;
 
+        @media (max-width: $breakpoint-tablet), (max-width: $breakpoint-mobile) {
+            height: 100%;
+            position: fixed;
+            z-index: 100;
+            left: -100%;
+            transition: all 0.3s ease;
+            
+            &.open {
+                min-width: 250px;
+                width: 50%;
+                left: 0%;
+            }
+        }
+        @media (max-width: $breakpoint-mobile) {
+            &.open {
+                width: 100%;
+                left: 0%;
+            }
+        }
+
         .menu {
             display: flex;
             position: sticky;
             overflow-y: auto;
+            height: 100%;
+            height: calc(100vh - 65px);
             top: 65px;
             
+            @media (max-width: $breakpoint-mobile) {
+                height: calc(100% - 65px);
+            }
+            
             .menu-content {
-                max-height: calc(100vh - 65px); 
+                height: 100%;
                 width: 100%;
                 
+                .events_block {
+                    display: none;
+
+                    @media (max-width: $breakpoint-laptop) {
+                        display: block;
+                    }
+                }
+                .user_profile_block {
+                    display: none;
+                    
+                    @media (max-width: $breakpoint-tablet) {
+                        display: block;
+                    }
+                }
+
                 .menu__block {
                     display: flex;
                     flex-direction: column;
@@ -261,6 +393,11 @@ main {
                     gap: 10px;
                     padding: 15px;
                     position: relative;
+
+                    svg, img {
+                        width: 20px;
+                        height: 20px;
+                    }
 
                     &::after {
                         content: "";
@@ -274,7 +411,7 @@ main {
                         border-radius: 20px;
                     }
 
-                    button {
+                    button, a {
                         display: flex;
                         align-items: center;
                         padding: 10px;
@@ -283,6 +420,8 @@ main {
                         font-family: $first-family;
                         font-size: $middle-size;
                         line-height: 20px;
+                        text-decoration: none;
+                        color: black;
                         background-color: transparent;
                         border-radius: 10px;
                         border: none;
@@ -301,8 +440,55 @@ main {
                             margin-left: auto;
                             transition: all 0.3s ease-in-out;
                     
+                            svg {
+                                width: 12px;
+                                height: 8px;
+                            }
                             &.open {
                                 transform: rotate(180deg);
+                            }
+                        }
+
+                        
+                        .notification {
+                            display: flex;
+                            align-items: center;
+                            font-family: $first-family;
+                            font-weight: 500;
+                            outline: none;
+                            border: none;
+                            background-color: transparent;
+                            border-radius: 50%;
+                            cursor: pointer;
+                            position: relative;
+                            position: relative;
+                            font-size: $middle-size;
+                            color: var(--primary-color);
+
+                            .badge {
+                                position: absolute;
+                                font-size: 12px;
+                                font-weight: 700;
+                                top: -8px;
+                                right: -8px;
+                                padding: 1px 6px;
+                                line-height: 16px;
+                                border-radius: 50%;
+                                background-color: #ff4f4f;
+                                font-family: $first-family;
+                                font-weight: 700;
+                                font-size: 12px;
+                                color: var(--content-constant);
+                            }
+                        }
+                
+                        .notification {
+                            &:hover {
+                                background-color: #efefef;
+                            }
+                        
+                            &:active {
+                                background-color: #dedede;
                             }
                         }
                     }
@@ -336,7 +522,7 @@ main {
                 
                             input {
                                 position: relative;
-                                border: 2px solid $background-overlay-light;
+                                border: 2px solid var(--background-overlay-light);
                                 outline: none;
                                 border-radius: 4px;
                                 width: 20px;
@@ -344,7 +530,7 @@ main {
                                 appearance: none;
                 
                                 &:checked {
-                                    background-color: $accent-accent-primary;
+                                    background-color: var(--accent-primary);
                 
                                     &::after {
                                         content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='11' viewBox='0 0 14 11' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M0.518211 5.58921C0.843648 5.26377 1.37129 5.26377 1.69672 5.58921L4.643 8.53549L12.3033 0.875165C12.6288 0.549728 13.1564 0.549729 13.4818 0.875166C13.8073 1.2006 13.8073 1.72824 13.4818 2.05368L5.23226 10.3033C4.90682 10.6287 4.37918 10.6287 4.05374 10.3033L0.518211 6.76772C0.192774 6.44229 0.192774 5.91465 0.518211 5.58921Z' fill='white' /></svg>");
@@ -360,6 +546,7 @@ main {
                         &.faculty {
                             .checkbox__container {
                                 label {
+                                    width: 100%;
                                     padding: 10px;
                                     border-radius: 5px;
                                 }
@@ -460,20 +647,23 @@ main {
     .posts-container {
         display: flex;
         flex-direction: column;
-        background: #fbfaff;
+        background: var(--posts-container-background);
         gap: 20px;
         width: 100%;
         padding: 25px;
-    
+        
         .post {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             width: 100%;
-            padding: 25px;
+            padding: 20px 30px;
             border: 1px solid #e8edf3;
             height: fit-content;
             border-radius: 10px;
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
-            background: $content-constant;
+            background: var(--content-constant);
         
             .user__info {
                 display: flex;
@@ -481,7 +671,7 @@ main {
                 gap: 10px;
         
                 .user_img {
-                    border: 2px solid $content-constant;
+                    border: 2px solid var(--content-constant);
                     border-radius: 30px;
                     width: 50px;
                     height: 50px;
@@ -524,36 +714,130 @@ main {
                     color: #6b7280;
                     text-align: justify;
                 }
+                img {
+                    width: 100%;
+                    height: auto;
+                }
             }
+
+            .participant_recruitment_box {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 25px;
+                
+                .progress_box {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    max-width: 470px;
+                    gap: 10px;
+
+                    .progress-bar {
+                        width: 100%;
+                        min-width: 100px;
+                        height: 26px; 
+                        position: relative;
+                        background-color: #e8edf3;
+                        border-radius: 10px;
+                        
+                        .progress-bar-inner {
+                            height: 100%;
+                            border-radius: 10px;
+                            width: 0;
+                            background-color: var(--accent-primary);
+                            position: absolute;
+                        }
+                    }
+
+                    .membrs__box {
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+                        font-family: $first-family;
+                        font-weight: 500;
+                        font-size: 14px;
+                        gap: 5px;
+                        color: #000;
+
+                        .membrs__photo {
+                            display: flex;
+                            position: relative;
+                        
+                            img {
+                                border: 2px solid #ffffff;
+                                border-radius: 50%;
+                                width: 40px;
+                                height: 40px;
+                                                        
+                                &:nth-child(2) {
+                                    transform: translateX(-50%);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    margin-left: auto;
+                    font-family: $first-family;
+                    font-size: $default-size;
+                    font-weight: 500;
+                    text-align: center;
+                    color: #000;
+                    backdrop-filter: blur(4px);
+                    background: var(--content-background);
+                    border: 1px solid #e8edf3;
+                    border-radius: 16px;
+                    padding: 14px 16px;
+                    width: 100%;
+                    max-width: 269px;;
+                    height: 52px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #efefef;
+                    }
+                
+                    &:active {
+                        background-color: var(--content-border);
+                    }
+                }
+            }
+
             .post__items {
                 display: flex;
                 align-items: center;
-                gap: 13px;
+                position: absolute;
+                left: 30px;
+                bottom: 20px;
+                gap: 18px;
                 line-height: 20px;
                 font-weight: 500;
                 font-size: $middle-size;
     
                 .likes, .comments, .favorites {
+                    
                     display: flex;
                     gap: 5px;
+                    
+                    .icon {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        outline: none;
+                        border: none;
+                        background-color: transparent;
+                        cursor: pointer;
+                    }
                 }
-            }
-    
-            .icon {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                outline: none;
-                border: none;
-                background-color: transparent;
-                cursor: pointer;
             }
         
             .post_type {
                 .post_type__img {
                     position: absolute;
-                    right: 25px;
-                    top: 25px;
+                    right: 30px;
+                    top: 20px;
                     
                     img {
                         width: 25px;
@@ -563,24 +847,28 @@ main {
         
                 .post_type__teg {
                     position: absolute;
-                    right: 25px;
-                    bottom: 25px;
+                    right: 30px;
+                    bottom: 20px;
                     font-family: $first-family;
                     font-weight: 500;
                     font-size: $middle-size;
                     text-align: center;
-                    color: #374151;
+                    color: #6b7280;
                 }
             }
         }
     }
 
     .right-sidebar {
-        padding: 25px 10px;
+        padding: 25px 0px;
         width: 100%;
-        background-color: #FBFAFF;
+        background: var(--posts-container-background);
 
-        .scheduled_box {
+        @media (max-width: $breakpoint-laptop) {
+            display: none;
+        }
+
+        .schedule_box {
             display: flex;
             position: sticky;
             top: calc(65px + 25px);
@@ -594,7 +882,7 @@ main {
                 border-radius: 10px;
                 padding: 15px 10px;
                 box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
-                background: $content-constant;
+                background: var(--content-constant);
             }
 
             .events_header {
@@ -635,12 +923,34 @@ main {
     }
 }
 
+#EventsCreater {
+    .modal__box {
+        width: 70%;
+    }
+}
+
+#ThemesCreater {
+    .modal__box {
+        width: 60%;
+    }
+}
+
+#ThemesCreater, #EventsCreater {
+    .modal__box {
+        @media (max-width: $breakpoint-tablet) {
+            width: 80%;
+        }
+        @media (max-width: $breakpoint-mobile) {
+            width: 90%;
+        }
+    }
+}
 .modal {
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 9998;
     background-color: rgba(0, 0, 0, .3);
     display: grid;
@@ -649,13 +959,13 @@ main {
     visibility: hidden;
     opacity: 0;
     transition: opacity .4s, visibility .4s;
-
+    
     &.open {
         visibility: visible;
         opacity: 1;
 
         .modal__box {
-            transform: translateY(-20px);
+            transform: translateY(0);
         }
     }
 
@@ -666,13 +976,12 @@ main {
         font-size: $default-size;
         font-family: $first-family;
         margin: 0 auto;
-        width: 70%;
-        border: 2px solid $content-border;
+        border: 2px solid var(--content-border);
         border-radius: 20px;
         height: fit-content;
-        background: $content-constant;
-        padding: 25px;
         transform: translateY(20px);
+        background: var(--content-constant);
+        padding: 25px;
         transition: transform .5s;
 
         label {
@@ -684,8 +993,8 @@ main {
         }
 
         input {
-            border: 2px solid $content-border;
-            background: $content-constant;
+            border: 2px solid var(--content-border);
+            background: var(--content-constant);
             font-family: $first-family;
             font-size: $default-size;
             border-radius: 12px;
@@ -702,6 +1011,7 @@ main {
             line-height: 30px;
             text-align: center;
         }
+        
         form {
             display: flex;
             flex-direction: column;
@@ -736,7 +1046,7 @@ main {
                         align-items: center;
                         justify-content: center;
                         background-color: transparent;
-                        border: 2px solid $content-border;
+                        border: 2px solid var(--content-border);
                         height: 38px;
                         gap: 5px;
                         border-radius: 10px;
@@ -751,9 +1061,9 @@ main {
                             box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.05);
                             transform: translateY(-2px);
                         }
-                
+                        
                         &.selected {
-                            border: 2px solid $accent-accent-primary;
+                            border: 2px solid var(--accent-primary);
                         }
                     }
                 
@@ -765,7 +1075,7 @@ main {
                 textarea {
                     font-family: $first-family;
                     font-size: $default-size;
-                    border: 2px solid $content-border;
+                    border: 2px solid var(--content-border);
                     border-radius: 12px;
                     padding: 8px 16px;
                     width: 100%;
@@ -794,47 +1104,48 @@ main {
                     outline: none;
                 }
             }
-        }
-    }
-    .buttons__container {
-        display: flex;
-        gap: 16px;
-        width: 100%;
-    
-        input {
-            width: 100%;
-            height: 52px;
-            border-radius: 16px;
-            padding: 14px 16px;
-            text-align: center;
-            font-weight: 700;
-            border: none;
-            font-size: $default-size;
-            line-height: 24px;
-            cursor: pointer;
-    
-            &[type="submit"] {
-                background-color: $content-content-background;
-    
-                &:hover {
-                    background-color: $content-border;
-                }
-    
-                &:active {
-                    background: $content-content-disabled;
-                }
-            }
-    
-            &[type="reset"] {
-                background: $accent-accent-background;
-                color: $accent-accent-primary;
-    
-                &:hover {
-                    background-color: $accent-accent-border;
-                }
-    
-                &:active {
-                    background-color: $accent-accent-disabled;
+   
+            .buttons__container {
+                display: flex;
+                gap: 16px;
+                width: 100%;
+            
+                input {
+                    width: 100%;
+                    height: 52px;
+                    border-radius: 16px;
+                    padding: 14px 16px;
+                    text-align: center;
+                    font-weight: 700;
+                    border: none;
+                    font-size: $default-size;
+                    line-height: 24px;
+                    cursor: pointer;
+            
+                    &[type="submit"] {
+                        background-color: var(--content-background);
+            
+                        &:hover {
+                            background-color: var(--content-border);
+                        }
+            
+                        &:active {
+                            background: var(--content-disabled);
+                        }
+                    }
+            
+                    &[type="reset"] {
+                        background: var(--accent-background);
+                        color: var(--accent-primary);
+            
+                        &:hover {
+                            background-color: var(--accent-border);
+                        }
+            
+                        &:active {
+                            background-color: var(--accent-disabled);
+                        }
+                    }
                 }
             }
         }
