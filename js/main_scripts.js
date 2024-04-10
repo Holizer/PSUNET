@@ -4,42 +4,56 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchResults = document.getElementById('searchResults');
     const searchBox = document.querySelector('.input-container');
     
+    const postsContainer = document.querySelector('.posts-container');
+    const posts = document.querySelectorAll('.posts-container .post');
+
     let HasResult = false;
 
-    
     searchInput.addEventListener('input', function() {
         const searchText = searchInput.value.trim().toLowerCase();
         searchResults.innerHTML = '';
         
         if (searchText === '') {
+            HasResult = false;
             searchInput.classList.remove("HasResult");
             searchBox.classList.remove("Active");
             return;
         }
 
-        const postsContainer = document.querySelector('.posts-container');
-        //Зедсь нужно получить все посты с установленными для ни id, а после взять загловок h2  
-        const SearchedEements = postsContainer.querySelectorAll('h2'); //БД
+        // Создаем массив для заголовков h2
+        let h2Array = [];
+        // Проходим по каждому посту и ищем в нем элемент h2 и добавляем в массив
+        posts.forEach(function(post) {
+            const h2 = post.querySelector('h2');
+            if (h2) {
+                h2Array.push(h2.textContent);
+            }
+        });
         
-        HasResult = false; //Обновляем значение для отслеживания результатов
+        //Обновляем значение для отслеживания результатов
+        HasResult = false;
         
-        SearchedEements.forEach(function(element, index) {
-            const text = element.textContent.toLowerCase();
-            if (text.includes(searchText)) {
+        let resultCount = 0;
+        const maxResults = 8; //Максимальное количество результатов
+
+        h2Array.forEach(function(text, index) {
+            if (text.toLowerCase().includes(searchText) && resultCount < maxResults) {
                 HasResult = true;
                 const li = document.createElement('li');
                 
                 const link = document.createElement('a');
-                link.textContent = element.textContent;
-                //Для ссылки устанаыливается атрибут herf с сылкой  '#' + postId
-                link.setAttribute('href', '#'); //БД
+                link.textContent = text;
+                
+                const postId = posts[index].getAttribute('post-id'); // Получаем post-id текущего поста
+                link.setAttribute('href', '#' + postId); // Устанавливаем атрибут href с post-id
                 
                 li.appendChild(link);
-                searchResults.appendChild(li);
+                searchResults.appendChild(li); // Проходим по всем постам и скрываем те, которые не соответствуют результатам поиска
+                resultCount++; // Увеличиваем счетчик результатов
             } 
         });
         
-
+        //Появления результатов
         if (HasResult) {
             searchBox.classList.add("Active");
             searchInput.classList.add("HasResult");
@@ -49,14 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    document.addEventListener('click', function(event) {
-        if (!searchInput.contains(event.target)) {
-            searchResults.style.display = 'none';
-            searchBox.classList.remove("Active");
-            searchInput.classList.remove("HasResult");
-        }
-    });
-
+    // Инпут в фокусе
     searchInput.addEventListener('focus', function() {
         searchResults.style.display = 'block';
 
@@ -65,42 +72,28 @@ document.addEventListener('DOMContentLoaded', function() {
             searchInput.classList.add("HasResult"); 
         }
     });
+
+    // Клик вне инпута
+    document.addEventListener('click', function(event) {
+        if (!searchInput.contains(event.target)) {
+            searchResults.style.display = 'none';
+            searchBox.classList.remove("Active");
+            searchInput.classList.remove("HasResult");
+        }
+    });
 });
 
-//Открытие модальных окон
-function toggleModal(modalId, action) {
-    var modal = document.getElementById(modalId);
-    var body = document.body;
-
-    if (!modal) {
-        return; // Проверяем, существует ли модальное окно с заданным идентификатором
-    }
-
-    if (action === "open") {
-        modal.classList.add("open");
-        body.classList.add("modal-open");
-    } else if (action === "close") {
-        modal.classList.remove("open");
-        body.classList.remove("modal-open");
-    }
-
-    // Обработчик события для клика внутри модального окна
-    document.querySelector(`#${modalId} .modal__box`).addEventListener('click', event => {
-        event._isClickWithInModal = true;
+document.addEventListener('DOMContentLoaded', function() {
+    const posts = document.querySelectorAll('.posts-container .post');
+    let i = 0;
+    
+    posts.forEach(function(post) {
+        i++;
+        post.setAttribute('post-id', i);
     });
+});
 
-    // Обработчик события для клика вне модального окна
-    document.getElementById(modalId).addEventListener('click', event => {
-        if (event._isClickWithInModal) {
-            return;
-        }
-        event.currentTarget.classList.remove('open');
-        body.classList.remove("modal-open");
-    });
-}
-
-
-//Кнопки уебки в модальных окнах
+//Модальные окна и создание постов
 document.addEventListener("DOMContentLoaded", function() {
     const themesForm = document.getElementById("ThemesForm");
     const eventsForm = document.getElementById("EventsForm");
@@ -138,30 +131,6 @@ document.addEventListener("DOMContentLoaded", function() {
     handleFormSubmission(eventsForm, document.getElementById("selectedCategory"), eventsForm.querySelector('input[type="submit"]'));
 });
 
-//Прогресс бар
-const progressBar = document.querySelector('.progress-bar-inner');
-
-function updateProgressBar(value) {
-progressBar.style.width = value + '%';
-}
-updateProgressBar(58);
-
-//Открытие расткрытия
-function toggleButtons() {
-    var toggleButtons = document.querySelectorAll(".toggleBtn");
-    var arrows = document.querySelectorAll(".arrow");
-    
-    toggleButtons.forEach(function(btn, index) {
-        btn.addEventListener("click", function() {
-            var content = this.nextElementSibling;
-            content.classList.toggle("expanded");
-            arrows[index].classList.toggle("open");
-        });
-    });
-}
-toggleButtons();
-
-
 //Cортировка
 document.addEventListener('DOMContentLoaded', () => {
     const postsContainer = document.querySelector('.posts-container'); 
@@ -196,24 +165,3 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredPosts.forEach(post => postsContainer.appendChild(post));
     }
 });
-
-const humb = document.querySelector('.hamb');
-const hamb__field = document.querySelector('.hamb__field');
-const menu = document.querySelector('.left-sidebar');
-
-humb.addEventListener('click', (e) => {
-    hamb__field.classList.toggle('active');
-    menu.classList.toggle('open');
-    e.stopPropagation(); 
-});
-
-document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && !humb.contains(e.target) && !modal.contains(e.target)) {
-        hamb__field.classList.remove('active');
-        menu.classList.remove('open');
-    }
-});
-
-document.querySelector('.themeToggle').addEventListener('click', function() {
-    document.body.classList.toggle('dark-theme');
-  });
