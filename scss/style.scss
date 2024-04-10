@@ -31,6 +31,7 @@ $middle-size: 14px;
 
     --button-hover-color: #efefef;
     --button-active-color: #dedede;
+    --button-disabled: rgba(172, 172, 172, 0.28);
 
     --line-border-color: #e9e9e9;
     --contenet--border: #e8edf3;
@@ -58,10 +59,10 @@ $uf-color: rgb(1, 187, 186);
 html, body {
     height: 100%;
     font-family: $first-family;
-    color: black;
     transition: background-color 0.5s ease;
+    
     &.modal-open {
-        //overflow: hidden;
+        overflow: hidden;
     }
 }
 
@@ -106,6 +107,7 @@ body.dark-theme {
         filter: brightness(1.3);
     }
 }
+
 a {
     text-decoration: none;
     color: var(--secondary-color);
@@ -182,6 +184,9 @@ header {
         
         @media (max-width: $breakpoint-tablet) {
             width: 55%;
+        }
+        @media (max-width: $breakpoint-mobile) {
+            width: 65%;
         }
         
         &.Active {
@@ -328,6 +333,7 @@ header {
                 right: 3px;
                 padding: 1px 6px;
                 border-radius: 50%;
+                color: #FFFFFF;
                 background-color: #ff4f4f;
                 font-family: $first-family;
                 font-weight: 700;
@@ -402,7 +408,7 @@ main {
     }
 
     @media (max-width: $breakpoint-tablet) {
-        grid-template-columns: 1fr;
+        display: block;
     }
     
     .left-sidebar {
@@ -555,7 +561,7 @@ main {
                                 font-family: $first-family;
                                 font-weight: 700;
                                 font-size: 12px;
-                                color: var(--content-constant-background);
+                                color: #FFFFFF;
                             }
                         }
                 
@@ -724,16 +730,20 @@ main {
     .posts-container {
         display: flex;
         flex-direction: column;
+        box-sizing: border-box;
         background-color: var(--posts-container-background);
         gap: 20px;
         width: 100%;
         padding: 25px;
         
+        @media (max-width: $breakpoint-tablet) {
+            padding: 0;
+        }
+
         .post {
             position: relative;
             display: flex;
             flex-direction: column;
-            gap: 10px;
             width: 100%;
             padding: 20px 30px;
             border: 1px solid var(--contenet--border);
@@ -742,6 +752,10 @@ main {
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
             background: var(--content-constant-background);
         
+            @media (max-width: $breakpoint-mobile) {
+                padding: 30px 30px;
+            }
+
             .user__info {
                 display: flex;
                 align-items: center;
@@ -798,6 +812,8 @@ main {
                 img {
                     width: 100%;
                     height: auto;
+                    border-radius: 10px;
+                    border: 1px solid #e8edf3;
                 }
             }
 
@@ -807,13 +823,18 @@ main {
                 width: 100%;
                 margin-bottom: 25px;
                 
+                @media (max-width: $breakpoint-mobile) {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+
                 .progress_box {
                     display: flex;
                     align-items: center;
                     width: 100%;
                     max-width: 470px;
                     gap: 10px;
-
+                    
                     .progress-bar {
                         width: 100%;
                         min-width: 100px;
@@ -873,9 +894,14 @@ main {
                     border-radius: 16px;
                     padding: 14px 16px;
                     width: 100%;
-                    max-width: 269px;;
+                    max-width: 269px;
                     height: 52px;
                     cursor: pointer;
+
+                    @media (max-width: $breakpoint-mobile) {
+                        max-width: 100%;
+                    }
+
 
                     &:hover {
                         background-color: var(--button-hover-color);
@@ -1018,17 +1044,6 @@ main {
     }
 }
 
-#ThemesCreater, #EventsCreater {
-    .modal__box {
-        @media (max-width: $breakpoint-tablet) {
-            width: 80%;
-        }
-        @media (max-width: $breakpoint-mobile) {
-            width: 90%;
-        }
-    }
-}
-
 .modal {
     position: fixed;
     left: 0;
@@ -1065,8 +1080,18 @@ main {
         height: fit-content;
         transform: translateY(20px);
         background: var(--content-constant-background);
+        min-width: 500px;
         padding: 25px;
         transition: transform .5s;
+        
+        @media (max-width: $breakpoint-tablet) {
+            width: 80%;
+        }
+        @media (max-width: $breakpoint-mobile) {
+            border-radius: 0px;
+            min-width: 100%;
+            min-height: 100%;
+        }
 
         label {
             color: var(--secondary-color);
@@ -1077,7 +1102,7 @@ main {
             font-weight: 500;
         }
 
-        input {
+        input, select {
             color: var(--secondary-color);
             border: 2px solid var(--content-border);
             font-family: $first-family;
@@ -1106,7 +1131,7 @@ main {
             .form-group {
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
+                gap: 10px;      
 
                 label {
                     font-family: $first-family;
@@ -1158,6 +1183,7 @@ main {
                         height: auto;
                     }
                 }
+
                 textarea {
                     font-family: $first-family;
                     font-size: $default-size;
@@ -1178,7 +1204,109 @@ main {
                     }
                 }
             }
-            input, textarea {
+            
+            .progress-bar-form {
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+
+                .switch {
+                    position: relative;
+                    display: inline-block;
+                    width: 60px;
+                    height: 34px;
+                    
+                    input { 
+                        opacity: 0;
+                        width: 0;
+                        height: 0;
+                        
+                        &:checked + .slider {
+                            background-color: var(--accent-primary);
+                        }
+                        
+                        &:focus + .slider {
+                            box-shadow: 0 0 1px var(--accent-primary);
+                        }
+                        
+                        &:checked + .slider:before {
+                            transform: translateX(26px);
+                        }
+                    }
+             
+                    .slider {
+                        position: absolute;
+                        cursor: pointer;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: #ccc;
+                        -webkit-transition: .4s;
+                        transition: .4s;
+             
+                        &:before {
+                            position: absolute;
+                            content: "";
+                            height: 26px;
+                            width: 26px;
+                            left: 4px;
+                            bottom: 4px;
+                            background-color: white;
+                            -webkit-transition: .4s;
+                            transition: .4s;
+                        }
+
+                        &.round {
+                            border-radius: 34px;
+                            
+                            &:before {
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }  
+                
+                .activate_groop_recruitment, .set_number_of_participants {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .activate_groop_recruitment {
+                    width: fit-content;
+                    gap: 10px;
+
+                    @media (max-width: $breakpoint-mobile) {
+                        width: min-content;
+                    }
+                }
+
+                .set_number_of_participants {
+                    gap: 5px;
+                    margin-left: 10%;
+                    width: 60%;
+
+                    input {
+                        width: 70%;
+
+                        @media (max-width: $breakpoint-mobile) {
+                            width: 100%;
+                        }
+                        
+                        &:disabled {
+                            background-color: var(--button-disabled);
+                        }
+                    }
+
+                    @media (min-width: $breakpoint-mobile) {
+                        label {
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+
+            input, textarea, select {
                 background: var(--input-background);
                 transition: border-color .3s ease;
             
@@ -1237,4 +1365,4 @@ main {
             }
         }
     }
-}
+}   

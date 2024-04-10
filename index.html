@@ -59,7 +59,6 @@
             </div>
         </div>
     </header>
-
     <main>
         <div class="left-sidebar" id="menu">
             <div class="menu">
@@ -271,7 +270,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="posts-container">
             <div class="post">
                 <div class="user__info">
@@ -612,28 +611,28 @@
                     <input type="datetime-local" id="date" name="date" required>
                 </div>
                 <div class="form-group">
-                    <label for="faculty">Выбирите категорию</label>
-                    <div class="btn_group" role="group">
-                        <button type="button" data-category="Здоровье и Спорт">
-                            Здоровье и Спорт
-                        </button>
-                        <button type="button" data-category="Выступления">
-                            Выступления
-                        </button>
-                        <button type="button" data-category="Образование">
-                            Образование
-                        </button>
-                        <button type="button" data-category="Технологии">
-                            Технологии
-                        </button>
-                        <button type="button" data-category="Работа">
-                            Работа
-                        </button>
-                        <button type="button" data-category="Общее">
-                            Общее
-                        </button>
+                    <label for="category">Выбирите категорию</label>
+                    <select name="category">
+                        <option value="Здоровье и Спорт">Здоровье и Спорт</option>
+                        <option value="Выступления">Выступления</option>
+                        <option value="Образование">Образование</option>
+                        <option value="Технологии">Технологии</option>
+                        <option value="Работа">Работа</option>
+                        <option value="Общее">Общее</option>
+                    </select>
+                </div>
+                <div class="form-group progress-bar-form">
+                    <div class="activate_groop_recruitment">
+                        <label for="group_recruitment">Набор группы</label>
+                        <label class="switch">
+                            <input id="group_recruitment" value="create_progress_bar" name="group_recruitment" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div> 
+                    <div class="set_number_of_participants">
+                        <label for="number_of_participants">Количество участников</label>
+                        <input id="number_of_participants" name="number_of_participants" type="number" min="1" max="100" placeholder="Число участников" disabled>
                     </div>
-                    <input type="hidden" id="selectedCategory" name="selectedCategory" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Содержание</label>

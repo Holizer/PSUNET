@@ -44,6 +44,13 @@ document.querySelectorAll('.participant_recruitment_box').forEach(box => {
         if (!isPressed) {
             isPressed = true;
             currentNumberElement.textContent++;
+            supportButton.textContent = "Отменить голос";
+            updateProgressBar(currentNumberElement, requiredNumberElement, progressBar);
+        }
+        else {
+            isPressed = false;
+            currentNumberElement.textContent--;
+            supportButton.textContent = "Участвовать";
             updateProgressBar(currentNumberElement, requiredNumberElement, progressBar);
         }
     });
@@ -118,13 +125,33 @@ humb.addEventListener('click', (e) => {
 
 //Темная тема
 const themeToggle = document.querySelector('.themeToggle');
-const wave = document.createElement('div');
-wave.classList.add('wave');
 
 themeToggle.addEventListener('click', () => {
-    document.body.appendChild(wave);
-    setTimeout(() => {
-        document.body.removeChild(wave);
-        document.body.classList.toggle('dark-theme');
-    }, 1000);
+    document.body.classList.toggle('dark-theme');
 });
+
+const groupRecruitmentCheckbox = document.getElementById('group_recruitment');
+const numberOfParticipantsInput = document.getElementById('number_of_participants');
+
+// Добавляем обработчик события 'change' на чекбокс
+groupRecruitmentCheckbox.addEventListener('change', () => {
+    // Если чекбокс отмечен, удаляем атрибут 'disabled' у поля ввода
+    if (groupRecruitmentCheckbox.checked) {
+        numberOfParticipantsInput.removeAttribute('disabled');
+    } else {
+        // Если чекбокс не отмечен, добавляем атрибут 'disabled' обратно
+        numberOfParticipantsInput.setAttribute('disabled', 'disabled');
+    }
+});
+
+function updateDateTimeLocalInput(id) {
+    var input = document.getElementById(id);
+    var now = new Date();
+    var localDateTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,16);
+    input.value = localDateTime;
+  }
+
+  // Вызовите эту функцию при загрузке страницы и когда вам нужно обновить значение
+  document.addEventListener('DOMContentLoaded', function() {
+    updateDateTimeLocalInput('date');
+  });
