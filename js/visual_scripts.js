@@ -151,7 +151,7 @@ function updateDateTimeLocalInput(id) {
     input.value = localDateTime;
   }
 
-  // Вызовите эту функцию при загрузке страницы и когда вам нужно обновить значение
-  document.addEventListener('DOMContentLoaded', function() {
+// Вызовите эту функцию при загрузке страницы и когда вам нужно обновить значение
+document.addEventListener('DOMContentLoaded', function() {
     updateDateTimeLocalInput('date');
-  });
+});

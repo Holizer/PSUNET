@@ -934,9 +934,7 @@ main .right-sidebar .schedule_box .items .item span {
 }
 @media (max-width: 426px) {
   .modal .modal__box {
-    border-radius: 0px;
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 380px;
   }
 }
 .modal .modal__box label {

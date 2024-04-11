@@ -98,6 +98,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const themesForm = document.getElementById("ThemesForm");
     const eventsForm = document.getElementById("EventsForm");
 
+    const postContainer = document.querySelector(".posts-container");
+
     function handleFormSubmission(form, hiddenInput, submitButton) {
         let buttons = form.querySelectorAll('.btn_group button');
         buttons.forEach(button => {
@@ -113,23 +115,30 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });  
 
-        submitButton.addEventListener("click", () => {
+        submitButton.addEventListener("click", (e) => {
+            e.preventDefault();
             const nameInput = form.querySelector('input[type="text"]');
             const dateInput = form.querySelector('input[type="datetime-local"]');
             const messageInput = form.querySelector('textarea');
             const selectedCategory = form.querySelector('input[type="hidden"]');
+
             if (!hiddenInput.value) {
                 alert("Пожалуйста, заполните все поля.");
             }
             else {
-                createPost();
+                createPost(nameInput, dateInput, messageInput, selectedCategory);
             }
         });
+    }
+
+    function createPost(name, date, message, category) {
+        postContainer.appendChild(post);
     }
     
     handleFormSubmission(themesForm, document.getElementById("selectedFaculty"), themesForm.querySelector('input[type="submit"]'));
     handleFormSubmission(eventsForm, document.getElementById("selectedCategory"), eventsForm.querySelector('input[type="submit"]'));
 });
+
 
 //Cортировка
 document.addEventListener('DOMContentLoaded', () => {
