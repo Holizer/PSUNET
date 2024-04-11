@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const link = document.createElement('a');
                 link.textContent = text;
                 
-                const postId = posts[index].getAttribute('post-id'); // Получаем post-id текущего поста
+                const postId = posts[index].id; // Получаем post-id текущего поста
                 link.setAttribute('href', '#' + postId); // Устанавливаем атрибут href с post-id
                 
                 li.appendChild(link);
@@ -165,3 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredPosts.forEach(post => postsContainer.appendChild(post));
     }
 });
+
+function popular() {
+    const posts = document.querySelectorAll('.post__items');
+
+    console.log(posts[0].textContent.match('([0-9]+){3}'));
+    
+}

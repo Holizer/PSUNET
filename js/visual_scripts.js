@@ -37,7 +37,7 @@ document.querySelectorAll('.participant_recruitment_box').forEach(box => {
     const progressBar = box.querySelector('.progress-bar-inner');
     const supportButton = box.querySelector('button');
     let isPressed = false;
-    
+
     updateProgressBar(currentNumberElement, requiredNumberElement, progressBar);
 
     supportButton.addEventListener('click', () => {
@@ -67,9 +67,9 @@ document.querySelectorAll('.participant_recruitment_box').forEach(box => {
 function toggleButtons() {
     var toggleButtons = document.querySelectorAll(".toggleBtn");
     var arrows = document.querySelectorAll(".arrow");
-    
-    toggleButtons.forEach(function(btn, index) {
-        btn.addEventListener("click", function() {
+
+    toggleButtons.forEach(function (btn, index) {
+        btn.addEventListener("click", function () {
             var content = this.nextElementSibling;
             content.classList.toggle("expanded");
             arrows[index].classList.toggle("open");
@@ -115,8 +115,8 @@ const menu = document.querySelector('.left-sidebar');
 humb.addEventListener('click', (e) => {
     hamb__field.classList.toggle('active');
     menu.classList.toggle('open');
-    e.stopPropagation(); 
-    
+    e.stopPropagation();
+
     if (!menu.contains(e.target) && !humb.contains(e.target) && !modal.contains(e.target)) {
         hamb__field.classList.remove('active');
         menu.classList.remove('open');
@@ -147,11 +147,11 @@ groupRecruitmentCheckbox.addEventListener('change', () => {
 function updateDateTimeLocalInput(id) {
     var input = document.getElementById(id);
     var now = new Date();
-    var localDateTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,16);
+    var localDateTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
     input.value = localDateTime;
-  }
+}
 
-  // Вызовите эту функцию при загрузке страницы и когда вам нужно обновить значение
-  document.addEventListener('DOMContentLoaded', function() {
+// Вызовите эту функцию при загрузке страницы и когда вам нужно обновить значение
+document.addEventListener('DOMContentLoaded', function () {
     updateDateTimeLocalInput('date');
-  });
+});
