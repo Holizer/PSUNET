@@ -918,6 +918,37 @@ main {
                         cursor: default;
                     }
                 }
+
+                .tooltip {
+                    position: relative;
+                    display: inline-block;
+                    
+                    .tooltiptext {
+                        position: absolute;
+                        visibility: hidden;
+                        width: max-content;
+                        background-color: rgb(97, 97, 97);
+                        border: 2px solid var(--contenet--border);
+                        font-family: $first-family;
+                        font-weight: 400;
+                        color: #FFFFFF;
+                        text-align: center;
+                        border-radius: 4px;
+                        padding: 5px 2px;
+                        left: -5%;
+                        z-index: 1;
+                        bottom: 100%;
+                        opacity: 0;
+                        transform: translateY(10px);
+                        transition: all 0.5s;
+                        
+                        &.tooltip:hover .tooltiptext {
+                            transform: translateY(-2px);
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+                }
             }
 
             .post_footer {
@@ -933,13 +964,22 @@ main {
                     gap: 18px;
                     line-height: 20px;
                     font-weight: 500;
-                    font-size: $middle-size;
-        
-                    .likes, .comments, .favorites {
+                    
+                    button {
                         color: var(--secondary-color);
                         display: flex;
+                        outline: none;
+                        border: none;
+                        background-color: transparent;
                         gap: 5px;
+                        cursor: pointer;
                         
+                        span {
+                            font-family: $first-family;
+                            font-size: $middle-size;
+                            font-weight: 500;
+                        }
+
                         .icon {
                             display: flex;
                             justify-content: center;
@@ -1375,36 +1415,3 @@ main {
         }
     }
 }   
-
-/* Стили для кнопки и подсказки */
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-  
-.tooltip .tooltiptext {
-    position: absolute;
-    visibility: hidden;
-    width: max-content;
-    background-color: rgb(97, 97, 97);
-    border: 2px solid var(--contenet--border);
-    font-family: $first-family;
-    font-weight: 400;
-    color: #FFFFFF;
-    text-align: center;
-    border-radius: 4px;
-    padding: 5px 2px;
-    left: -5%;
-    z-index: 1;
-    bottom: 100%;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.5s;
-  }
-  
-  .tooltip:hover .tooltiptext {
-    transform: translateY(-2px);
-    visibility: visible;
-    opacity: 1;
-}
-  

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -781,6 +780,34 @@ main .posts-container .post .participant_recruitment_box button:disabled {
   background: var(--button-disabled);
   cursor: default;
 }
+main .posts-container .post .participant_recruitment_box .tooltip {
+  position: relative;
+  display: inline-block;
+}
+main .posts-container .post .participant_recruitment_box .tooltip .tooltiptext {
+  position: absolute;
+  visibility: hidden;
+  width: max-content;
+  background-color: rgb(97, 97, 97);
+  border: 2px solid var(--contenet--border);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px 2px;
+  left: -5%;
+  z-index: 1;
+  bottom: 100%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s;
+}
+main .posts-container .post .participant_recruitment_box .tooltip .tooltiptext.tooltip:hover .tooltiptext {
+  transform: translateY(-2px);
+  visibility: visible;
+  opacity: 1;
+}
 main .posts-container .post .post_footer {
   display: flex;
   flex-direction: row;
@@ -794,14 +821,22 @@ main .posts-container .post .post_footer .post__items {
   gap: 18px;
   line-height: 20px;
   font-weight: 500;
-  font-size: 14px;
 }
-main .posts-container .post .post_footer .post__items .likes, main .posts-container .post .post_footer .post__items .comments, main .posts-container .post .post_footer .post__items .favorites {
+main .posts-container .post .post_footer .post__items button {
   color: var(--secondary-color);
   display: flex;
+  outline: none;
+  border: none;
+  background-color: transparent;
   gap: 5px;
+  cursor: pointer;
 }
-main .posts-container .post .post_footer .post__items .likes .icon, main .posts-container .post .post_footer .post__items .comments .icon, main .posts-container .post .post_footer .post__items .favorites .icon {
+main .posts-container .post .post_footer .post__items button span {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+main .posts-container .post .post_footer .post__items button .icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1172,38 +1207,6 @@ main .right-sidebar .schedule_box .items .item span {
 }
 .modal .modal__box form .buttons__container input[type=reset]:active {
   background-color: var(--accent-disabled);
-}
-
-/* Стили для кнопки и подсказки */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  position: absolute;
-  visibility: hidden;
-  width: max-content;
-  background-color: rgb(97, 97, 97);
-  border: 2px solid var(--contenet--border);
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  color: #FFFFFF;
-  text-align: center;
-  border-radius: 4px;
-  padding: 5px 2px;
-  left: -5%;
-  z-index: 1;
-  bottom: 100%;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.5s;
-}
-
-.tooltip:hover .tooltiptext {
-  transform: translateY(-2px);
-  visibility: visible;
-  opacity: 1;
 }
 
 /*# sourceMappingURL=style.css.map */
