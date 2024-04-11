@@ -30,36 +30,64 @@ function toggleModal(modalId, action) {
     });
 }
 
+
+var eventsListContainer = document.querySelector('.subscribed_events .items');
+var eventsListitem = Array.from(document.querySelectorAll('.subscribed_events .item')); 
+eventsListContainer.innerHTML = "";
+
+eventsListitem.forEach(function(item) {
+    eventsListContainer.appendChild(item);
+});
 //Прогресс бар
-document.querySelectorAll('.participant_recruitment_box').forEach(box => {
-    const currentNumberElement = box.querySelector('.curent_number');
-    const requiredNumberElement = box.querySelector('.required_number');
-    const progressBar = box.querySelector('.progress-bar-inner');
-    const supportButton = box.querySelector('button');
-    let isPressed = false;
-    
-    updateProgressBar(currentNumberElement, requiredNumberElement, progressBar);
+posts.forEach(post => {
+    // Проверяем, есть ли в посте элемент с классом 'participant_recruitment_box'
+    const box = post.querySelector('.participant_recruitment_box');
+    if (box) {
+        // Если есть, то продолжаем как обычно
+        const currentNumberElement = box.querySelector('.curent_number');
+        const requiredNumberElement = box.querySelector('.required_number');
+        const progressBar = box.querySelector('.progress-bar-inner');
+        const supportButton = box.querySelector('button');
+        let isPressed = false;
+        
+        updateProgressBar(currentNumberElement, requiredNumberElement, progressBar);
 
-    supportButton.addEventListener('click', () => {
-        if (!isPressed) {
-            isPressed = true;
-            currentNumberElement.textContent++;
-            supportButton.textContent = "Отменить голос";
-            updateProgressBar(currentNumberElement, requiredNumberElement, progressBar);
-        }
-        else {
-            isPressed = false;
-            currentNumberElement.textContent--;
-            supportButton.textContent = "Участвовать";
-            updateProgressBar(currentNumberElement, requiredNumberElement, progressBar);
-        }
-    });
+        supportButton.addEventListener('click', () => {
+            if (!isPressed) {
+                isPressed = true;
+                currentNumberElement.textContent++;
+                supportButton.textContent = "Отменить голос";
+                updateProgressBar(currentNumberElement, requiredNumberElement, progressBar);
+        
+                // Получаем значение h2 из текущего поста
+                const postTitle = post.querySelector('h2').textContent;
+                const postDataTime = post.querySelector('.data_time').textContent;
+                
+                // Создаем новый элемент списка
+                const newItem = document.createElement('div');
+                newItem.classList.add('item');
+                newItem.innerHTML = `<span>${postDataTime}</span> ${postTitle}`;
+                eventsListitem.push(newItem);
+                // Добавляем новый элемент в список событий
+                eventsListContainer.appendChild(newItem);
+            }
+            else {
+                isPressed = false;
+                currentNumberElement.textContent--;
+                supportButton.textContent = "Участвовать";
+                updateProgressBar(currentNumberElement, requiredNumberElement, progressBar);
+                if (eventsListContainer.lastChild) {
+                    eventsListContainer.removeChild(eventsListContainer.lastChild);
+                }
+            }
+        });
 
-    function updateProgressBar(currentNumberElement, requiredNumberElement, progressBar) {
-        const currentNumber = parseInt(currentNumberElement.textContent, 10);
-        const requiredNumber = parseInt(requiredNumberElement.textContent, 10);
-        const progressPercentage = (currentNumber / requiredNumber) * 100;
-        progressBar.style.width = progressPercentage + '%';
+        function updateProgressBar(currentNumberElement, requiredNumberElement, progressBar) {
+            const currentNumber = parseInt(currentNumberElement.textContent, 10);
+            const requiredNumber = parseInt(requiredNumberElement.textContent, 10);
+            const progressPercentage = (currentNumber / requiredNumber) * 100;
+            progressBar.style.width = progressPercentage + '%';
+        }
     }
 });
 
@@ -77,7 +105,6 @@ function toggleButtons() {
     });
 }
 toggleButtons();
-
 
 //Ограничения на дату создания
 function SetDateBoundaries() {
@@ -149,7 +176,7 @@ function updateDateTimeLocalInput(id) {
     var now = new Date();
     var localDateTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,16);
     input.value = localDateTime;
-  }
+}
 
 // Вызовите эту функцию при загрузке страницы и когда вам нужно обновить значение
 document.addEventListener('DOMContentLoaded', function() {

@@ -424,7 +424,7 @@
                     <p>Кто из шестерки за то чтобы собраться на волейбол нужно человек 12 (можно больше) Сыграем в
                         пятницу в часов семь на ближайшей площадке.</p>
                     <img src="img/voleiboll.png" alt="">
-                    <p>Дата проведения: <span class="data_time">10.04.2024 17:00</span></p>
+                    <p>Дата проведения: <span class="data_time">19.04</span></p>
                 </div>
                 <div class="participant_recruitment_box">
                     <div class="progress_box">
@@ -773,24 +773,21 @@
                     <div class="activate_groop_recruitment">
                         <label for="group_recruitment">Набор группы</label>
                         <label class="switch">
-                            <input id="group_recruitment" value="create_progress_bar" name="group_recruitment"
-                                type="checkbox">
+                            <input type="checkbox" id="group_recruitment" value="create_progress_bar" name="group_recruitment">
                             <span class="slider round"></span>
                         </label>
                     </div>
                     <div class="set_number_of_participants">
                         <label for="number_of_participants">Количество участников</label>
-                        <input id="number_of_participants" name="number_of_participants" type="number" min="1" max="100"
-                            placeholder="Число участников" disabled>
+                        <input id="number_of_participants" name="number_of_participants" type="number" min="1" max="100" placeholder="Число участников" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="message">Содержание</label>
-                    <textarea id="message" name="message" placeholder="Опишите мероприятие" maxlength="400"
-                        required></textarea>
+                    <textarea id="message" name="message" placeholder="Опишите мероприятие" maxlength="400" required></textarea>
                 </div>
                 <div class="buttons__container">
-                    <input type="submit" value="Создать мероприятие">
+                    <input type="submit" value="Создать мероприятие" onclick="toggleModal('EventsCreater', 'close')">
                     <input type="reset" value="Отмена" onclick="toggleModal('EventsCreater', 'close')">
                 </div>
             </form>

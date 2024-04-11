@@ -93,17 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-/*
-if (posts.length > 3) {
-    var lastPostHTML = posts[posts.length - 2].outerHTML;
-    postsContainer.insertAdjacentHTML('beforeend', lastPostHTML);
-    postsContainer.insertAdjacentHTML('beforeend', lastPostHTML);
-    postsContainer.insertAdjacentHTML('beforeend', lastPostHTML);
-    postsContainer.insertAdjacentHTML('beforeend', lastPostHTML);
-}
-*/
-
 var posts = Array.from(document.querySelectorAll('.post')); //БД
 const postsContainer = document.querySelector('.posts-container');
 postsContainer.innerHTML = "";
@@ -133,20 +122,14 @@ document.addEventListener("DOMContentLoaded", function() {
         submitButton.addEventListener("click", (e) => {
             e.preventDefault();
             const nameInput = form.querySelector('input[type="text"]');
-            const dateInput = form.querySelector('input[type="datetime-local"]');
             const messageInput = form.querySelector('textarea');
-            const selectedCategory = form.querySelector('input[type="hidden"]');
 
             localStorage.setItem('name', nameInput.value);
-            localStorage.setItem('date', dateInput.value);
             localStorage.setItem('message', messageInput.value);
-            localStorage.setItem('category', selectedCategory.value);
-
+            hiddenInput.setItem();
             console.log('Сохраненные значения:');
             console.log('Имя: ' + localStorage.getItem('name'));
-            console.log('Дата: ' + localStorage.getItem('date'));
             console.log('Сообщение: ' + localStorage.getItem('message'));
-            console.log('Категория: ' + localStorage.getItem('category'));
 
             if (!hiddenInput.value) {
                 alert("Пожалуйста, заполните все поля.");
@@ -169,24 +152,40 @@ document.addEventListener("DOMContentLoaded", function() {
             const dateInput = form.querySelector('input[type="datetime-local"]');
             const tegInput = form.querySelector('select');
             const messageInput = form.querySelector('textarea');
-
+            
+            const participantsInput = document.getElementById('number_of_participants');
+            const switchInput = document.getElementById('group_recruitment');
+            const isSwitchOn = switchInput.checked;
+            
             localStorage.setItem('name', nameInput.value);
             localStorage.setItem('date', dateInput.value);
             localStorage.setItem('message', messageInput.value);
+            localStorage.setItem('switchState', isSwitchOn);
+            if(isSwitchOn) {
+                localStorage.setItem('numberOf', participantsInput.value);
+            }
 
             console.log('Сохраненные значения:');
             console.log('Имя: ' + localStorage.getItem('name'));
             console.log('Дата: ' + localStorage.getItem('date'));
             console.log('Сообщение: ' + localStorage.getItem('message'));
+            console.log('Состояние свитча: ' + localStorage.getItem('switchState'));
+
+            if(isSwitchOn) {
+                console.log('Необходимое количество участников: ' + localStorage.getItem('numberOf'));
+            }
 
             if (!nameInput.value || !dateInput.value || !messageInput.value || !tegInput.value) {
                 alert("Пожалуйста, заполните все поля.");
             } else {
-                createPost(nameInput.value, dateInput.value, messageInput.value, tegInput.value);
+                createEventsPost(nameInput.value, dateInput.value, messageInput.value, tegInput.value, switchInput.checked, participantsInput.value);
                 nameInput.value = '';
                 dateInput.value = '';
                 messageInput.value = '';
                 tegInput.value = '';
+                switchInput.checked = false;
+                participantsInput.value = '';
+                participantsInput.setAttribute('disabled', '');
             }
         });
     }
@@ -199,6 +198,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const dateInput = document.querySelector('input[type="datetime-local"]');
     const messageInput = document.querySelector('textarea');
 
+    const participantsInput = document.getElementById('number_of_participants');
+    const switchInput = document.getElementById('group_recruitment');
+    const isSwitchOn = switchInput.checked;
+
     // Проверяем, есть ли сохраненные значения
     if (localStorage.getItem('name')) {
         nameInput.value = localStorage.getItem('name');
@@ -209,16 +212,33 @@ document.addEventListener("DOMContentLoaded", function() {
     if (localStorage.getItem('message')) {
         messageInput.value = localStorage.getItem('message');
     }
+    
+    if (localStorage.getItem('switchState')) {
+        switchInput = localStorage.getItem('switchState');
+    }
+    if (localStorage.getItem('numberOf')) {
+        participantsInput = localStorage.getItem('numberOf');
+    }
+    
 
     console.log('Восстановленные значения:');
     console.log('Имя: ' + localStorage.getItem('name'));
     console.log('Дата: ' + localStorage.getItem('date'));
     console.log('Сообщение: ' + localStorage.getItem('message'));
+    console.log('Состояние свитча: ' + localStorage.getItem('switchState'));
+    if(isSwitchOn) {
+        console.log('Необходимое количество участников: ' + localStorage.getItem('numberOf'));
+    }
 });
 
-
 // Создаем новый объект поста
-function createPost(name, date, message, teg) {
+function createEventsPost(name, date, message, teg, isSwitchOn, numberOf) {
+    const now = new Date();
+    const formattedTime = now.toLocaleTimeString('ru-RU', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
     const newPost = {
         name: name,
         date: date,
@@ -226,28 +246,50 @@ function createPost(name, date, message, teg) {
         teg: teg,
         likes: 0,
         comments: 0,
-        favorites: 0
+        favorites: 0,
+        time: formattedTime,
+        isSwitchOn: isSwitchOn,
+        numberOf: numberOf
     };
-
-    // Добавляем новый пост в массив
-    posts.unshift(newPost);
+    // Сохраняем массив posts в localStorage
+    localStorage.setItem('posts', JSON.stringify(posts));
 
     // Опционально: добавляем новый пост в DOM
     const postElement = document.createElement('div');
-    postElement.innerHTML = `
-        <div class="post" id="post_1">
+    postElement.classList.add("post");
+    var postHTML = `
         <div class="user__info">
             <img class="user_img" src="img/users_img/user1_img.svg" alt="">
             <div class="user_details">
                 <div class="user_name">Павел Прусов</div>
-                <div class="time_of_creation">27 минут назад</div>
+                <div class="time_of_creation">${formattedTime}</div>
             </div>
         </div>
         <div class="post__content">
             <h2>${newPost.name}</h2>
             <p>${newPost.message}</p>
         </div>
-
+    `;
+    if(isSwitchOn) {
+        postHTML += `
+        <div class="participant_recruitment_box">
+            <div class="progress_box">
+                <div class="progress-bar">
+                    <div class="progress-bar-inner"></div>
+                </div>
+                <div class="membrs__box">
+                    <span class="curent_number">только что</span>/<span class="required_number">${newPost.numberOf}</span>
+                    <div class="membrs__photo">
+                    </div>
+                </div>
+            </div>
+            <button class="tooltip" disabled>Участвовать
+                <span class="tooltiptext">Вы являетесь создателем этого поста!</span>
+            </button>
+        </div>
+        `;
+    }
+    postHTML += `
         <div class="post_footer">
             <div class="post__items">
                 <div class="likes">
@@ -295,9 +337,12 @@ function createPost(name, date, message, teg) {
                 </div>
             </div>
         </div>
-    </div>
     `;
-    postsContainer.appendChild(postElement);
+    postElement.innerHTML = postHTML;
+    // Добавляем новый пост в массив
+    posts.unshift(postElement);
+    postsContainer.prepend(postElement);
+    console.log(posts);
 }
 
 //Cортировка
