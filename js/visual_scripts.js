@@ -155,3 +155,19 @@ function updateDateTimeLocalInput(id) {
 document.addEventListener('DOMContentLoaded', function () {
     updateDateTimeLocalInput('date');
 });
+
+function com() {
+    if (document.querySelector('.comments_section').style.display !== 'flex') {
+        document.querySelector('.comments_section').style.display = 'flex';
+        document.querySelector('.comms').style.display = 'flex'
+    } else {
+        document.querySelector('.comments_section').style.display = 'none';
+        document.querySelector('.comms').style.display = 'none'
+    }
+}
+
+function checkEnter(elem) {
+    if (window.event.keyCode === 13) {
+        elem.value = null;
+    }
+}
