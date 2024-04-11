@@ -120,7 +120,7 @@ header .logo_container h1 {
   font-family: "Montserrat", sans-serif;
 }
 header .logo_container h1 span {
-  color: #7498C7;
+  color: #1959D9;
 }
 @media (max-width: 767px) {
   header .logo_container h1 {
@@ -837,7 +837,7 @@ main .right-sidebar .schedule_box {
   position: sticky;
   top: 90px;
   gap: 20px;
-  margin-right: 20px;
+  margin-right: 25px;
   flex-direction: column;
 }
 main .right-sidebar .schedule_box .personal_events, main .right-sidebar .schedule_box .subscribed_events {

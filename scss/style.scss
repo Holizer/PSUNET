@@ -160,7 +160,7 @@ header {
             font-family: $second-family;
 
             span {
-                color: #7498C7;
+                color: #1959D9;
             }
        
             @media (max-width: $breakpoint-tablet) {
@@ -981,7 +981,7 @@ main {
             position: sticky;
             top: calc(65px + 25px);
             gap: 20px;
-            margin-right: 20px;
+            margin-right: 25px;
             flex-direction: column;
 
             .personal_events, .subscribed_events {
