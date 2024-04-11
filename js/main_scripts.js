@@ -93,11 +93,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+const posts = Array.from(document.querySelectorAll('.post')); //БД
+const postsContainer = document.querySelector('.posts-container');
+
 //Модальные окна и создание постов
 document.addEventListener("DOMContentLoaded", function() {
     const themesForm = document.getElementById("ThemesForm");
     const eventsForm = document.getElementById("EventsForm");
-
     const postContainer = document.querySelector(".posts-container");
 
     function handleFormSubmission(form, hiddenInput, submitButton) {
@@ -126,25 +128,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("Пожалуйста, заполните все поля.");
             }
             else {
-                createPost(nameInput, dateInput, messageInput, selectedCategory);
+                posts.add();
             }
         });
-    }
-
-    function createPost(name, date, message, category) {
-        postContainer.appendChild(post);
     }
     
     handleFormSubmission(themesForm, document.getElementById("selectedFaculty"), themesForm.querySelector('input[type="submit"]'));
     handleFormSubmission(eventsForm, document.getElementById("selectedCategory"), eventsForm.querySelector('input[type="submit"]'));
 });
-
-
 //Cортировка
 document.addEventListener('DOMContentLoaded', () => {
-    const postsContainer = document.querySelector('.posts-container'); 
-    const posts = Array.from(document.querySelectorAll('.post')); //БД
-
     const sortCheckboxes = document.querySelectorAll('.checkbox__container input');
     sortCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', sortItems);

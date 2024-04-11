@@ -37,10 +37,6 @@ html, body {
   font-family: "Roboto", sans-serif;
   transition: background-color 0.5s ease;
 }
-html.modal-open, body.modal-open {
-  overflow: hidden;
-}
-
 body.dark-theme {
   --primary-color: #FFFFFF;
   --secondary-color: #e2e2e2;
@@ -629,6 +625,7 @@ main .posts-container .post {
   flex-direction: column;
   width: 100%;
   padding: 20px 30px;
+  gap: 10px;
   border: 1px solid var(--contenet--border);
   height: fit-content;
   border-radius: 10px;
@@ -778,10 +775,14 @@ main .posts-container .post .participant_recruitment_box button:hover {
 main .posts-container .post .participant_recruitment_box button:active {
   background-color: var(--button-active-color);
 }
-main .posts-container .post .post__items {
+main .posts-container .post .post-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+main .posts-container .post .post-footer .post__items {
   display: flex;
   align-items: center;
-  position: absolute;
   left: 30px;
   bottom: 20px;
   gap: 18px;
@@ -789,12 +790,12 @@ main .posts-container .post .post__items {
   font-weight: 500;
   font-size: 14px;
 }
-main .posts-container .post .post__items .likes, main .posts-container .post .post__items .comments, main .posts-container .post .post__items .favorites {
+main .posts-container .post .post-footer .post__items .likes, main .posts-container .post .post-footer .post__items .comments, main .posts-container .post .post-footer .post__items .favorites {
   color: var(--secondary-color);
   display: flex;
   gap: 5px;
 }
-main .posts-container .post .post__items .likes .icon, main .posts-container .post .post__items .comments .icon, main .posts-container .post .post__items .favorites .icon {
+main .posts-container .post .post-footer .post__items .likes .icon, main .posts-container .post .post-footer .post__items .comments .icon, main .posts-container .post .post-footer .post__items .favorites .icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -803,17 +804,16 @@ main .posts-container .post .post__items .likes .icon, main .posts-container .po
   background-color: transparent;
   cursor: pointer;
 }
-main .posts-container .post .post_type .post_type__img {
+main .posts-container .post .post-footer .post_type .post_type__img {
   position: absolute;
   right: 30px;
   top: 20px;
 }
-main .posts-container .post .post_type .post_type__img img {
+main .posts-container .post .post-footer .post_type .post_type__img img {
   width: 25px;
   height: 29px;
 }
-main .posts-container .post .post_type .post_type__teg {
-  position: absolute;
+main .posts-container .post .post-footer .post_type .post_type__teg {
   right: 30px;
   bottom: 20px;
   font-family: "Roboto", sans-serif;
