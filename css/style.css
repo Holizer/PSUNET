@@ -836,6 +836,10 @@ main .posts-container .post .post_footer .post__items button span {
   font-size: 14px;
   font-weight: 500;
 }
+main .posts-container .post .post_footer .post__items button svg {
+  width: 20px;
+  height: 20px;
+}
 main .posts-container .post .post_footer .post__items button .icon {
   display: flex;
   justify-content: center;

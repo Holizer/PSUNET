@@ -979,6 +979,10 @@ main {
                             font-size: $middle-size;
                             font-weight: 500;
                         }
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                        }
 
                         .icon {
                             display: flex;
