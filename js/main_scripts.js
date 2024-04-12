@@ -438,3 +438,53 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredPosts.forEach(post => postsContainer.appendChild(post));
     }
 });
+
+function popular() {
+    posts.sort((a, b) => {
+        let totalA = parseInt(a.querySelector('.likes span').textContent) +
+                    parseInt(a.querySelector('.comments span').textContent) +
+                    parseInt(a.querySelector('.favorites span').textContent);
+
+        let totalB = parseInt(b.querySelector('.likes span').textContent) +
+                    parseInt(b.querySelector('.comments span').textContent) +
+                    parseInt(b.querySelector('.favorites span').textContent);
+
+        return totalB - totalA; 
+    });
+
+    // Затем очистите postsContainer и добавьте отсортированные посты
+    postsContainer.innerHTML = '';
+    posts.forEach(post => {
+    postsContainer.appendChild(post);
+})};
+
+function toHome() {
+    function convertToDate(text) {
+        let now = new Date();
+        if (text === 'только что') {
+            return now;
+        } else if (text.endsWith('минут назад')) {
+            let minutes = parseInt(text.split(' ')[0]);
+            now.setMinutes(now.getMinutes() - minutes);
+            return now;
+        } else if (text.endsWith('часов назад')) {
+            let hours = parseInt(text.split(' ')[0]);
+            now.setHours(now.getHours() - hours);
+            return now;
+        } else if (text === 'сегодня') {
+            return new Date(now.setHours(0,0,0,0));
+        } else if (text === 'вчера') {
+            return new Date(now.setDate(now.getDate() - 1));
+        } else if (text.endsWith('дней назад')) {
+            let days = parseInt(text.split(' ')[0]);
+            now.setDate(now.getDate() - days);
+            return now;
+        }
+    }
+
+    posts.sort((a, b) => {
+        let dateA = convertToDate(a.querySelector('.time_of_creation').textContent);
+        let dateB = convertToDate(b.querySelector('.time_of_creation').textContent);
+        return dateB - dateA;
+    });
+}

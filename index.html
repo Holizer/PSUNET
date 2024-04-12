@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <div class="menu__block">
-                        <button>
+                        <button onclick="toHome()">
                             <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -108,7 +108,7 @@
                             </svg>
                             На главную
                         </button>
-                        <button>
+                        <button onclick="popular()">
                             <svg width="20" height="18" viewBox="0 0 20 18" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -161,23 +161,23 @@
                         </button>
                         <div class="content">
                             <div class="checkbox__container">
-                                <input type="checkbox" id="general" name="general" value="general"
-                                    data-display-value="ПГУ">
-                                <label for="general">Студентеческий совет</label>
+                                <input type="checkbox" id="studCouncil" name="studCouncil" value="studCouncil"
+                                    data-display-value="Студентеческий совет">
+                                <label for="studCouncil">Студентеческий совет</label>
                             </div>
                             <div class="checkbox__container">
                                 <input type="checkbox" id="sport" name="sport" value="sport" data-display-value="Спорт">
                                 <label for="sport">Здоровье и Спорт</label>
                             </div>
                             <div class="checkbox__container">
+                                <input type="checkbox" id="intelectual" name="intelectual" value="intelectual"
+                                    data-display-value="Интелектуальное">
+                                <label for="intelectual">Интелектуальное</label>
+                            </div>
+                            <div class="checkbox__container">
                                 <input type="checkbox" id="performances" name="performances" value="performances"
                                     data-display-value="Выступления">
                                 <label for="performances">Выступления</label>
-                            </div>
-                            <div class="checkbox__container">
-                                <input type="checkbox" id="education" name="education" value="education"
-                                    data-display-value="Образование">
-                                <label for="education">Образование</label>
                             </div>
                             <div class="checkbox__container">
                                 <input type="checkbox" id="technologies" name="technologies" value="technologies"
@@ -189,9 +189,9 @@
                                 <label for="work">Работа</label>
                             </div>
                             <div class="checkbox__container">
-                                <input type="checkbox" id="general" name="general" value="general"
-                                    data-display-value="ПГУ">
-                                <label for="general">БРСМ</label>
+                                <input type="checkbox" id="brsm" name="brsm" value="brsm"
+                                    data-display-value="БРСМ">
+                                <label for="brsm">БРСМ</label>
                             </div>
                             <div class="checkbox__container">
                                 <input type="checkbox" id="general" name="general" value="general"
@@ -433,8 +433,8 @@
                             </div>
                         </div>
                     </div>
-                    <button>
-                        Участвовать
+                    <button class="tooltip" disabled>Участвовать
+                        <span class="tooltiptext">Вы являетесь создателем этого поста!</span>
                     </button>
                 </div>
                 <div class="post_footer">
@@ -502,7 +502,7 @@
                                     <path d="M6.93589 0.25H10.1103C11.794 0.25 13.4089 0.882141 14.5995 2.00736C15.7901 3.13258 16.459 4.6587 16.459 6.25C16.459 7.8413 15.7901 9.36742 14.5995 10.4926C13.4089 11.6179 11.794 12.25 10.1103 12.25V14.875C6.1423 13.375 0.587158 11.125 0.587158 6.25C0.587158 4.6587 1.25604 3.13258 2.44666 2.00736C3.63728 0.882141 5.2521 0.25 6.93589 0.25ZM8.52307 10.75H10.1103C10.7356 10.75 11.3547 10.6336 11.9324 10.4075C12.5101 10.1813 13.035 9.84984 13.4772 9.43198C13.9193 9.01412 14.2701 8.51804 14.5094 7.97208C14.7486 7.42611 14.8718 6.84095 14.8718 6.25C14.8718 5.65905 14.7486 5.07389 14.5094 4.52792C14.2701 3.98196 13.9193 3.48588 13.4772 3.06802C13.035 2.65016 12.5101 2.31869 11.9324 2.09254C11.3547 1.8664 10.7356 1.75 10.1103 1.75H6.93589C5.67305 1.75 4.46193 2.22411 3.56897 3.06802C2.676 3.91193 2.17434 5.05653 2.17434 6.25C2.17434 8.9575 4.12816 10.7245 8.52307 12.61V10.75Z" fill="var(--icnos-fill-color)" />
                                 </svg>
                             </div>
-                            <span>4</span>
+                            <span>20</span>
                         </button>
                         <button class="favorites">
                             <div class="icon">
@@ -723,12 +723,14 @@
                 <div class="form-group">
                     <label for="category">Выбирите категорию</label>
                     <select name="category">
+                        <option value="Студентеческий совет">Студентеческий совет</option>
                         <option value="Здоровье и Спорт">Здоровье и Спорт</option>
-                        <option value="Образование">Интелектуальное</option>
+                        <option value="Интелектуальное">Интелектуальное</option>
                         <option value="Выступления">Выступления</option>
                         <option value="Технологии">Технологии</option>
                         <option value="Работа">Работа</option>
-                        <option value="Общее">Общее</option>
+                        <option value="БРСМ">БРСМ</option>
+                        <option value="ПГУ">ПГУ</option>
                     </select>
                 </div>
                 <div class="form-group progress-bar-form">
