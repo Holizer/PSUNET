@@ -64,7 +64,7 @@ html, body {
     transition: background-color 0.5s ease;
     
     &.modal-open {
-        //overflow: hidden;
+        overflow: hidden;
     }
 }
 
@@ -918,37 +918,6 @@ main {
                         cursor: default;
                     }
                 }
-
-                .tooltip {
-                    position: relative;
-                    display: inline-block;
-                    
-                    .tooltiptext {
-                        position: absolute;
-                        visibility: hidden;
-                        width: max-content;
-                        background-color: rgb(97, 97, 97);
-                        border: 2px solid var(--contenet--border);
-                        font-family: $first-family;
-                        font-weight: 400;
-                        color: #FFFFFF;
-                        text-align: center;
-                        border-radius: 4px;
-                        padding: 5px 2px;
-                        left: -5%;
-                        z-index: 1;
-                        bottom: 100%;
-                        opacity: 0;
-                        transform: translateY(10px);
-                        transition: all 0.5s;
-                        
-                        &.tooltip:hover .tooltiptext {
-                            transform: translateY(-2px);
-                            visibility: visible;
-                            opacity: 1;
-                        }
-                    }
-                }
             }
 
             .post_footer {
@@ -959,6 +928,7 @@ main {
                 .post__items {
                     display: flex;
                     align-items: center;
+                    vertical-align: middle;
                     left: 30px;
                     bottom: 20px;
                     gap: 18px;
@@ -1087,6 +1057,51 @@ main {
     }
 }
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  
+    &:hover .tooltiptext {
+        transform: translateY(0px);
+        visibility: visible;
+        opacity: 1;
+    }
+  
+    .tooltiptext {
+        visibility: hidden;
+        width: max-content;
+        background-color: #555;
+        border: 2px solid var(--contenet--border);
+        font-family: $first-family;
+        color: #fff;
+        text-align: center;
+        padding: 5px 2px;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%; 
+        left: -5%;
+
+        transform: translateY(10px);
+        opacity: 0;
+        transition: all 0.6s ease;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        @media (max-width: $breakpoint-mobile) {
+            left: 4%;
+        }
+    }
+}
 #EventsCreater {
     .modal__box {
         width: 70%;
@@ -1323,6 +1338,9 @@ main {
                 .activate_groop_recruitment, .set_number_of_participants {
                     display: flex;
                     flex-direction: column;
+                    
+                    @media (max-width: $breakpoint-mobile) {
+                    }
                 }
 
                 .activate_groop_recruitment {
@@ -1330,13 +1348,13 @@ main {
                     gap: 10px;
 
                     @media (max-width: $breakpoint-mobile) {
-                        width: min-content;
+                        width: max-content;
                     }
                 }
 
                 .set_number_of_participants {
                     gap: 5px;
-                    margin-left: 10%;
+                    margin-left: auto;
                     width: 60%;
 
                     input {

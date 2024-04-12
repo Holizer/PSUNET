@@ -38,6 +38,10 @@ html, body {
   font-family: "Roboto", sans-serif;
   transition: background-color 0.5s ease;
 }
+html.modal-open, body.modal-open {
+  overflow: hidden;
+}
+
 body.dark-theme {
   --primary-color: #FFFFFF;
   --secondary-color: #e2e2e2;
@@ -780,34 +784,6 @@ main .posts-container .post .participant_recruitment_box button:disabled {
   background: var(--button-disabled);
   cursor: default;
 }
-main .posts-container .post .participant_recruitment_box .tooltip {
-  position: relative;
-  display: inline-block;
-}
-main .posts-container .post .participant_recruitment_box .tooltip .tooltiptext {
-  position: absolute;
-  visibility: hidden;
-  width: max-content;
-  background-color: rgb(97, 97, 97);
-  border: 2px solid var(--contenet--border);
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  color: #FFFFFF;
-  text-align: center;
-  border-radius: 4px;
-  padding: 5px 2px;
-  left: -5%;
-  z-index: 1;
-  bottom: 100%;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.5s;
-}
-main .posts-container .post .participant_recruitment_box .tooltip .tooltiptext.tooltip:hover .tooltiptext {
-  transform: translateY(-2px);
-  visibility: visible;
-  opacity: 1;
-}
 main .posts-container .post .post_footer {
   display: flex;
   flex-direction: row;
@@ -816,6 +792,7 @@ main .posts-container .post .post_footer {
 main .posts-container .post .post_footer .post__items {
   display: flex;
   align-items: center;
+  vertical-align: middle;
   left: 30px;
   bottom: 20px;
   gap: 18px;
@@ -924,6 +901,50 @@ main .right-sidebar .schedule_box .items .item span {
   font-size: 14px;
   line-height: 24px;
   color: var(--place-holder-color);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.tooltip:hover .tooltiptext {
+  transform: translateY(0px);
+  visibility: visible;
+  opacity: 1;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: #555;
+  border: 2px solid var(--contenet--border);
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  text-align: center;
+  padding: 5px 2px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: -5%;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+.tooltip .tooltiptext:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+@media (max-width: 426px) {
+  .tooltip .tooltiptext {
+    left: 4%;
+  }
 }
 
 #EventsCreater .modal__box {
@@ -1141,12 +1162,12 @@ main .right-sidebar .schedule_box .items .item span {
 }
 @media (max-width: 426px) {
   .modal .modal__box form .progress-bar-form .activate_groop_recruitment {
-    width: min-content;
+    width: max-content;
   }
 }
 .modal .modal__box form .progress-bar-form .set_number_of_participants {
   gap: 5px;
-  margin-left: 10%;
+  margin-left: auto;
   width: 60%;
 }
 .modal .modal__box form .progress-bar-form .set_number_of_participants input {
