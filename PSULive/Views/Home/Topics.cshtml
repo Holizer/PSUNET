@@ -1,0 +1,59 @@
+﻿@model PSULive.Controls.HomeController.PostViewModel
+
+<div class="modal__box">
+    <h2>Новая тема</h2>
+    <form asp-action="Create" asp-controller="home" method="post id="ThemesForm">
+        <div class="form-group">
+            <label  asp-for="NewPost.Title">Введите название</label>
+            <input asp-for="NewPost.Title" type="text" id="name" name="name" placeholder="Название" required>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewPost.Category">Факультет</label>
+            <div class="btn_group" role="group">
+                <button data-faculty="ГФ">
+                    <span>ГФ</span>
+                    <img src="img/Faculties_img/gf.svg" alt="ГФ">
+                </button>
+                <button type="button" data-faculty="ИСФ">
+                    <span>ИСФ</span>
+                    <img src="img/Faculties_img/isf.svg" alt="ИСФ">
+                </button>
+                <button type="button" data-faculty="МТФ">
+                    <span>МТФ</span>
+                    <img src="img/Faculties_img/mtf.svg" alt="МТФ">
+                </button>
+                <button type="button" data-faculty="ФИТ">
+                    <span>ФИТ</span>
+                    <img src="img/Faculties_img/fit.svg" alt="ФИТ">
+                </button>
+                <button type="button" data-faculty="ФКНиЭ">
+                    <span>ФКНиЭ</span>
+                    <img src="img/Faculties_img/fkne.svg" alt="ФКНиЭ">
+                </button>
+                <button type="button" data-faculty="ФЭФ">
+                    <span>ФЭФ</span>
+                    <img src="img/Faculties_img/fef.svg" alt="ФЭФ">
+                </button>
+                <button type="button" data-faculty="ЮФ">
+                    <span>ЮФ</span>
+                    <img src="img/Faculties_img/uf.svg" alt="ЮФ">
+                </button>
+                <button type="button" data-faculty="ПГУ">
+                    <span>Общее</span>
+                    <svg width="27" height="31" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.8901 7.7531L13.4451 0L0 7.7531V23.2472L13.4451 31.0003L26.8901 23.2472V7.7531Z" fill="var(--icnos-fill-color)" />
+                    </svg>
+                </button>
+            </div>
+            <input asp-for="NewPost.Category" type="hidden" id="selectedFaculty" name="selectedFaculty" required>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewPost.Description">Содержание</label>
+            <textarea asp-for="NewPost.Description" id="message" name="message" placeholder="Опишите тему" maxlength="400" title="Достигнуто максимальное количество символов" required></textarea>
+        </div>
+        <div class="buttons__container">
+            <input type="submit" value="Создать тему">
+            <input type="reset" value="Отмена" onclick="toggleModal('ThemesCreater', 'close')">
+        </div>
+    </form>
+</div>

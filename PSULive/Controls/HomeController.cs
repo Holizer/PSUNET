@@ -47,6 +47,15 @@ namespace PSULive.Controls
         }
 
         [HttpPost]
+        public async Task<IActionResult> Topics(PostViewModel viewModel)
+        {
+
+            db.Posts.Add(viewModel.NewPost);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id != null)
