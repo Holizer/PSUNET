@@ -4,22 +4,7 @@
 @{
     ViewData["Title"] = "PSULive";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/scss/style.scss">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/PsuLogo.svg">
-    <title>PSUNET</title>
-</head>
 
-<body>
     <header>
         <div class="logo_container">
             <svg width="27" height="31" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -279,24 +264,25 @@
         </div>
 
         <div class="posts-container">
+             @{
+                    foreach (var item in Model.Posts){
             <div class="post">
-                @{
-                    foreach (var item in Model.Posts)
-                    {
+               
                         <div class="user__info">
                             <img class="user_img" src="img/users_img/user3_img.svg" alt="">
                             <div class="user_details">
-                                <div class="user_name">Никита Валькович</div>
-                                <div class="time_of_creation">вчера</div>
+                                <div class="user_name">да да я</div>
+                                <div class="time_of_creation">@item.CreatedDate</div>
                             </div>
                         </div>
                         <div class="post__content">
-                            <h2>Набор команды на общий проект</h2>
-                            <p>Хочу набрать комадну для разработка нейронных сетей для автоматического распознавания речи для усовершенствования работы с компьютером, кто хочет попробовать отпишите в комментах</p>
+                            <h2>@item.Title</h2>
+                            <p>@item.Description</p>
                             <a asp-action="Edit" asp-controller="Home" onclick="toggleModal('EventsChanger', 'open')" asp-route-id="@item.Id">Изменить</a>
                             <form asp-controller="Home" asp-action="Delete" method="post" asp-route-id="@item.Id">
                                 <input type="submit" value="Удалить" />
                             </form>
+                        <p>Дата проведения - @item.OnSpecialDate</p>
                         </div>
                         <div class="post__items">
                             <div class="likes">
@@ -325,17 +311,16 @@
                             </div>
                         </div>
                         <div class="post_type">
-                            <div class="post_type__img">
-                                <img src="img/Faculties_img/fkne.svg" alt="ФКНиЭ">
-                            </div>
+>
                             <div class="post_type__teg">
-                                <span>ФКНиЭ</span>
+                                <span>@item.Category</span>
                             </div>
 
                         </div>
-                    }
-                }
+                   
             </div>
+            }
+        }
         </div>
 
         <div class="right-sidebar">
@@ -451,59 +436,7 @@
         </div>
     </div>
 
-    <div class="modal" id="EventsCreater">
-        <div class="modal__box">
-            <h2>Новое мероприятие</h2>
-            <form id="EventsForm">
-                <div class="form-group">
-                    <label for="name">Введите название</label>
-                    <input type="text" id="name" name="name" placeholder="Название" required>
-                </div>
-                <div class="form-group">
-                    <label for="date">Дата проведения</label>
-                    <input type="datetime-local" id="date" name="date" required>
-                </div>
-                <div class="form-group">
-                    <label for="category">Выбирите категорию</label>
-                    <select name="category">
-                        <option value="Здоровье и Спорт">Здоровье и Спорт</option>
-                        <option value="Выступления">Выступления</option>
-                        <option value="Образование">Образование</option>
-                        <option value="Технологии">Технологии</option>
-                        <option value="Работа">Работа</option>
-                        <option value="Общее">Общее</option>
-                    </select>
-                </div>
-                <div class="form-group progress-bar-form">
-                    <div class="activate_groop_recruitment">
-                        <label for="group_recruitment">Набор группы</label>
-                        <label class="switch">
-                            <input id="group_recruitment" value="create_progress_bar" name="group_recruitment" type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                    <div class="set_number_of_participants">
-                        <label for="number_of_participants">Количество участников</label>
-                        <input id="number_of_participants" name="number_of_participants" type="number" min="1" max="100" placeholder="Число участников" disabled>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="message">Содержание</label>
-                    <textarea id="message" name="message" placeholder="Опишите мероприятие" maxlength="400" required></textarea>
-                </div>
-                <div class="buttons__container">
-                    <input type="submit" value="Создать мероприятие">
-                    <input type="reset" value="Отмена" onclick="toggleModal('EventsCreater', 'close')">
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script src="/js/main_scripts.js"></script>
-    <script src="/js/visual_scripts.js"></script>
-</body>
-</html>
-
+   
 <div class="modal" id="EventsCreater">
     @{
         await Html.RenderPartialAsync("Create", Model);
@@ -515,3 +448,4 @@
         await Html.RenderPartialAsync("Edit", Model);
     }
 </div>
+

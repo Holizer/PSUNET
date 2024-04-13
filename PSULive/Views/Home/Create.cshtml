@@ -13,33 +13,20 @@
             <input asp-for="NewPost.OnSpecialDate" class="form-control" type="datetime-local" required />
             <span asp-validation-for="NewPost.OnSpecialDate" class="text-danger"></span>
         <div class="form-group">
-            <label asp-for="NewPost.Category">Выберите категорию</label>
-            <div class="btn_group" role="group">
-                <button type="button" data-category="Здоровье и Спорт">
-                    Здоровье и Спорт
-                </button>
-                <button type="button" data-category="Выступления">
-                    Выступления
-                </button>
-                <button type="button" data-category="Образование">
-                    Образование
-                </button>
-                <button type="button" data-category="Технологии">
-                    Технологии
-                </button>
-                <button type="button" data-category="Работа">
-                    Работа
-                </button>
-                <button type="button" data-category="Общее">
-                    Общее
-                </button>
-            </div> 
-            <input asp-for="NewPost.Category" type="hidden" id="selectedCategory" class="form-control" name="selectedCategory" required />
-            <span asp-validation-for="NewPost.Category" class="text-danger"></span>
+                <label asp-for="NewPost.Category">Выберите категорию</label>
+                 <select asp-for="NewPost.Category"> 
+                    <option value="Здоровье и Спорт">Здоровье и Спорт</option>
+                    <option value="Выступления">Выступления</option>
+                    <option value="Образование">Образование</option>
+                    <option value="Технологии">Технологии</option>
+                    <option value="Работа">Работа</option>
+                    <option value="Общее" >Общее</option>
+                </select>
+      
         </div>
-        !-->
-        <label asp-for="NewPost.Category">Выберите категорию</label>
-        <input asp-for="NewPost.Category" class="form-control" type="text" />
+       
+ <!--<label asp-for="NewPost.Category">Выберите категорию</label>
+                    <input asp-for="NewPost.Category" class="form-control" type="text" /> !-->
 
         <div class="form-group">
             <label asp-for="NewPost.Description">Содержание</label>
