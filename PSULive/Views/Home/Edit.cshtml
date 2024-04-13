@@ -14,8 +14,8 @@
                 <span asp-validation-for="NewPost.OnSpecialDate" class="text-danger"></span>
             </div>
         <div class="form-group">
-            <label for="category">Выберите категорию</label>
-            <select name="category">
+            <label asp-for="NewPost.Category">Выберите категорию</label>
+            <select asp-for="NewPost.Category" name="category">
                 <option value="Здоровье и Спорт">Здоровье и Спорт</option>
                 <option value="Выступления">Выступления</option>
                 <option value="Образование">Образование</option>
@@ -35,7 +35,7 @@
             </div>
             <div class="buttons__container">
                 <input type="submit" value="Сохранить">
-                <input type="reset" value="Отмена" onclick="toggleModal('EventsCreater', 'close')">
+                <input type="reset" value="Отмена">
             </div>
         </form>
     </div>

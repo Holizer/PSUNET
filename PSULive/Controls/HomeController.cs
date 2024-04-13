@@ -87,7 +87,7 @@ namespace PSULive.Controls
                 return RedirectToAction("Index");
             }
             // Если модель недействительная, вернуть представление с моделью для исправления ошибок.
-            return View(viewModel);
+            return View();
         }
     }
 }
