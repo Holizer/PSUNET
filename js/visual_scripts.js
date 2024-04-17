@@ -148,6 +148,7 @@ humb.addEventListener('click', (e) => {
         menu.classList.remove('open');
     }
 });
+
 //Темная тема
 const themeToggle = document.querySelector('.themeToggle');
 let themeToggleSvg = themeToggle.querySelector('svg');
@@ -162,6 +163,7 @@ themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
 });
 
+//Активировать набор участников
 const groupRecruitmentCheckbox = document.getElementById('group_recruitment');
 const numberOfParticipantsInput = document.getElementById('number_of_participants');
 
@@ -170,9 +172,12 @@ groupRecruitmentCheckbox.addEventListener('change', () => {
     // Если чекбокс отмечен, удаляем атрибут 'disabled' у поля ввода
     if (groupRecruitmentCheckbox.checked) {
         numberOfParticipantsInput.removeAttribute('disabled');
+        numberOfParticipantsInput.setAttribute('required', 'required');
     } else {
         // Если чекбокс не отмечен, добавляем атрибут 'disabled' обратно
         numberOfParticipantsInput.setAttribute('disabled', 'disabled');
+        numberOfParticipantsInput.removeAttribute('required');
+        numberOfParticipantsInput.value = "";
     }
 });
 
@@ -183,11 +188,14 @@ function updateDateTimeLocalInput(id) {
     input.value = localDateTime;
 }
 
-// Вызовите эту функцию при загрузке страницы и когда вам нужно обновить значение
+// Вызовите функции при загрузке страницы и когда нужно обновить значение
 document.addEventListener('DOMContentLoaded', function() {
     updateDateTimeLocalInput('date');
 });
 
+
+
+//post_attributs 
 //Лайки
 var likes = document.querySelectorAll('.likes');
 likes.forEach((like) => {
