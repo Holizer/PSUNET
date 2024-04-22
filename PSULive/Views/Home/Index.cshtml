@@ -271,14 +271,14 @@
                         <div class="user__info">
                             <img class="user_img" src="img/users_img/user3_img.svg" alt="">
                             <div class="user_details">
-                                <div class="user_name">да да я</div>
+                                <div class="user_name">UserName</div>
                                 <div class="time_of_creation">@item.CreatedDate</div>
                             </div>
                         </div>
                         <div class="post__content">
                             <h2>@item.Title</h2>
                             <p>@item.Description</p>
-                            <a asp-action="Edit" asp-controller="Home" onclick="toggleModal('EventsChanger', 'open')" asp-route-id="@item.Id">Изменить</a>
+                            <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a>
                             <form asp-controller="Home" asp-action="Delete" method="post" asp-route-id="@item.Id">
                                 <input type="submit" value="Удалить" />
                             </form>

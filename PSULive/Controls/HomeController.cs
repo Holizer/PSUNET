@@ -46,15 +46,7 @@ namespace PSULive.Controls
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Topics(PostViewModel viewModel)
-        {
-
-            db.Posts.Add(viewModel.NewPost);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
+    
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -78,6 +70,7 @@ namespace PSULive.Controls
                 PostViewModel viewModel = new PostViewModel();
                 viewModel.Posts = await db.Posts.ToListAsync();
                 viewModel.NewPost = await db.Posts.FirstOrDefaultAsync(p => p.Id == id);
+                TempData["EditId"] = id;
                 if (viewModel.NewPost != null)
                 {
                     return View(viewModel);
@@ -89,14 +82,26 @@ namespace PSULive.Controls
         [HttpPost]
         public async Task<IActionResult> Edit(PostViewModel viewModel)
         {
-            if (ModelState.IsValid)
+            int id = (int)TempData["EditId"];
+
+            if (viewModel.NewPost != null)
             {
-                db.Posts.Update(viewModel.NewPost);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                var existingPost = await db.Posts.FindAsync(id);
+                if (existingPost != null)
+                {
+                    existingPost.Title = viewModel.NewPost.Title;
+                    existingPost.OnSpecialDate = viewModel.NewPost.OnSpecialDate;
+                    existingPost.Category = viewModel.NewPost.Category;
+                    existingPost.Description = viewModel.NewPost.Description;
+
+                    db.Posts.Update(existingPost);
+                    await db.SaveChangesAsync();
+
+                    return RedirectToAction("Index");
+
+                }
             }
-            // Если модель недействительная, вернуть представление с моделью для исправления ошибок.
-            return View();
+            return NotFound();
         }
     }
 }

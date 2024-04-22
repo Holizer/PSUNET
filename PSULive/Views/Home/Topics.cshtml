@@ -2,10 +2,10 @@
 
 <div class="modal__box">
     <h2>Новая тема</h2>
-    <form asp-action="Create" asp-controller="home" method="post id="ThemesForm">
+    <form asp-action="Create" asp-controller="Home" method="post" id="ThemesForm" >
         <div class="form-group">
             <label  asp-for="NewPost.Title">Введите название</label>
-            <input asp-for="NewPost.Title" type="text" id="name" name="name" placeholder="Название" required>
+            <input asp-for="NewPost.Title" type="text" id="name"  placeholder="Название" required>
         </div>
         <div class="form-group">
             <label asp-for="NewPost.Category">Факультет</label>
@@ -45,12 +45,13 @@
                     </svg>
                 </button>
             </div>
-            <input asp-for="NewPost.Category" type="hidden" id="selectedFaculty" name="selectedFaculty" required>
+            <input asp-for="NewPost.Category" type="hidden" id="selectedFaculty"  required>
         </div>
         <div class="form-group">
             <label asp-for="NewPost.Description">Содержание</label>
-            <textarea asp-for="NewPost.Description" id="message" name="message" placeholder="Опишите тему" maxlength="400" title="Достигнуто максимальное количество символов" required></textarea>
+            <textarea asp-for="NewPost.Description" id="message" placeholder="Опишите тему" maxlength="400" title="Достигнуто максимальное количество символов" required></textarea>
         </div>
+
         <div class="buttons__container">
             <input type="submit" value="Создать тему">
             <input type="reset" value="Отмена" onclick="toggleModal('ThemesCreater', 'close')">
